@@ -1,0 +1,48 @@
+.topic {
+  color:pink;
+  text-decoration: none;
+}
+
+.topicsList {
+  list-style-type: none;
+}
+
+.sideBar {
+  background-color: hotPink;
+  width:150px;
+  height:100vh;
+}
+
+.title {
+  text-align: center;
+  font-size: 10vw;
+  height : 80px;
+}
+
+.app{
+  display: flex;
+}
+
+
+
+.singleArticle-football {
+background-color:blueviolet;
+list-style: none;
+width: 600px;
+margin: 0 auto; 
+}
+
+.singleArticle-cooking {
+background-color: aqua;
+list-style: none;
+width: 600px;
+margin: 0 auto; 
+}
+
+.singleArticle-coding {
+background-color: blue;
+;
+list-style: none;
+width: 600px;
+margin: 0 auto; 
+}
