@@ -9,8 +9,9 @@
 
 .sideBar {
   background-color: hotPink;
-  width:150px;
+  max-width:150px;
   height:100vh;
+  grid-area:sideBar;
 }
 
 .title {
@@ -19,11 +20,15 @@
   height : 80px;
 }
 
-.app{
-  display: flex;
+.App{
+  display: grid;
+  grid-auto-columns: 1fr 4fr;
+  grid-template-areas: "sideBar router";
 }
 
-
+.router{
+  grid-area:router;
+} 
 
 .singleArticle-football {
 background-color:blueviolet;

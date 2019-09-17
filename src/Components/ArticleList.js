@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api'
 import ArticleCard from './ArticleCard';
+import TopArticlesList from './TopArticlesList'
 
 class ArticleList extends Component {
   state = {
@@ -24,6 +25,11 @@ class ArticleList extends Component {
       this.setState({ articles, isLoading: false })
     })
   }
+
+  getTopTenArticles = () => {
+
+  }
+
   render() {
     const { articles, isLoading } = this.state;
     if (isLoading) return <p>Loading...</p>
@@ -33,6 +39,7 @@ class ArticleList extends Component {
           return <ArticleCard key={article.article_id} {...article} />
         })}
       </ul>
+      <TopArticlesList />
     );
   }
 }

@@ -20,3 +20,9 @@ export const getArticles = (topic) => {
     return data.articles
   })
 }
+
+export const getUserByUsername = (username) => {
+  return request.get(`/users/${username}`).then(({ data }) => {
+    return data.user;
+  })
+}

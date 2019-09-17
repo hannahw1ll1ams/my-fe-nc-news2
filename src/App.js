@@ -11,11 +11,11 @@ function App() {
   return (
     <div className="App">
       <SideBar />
-      <Router>
+      <Router className='router'>
         <Homepage path='/' />
         <ArticlesByTopic path='/topics/:topic' />
         {/* <ArticlesByUserPage path='/articles/users/:username' /> */}
-        <UserByUsername path='/articles/user/:username' />
+        <UserByUsername path='/users/:username' />
       </Router>
     </div>
   );

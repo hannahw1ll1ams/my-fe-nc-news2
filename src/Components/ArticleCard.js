@@ -6,7 +6,7 @@ const ArticleCard = ({ title, topic, author }) => {
     <li className={`singleArticle-${topic}`}>
       <p>{title}</p>
       <p>{topic}</p>
-      <p><Link to='/users/:username'>{author}</Link></p>
+      <p>Read more articles by <Link to={`/users/${author}`}>{author}</Link></p>
     </li>
   );
 };
