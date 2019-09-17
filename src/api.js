@@ -20,8 +20,8 @@ export const getTopics = () => {
 //   return data.articles
 // }
 
-export const getArticles = (topic, author) => {
-  return request.get('/articles', { params: { topic, author } }).then(({ data }) => {
+export const getArticles = (topic, author, sort_by, order) => {
+  return request.get('/articles', { params: { topic, author, sort_by, order } }).then(({ data }) => {
     return data.articles
   })
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
+import Sorter from './Sorter';
 
 class ArticleList extends Component {
   state = {
@@ -20,9 +21,9 @@ class ArticleList extends Component {
     this.fetchArticles()
   }
 
-  fetchArticles = () => {
+  fetchArticles = (sort_by, order) => {
     const { topic, author } = this.props;
-    api.getArticles(topic, author).then((articles) => {
+    api.getArticles(topic, author, sort_by, order).then((articles) => {
       this.setState({ articles, isLoading: false }
       )
     })
@@ -38,6 +39,10 @@ class ArticleList extends Component {
     if (isLoading) return <p>Loading...</p>
     return (
       <div className='main'>
+        <div className='topBar'>
+          <Sorter fetchArticles={this.fetchArticles} />
+
+        </div>
         <ul className='articleList'>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} {...article} />
