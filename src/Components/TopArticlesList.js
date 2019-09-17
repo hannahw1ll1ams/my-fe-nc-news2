@@ -1,9 +1,15 @@
 import React from 'react';
 
-const TopArticlesList = ({ topic }) => {
+const TopArticlesList = ({ topic, topFive }) => {
   return (
-    <div>
+    <div className='topArticles'>
       <h3>TOP FIVE {topic} ARTICLES</h3>
+      <ol>
+        {topFive.map(item => {
+          return <li className='topArticleItem'>{item}</li>
+        })}
+      </ol>
+
     </div>
   );
 };

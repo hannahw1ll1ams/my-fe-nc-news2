@@ -3,9 +3,7 @@ import ArticleList from '../Components/ArticleList'
 
 const ArticlesByTopic = ({ topic }) => {
   return (
-    <div>
-      <ArticleList topic={topic} />
-    </div>
+    <ArticleList topic={topic} />
   );
 };
 

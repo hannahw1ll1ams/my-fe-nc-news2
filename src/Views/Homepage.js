@@ -3,9 +3,7 @@ import ArticleList from '../Components/ArticleList';
 
 const Homepage = () => {
   return (
-    <div>
-      <ArticleList />
-    </div>
+    <ArticleList />
   );
 };
 

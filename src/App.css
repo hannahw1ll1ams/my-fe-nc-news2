@@ -12,6 +12,11 @@
   max-width:150px;
   height:100vh;
   grid-area:sideBar;
+  position:fixed;
+}
+
+.topArticleItem {
+  background-color: white;
 }
 
 .title {
@@ -24,23 +29,52 @@
   display: grid;
   grid-auto-columns: 1fr 4fr;
   grid-template-areas: "sideBar router";
+  background-color:aliceblue;
 }
 
 .router{
   grid-area:router;
+  display: flex;
+  background-color:yellow;
+
+  /* grid-auto-columns: 3fr 1fr;
+  grid-template-areas: "articlesList topArticles"; */
 } 
+.main {
+  display:flex;
+  background-color:orange;
+
+}
+
+.articleList {
+  /* max-width:600px; */
+  width:600px;
+  grid-area:articlesList;
+  background-color:red;
+  overflow: scroll;
+
+}
+
+.topArticles {
+  width:200px;
+  margin: 20px;
+  margin-top: 30px;
+  padding:20px;
+  grid-area:topArticles;
+  background-color: grey;
+  position: fixed;
+  left:70%;
+}
 
 .singleArticle-football {
-background-color:blueviolet;
-list-style: none;
-width: 600px;
-margin: 0 auto; 
+  background-color:blueviolet;
+  list-style: none;
+  margin: 0 auto; 
 }
 
 .singleArticle-cooking {
 background-color: aqua;
 list-style: none;
-width: 600px;
 margin: 0 auto; 
 }
 
@@ -48,6 +82,5 @@ margin: 0 auto;
 background-color: blue;
 ;
 list-style: none;
-width: 600px;
 margin: 0 auto; 
 }

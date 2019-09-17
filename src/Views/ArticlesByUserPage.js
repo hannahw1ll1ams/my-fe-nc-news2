@@ -1,11 +1,9 @@
 import React from 'react';
 import ArticleList from '../Components/ArticleList'
 
-const ArticlesByUserPage = () => {
+const ArticlesByUserPage = ({ username }) => {
   return (
-    <div>
-      <ArticleList />
-    </div>
+    <ArticleList author={username} />
   );
 };
 

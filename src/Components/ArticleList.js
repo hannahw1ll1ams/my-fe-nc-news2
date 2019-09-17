@@ -6,7 +6,8 @@ import TopArticlesList from './TopArticlesList'
 class ArticleList extends Component {
   state = {
     articles: [],
-    isLoading: true
+    isLoading: true,
+    topFive: ["First Article", "Second Article", "Third Article", "Fourth Article", "Fifth Article"]
   }
 
   componentDidUpdate(prevProps) {
@@ -20,9 +21,10 @@ class ArticleList extends Component {
   }
 
   fetchArticles = () => {
-    const { topic } = this.props;
-    api.getArticles(topic).then((articles) => {
-      this.setState({ articles, isLoading: false })
+    const { topic, author } = this.props;
+    api.getArticles(topic, author).then((articles) => {
+      this.setState({ articles, isLoading: false }
+      )
     })
   }
 
@@ -31,18 +33,18 @@ class ArticleList extends Component {
   }
 
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, topFive } = this.state;
     const { topic } = this.props
     if (isLoading) return <p>Loading...</p>
     return (
-      <React.Fragment>
+      <div className='main'>
         <ul className='articleList'>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} {...article} />
           })}
         </ul>
-        <TopArticlesList topic={topic} />
-      </React.Fragment>
+        <TopArticlesList topic={topic} topFive={topFive} />
+      </div>
     );
   }
 }

@@ -4,7 +4,7 @@ import SideBar from './Components/SideBar';
 import { Router } from '@reach/router'
 import Homepage from './Views/Homepage';
 import ArticlesByTopic from './Views/ArticlesByTopic'
-// import ArticlesByUserPage from './Views/ArticlesByUserPage'
+import ArticlesByUserPage from './Views/ArticlesByUserPage'
 import UserByUsername from './Views/UserByUsername'
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Router className='router'>
         <Homepage path='/' />
         <ArticlesByTopic path='/topics/:topic' />
-        {/* <ArticlesByUserPage path='/articles/users/:username' /> */}
+        <ArticlesByUserPage path='/articles/user/:username' />
         <UserByUsername path='/users/:username' />
       </Router>
     </div>

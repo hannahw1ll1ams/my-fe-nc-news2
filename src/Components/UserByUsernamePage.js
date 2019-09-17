@@ -4,7 +4,9 @@ import { Link } from '@reach/router'
 
 class UserByUsernamePage extends Component {
   state = {
-    user: null
+    user: null,
+    isLoading: true,
+    users: []
   }
 
   componentDidMount() {
@@ -20,12 +22,15 @@ class UserByUsernamePage extends Component {
   fetchUser = () => {
     const { username } = this.props
     api.getUserByUsername(username).then((user) => {
-      this.setState({ user })
+      this.setState({ user, isLoading: false }, () => {
+      })
     })
   }
 
   render() {
-    const { user } = this.state;
+    const { user, isLoading } = this.state;
+    if (isLoading) return <p>Loading...</p>
+
     const { username, avatar_url, name } = user;
 
     return (
@@ -33,7 +38,7 @@ class UserByUsernamePage extends Component {
         <p>INTRODUCING {name}</p>
         <img src={avatar_url} alt={name} />
         <p>Username: {username}</p>
-        <Link to={`/articles/user/${username}`}><p>For all articles by {name}</p></Link>
+        <Link to={`/articles/user/${username}`}><p>For more articles by {name}</p></Link>
       </div>
     );
   }
