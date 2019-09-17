@@ -5,6 +5,8 @@
   "dependencies": {
     "@reach/router": "^1.2.1",
     "axios": "^0.19.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
@@ -13,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test-utils": "mocha src/spec/utils.spec.js"
   },
   "eslintConfig": {
     "extends": "react-app"

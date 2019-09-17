@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TopArticlesList = () => {
+const TopArticlesList = ({ topic }) => {
   return (
     <div>
-
+      <h3>TOP FIVE {topic} ARTICLES</h3>
     </div>
   );
 };

@@ -26,20 +26,23 @@ class ArticleList extends Component {
     })
   }
 
-  getTopTenArticles = () => {
-
+  getTopFiveArticles = () => {
+    // sort articles into order by votes descending and just pass through top 5 to TopArticlesList Component
   }
 
   render() {
     const { articles, isLoading } = this.state;
+    const { topic } = this.props
     if (isLoading) return <p>Loading...</p>
     return (
-      <ul className='articleList'>
-        {articles.map(article => {
-          return <ArticleCard key={article.article_id} {...article} />
-        })}
-      </ul>
-      <TopArticlesList />
+      <React.Fragment>
+        <ul className='articleList'>
+          {articles.map(article => {
+            return <ArticleCard key={article.article_id} {...article} />
+          })}
+        </ul>
+        <TopArticlesList topic={topic} />
+      </React.Fragment>
     );
   }
 }
