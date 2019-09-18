@@ -7,7 +7,7 @@ const ArticleCard = ({ title, topic, author, created_at }) => {
       <p>{title}</p>
       <p>Created at: {created_at} </p>
       <p>{topic}</p>
-      <p>Read more articles by <Link to={`/users/${author}`}>{author}</Link></p>
+      <p>Read <Link to={`/articles/user/${author}`}>more articles</Link> by <Link to={`/users/${author}`}>{author}</Link></p>
     </li>
   );
 };

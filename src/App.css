@@ -35,7 +35,7 @@
 .router{
   grid-area:router;
   display: flex;
-  background-color:yellow;
+  background-color:rgb(238, 255, 6);
 
   /* grid-auto-columns: 3fr 1fr;
   grid-template-areas: "articlesList topArticles"; */
@@ -52,7 +52,10 @@
   grid-area:articlesList;
   background-color:red;
   overflow: scroll;
+}
 
+.topBar {
+  display:flex;
 }
 
 .topArticles {

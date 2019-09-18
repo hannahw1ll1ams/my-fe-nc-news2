@@ -20,6 +20,7 @@ class TopicsList extends Component {
   }
   render() {
     const { topics, isLoading } = this.state;
+    const { updateTopicDescription } = this.props;
     if (isLoading) return <p>Loading...</p>
     return (
       <nav>
@@ -27,7 +28,7 @@ class TopicsList extends Component {
           <li>
             <Link to='/'>All</Link>
           </li>{topics.map(topic => {
-            return <li className='topic' key={topic.slug}><Link to={`/topics/${topic.slug}`}>{topic.slug}</Link></li>
+            return <li className='topic' key={topic.slug} onClick={() => updateTopicDescription(topic.description)}><Link to={`/topics/${topic.slug}`}>{topic.slug}</Link></li>
           })}
         </ul>
       </nav>

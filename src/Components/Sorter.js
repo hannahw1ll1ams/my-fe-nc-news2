@@ -20,20 +20,18 @@ class Sorter extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <select name="sort_by" onChange={this.handleChange}>
-            <option value='created_at'>Date</option>
-            <option value='comment_count'>Comment Count</option>
-            <option value='votes'>Votes</option>
-          </select>
-          <select name="order" onChange={this.handleChange}>
-            <option value="desc">Descending</option>
-            <option value="asc">Ascending</option>
-          </select>
-          <button>SORT</button>
-        </form>
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <select name="sort_by" onChange={this.handleChange}>
+          <option value='created_at'>Date</option>
+          <option value='comment_count'>Comment Count</option>
+          <option value='votes'>Votes</option>
+        </select>
+        <select name="order" onChange={this.handleChange}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+        <button>SORT</button>
+      </form>
     );
   }
 }

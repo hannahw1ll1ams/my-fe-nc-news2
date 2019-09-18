@@ -1,9 +1,9 @@
 import React from 'react';
 import ArticleList from '../Components/ArticleList'
 
-const ArticlesByTopic = ({ topic }) => {
+const ArticlesByTopic = ({ topic, topicDescription }) => {
   return (
-    <ArticleList topic={topic} />
+    <ArticleList topic={topic} topicDescription={topicDescription} />
   );
 };
 
