@@ -37,3 +37,9 @@ export const getAllUsers = () => {
     return data.users
   })
 }
+
+export const getTopFive = (topic, sort_by) => {
+  return request.get('/articles', { params: { topic, sort_by } }).then(({ data }) => {
+    return data.articles
+  })
+}

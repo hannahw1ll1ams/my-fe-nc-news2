@@ -4,23 +4,22 @@ import { Link } from '@reach/router'
 
 class AllUsersPage extends Component {
   state = {
-    users: []
+    users: [],
+    isLoading: true
   }
   fetchAllUsers = () => {
     api.getAllUsers().then((users) => {
-      this.setState({ users })
+      this.setState({ users, isLoading: false })
     })
   }
   componentDidMount() {
     this.fetchAllUsers()
   }
-  componentDidUpdate() {
-    this.fetchAllUsers()
-  }
-  render() {
-    const { users } = this.state;
-    const { updateLoggedInUser } = this.props;
 
+  render() {
+    const { users, isLoading } = this.state;
+    const { updateLoggedInUser } = this.props;
+    if (isLoading) return <p>Loading...</p>
     return (
       <div>
         <ul>
