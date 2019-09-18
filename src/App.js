@@ -12,11 +12,15 @@ import AllArticles from './Views/AllArticles'
 class App extends Component {
   state = {
     loggedInUser: null,
-    topicDescription: ""
+    topicDescription: "",
+    topics: [null]
   }
   updateTopicDescription = (topicDescription) => {
     this.setState({ topicDescription })
   }
+  // updateTopics = (topicDescription) => {
+  //   this.setState({ topicDescription })
+  // }
 
   updateLoggedInUser = (loggedInUser) => {
     this.setState({ loggedInUser }, () => {
@@ -29,9 +33,9 @@ class App extends Component {
         <SideBar updateTopicDescription={this.updateTopicDescription} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} />
         <Router className='router'>
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} />
-          <AllArticles path='/articles' />
-          <ArticlesByTopic path='/topics/:topic' topicDescription={this.state.topicDescription} />
-          <ArticlesByUserPage path='/articles/user/:username' />
+          <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} />
+          <ArticlesByTopic path='/topics/:topic' topicDescription={this.state.topicDescription} loggedInUser={this.state.loggedInUser} />
+          <ArticlesByUserPage path='/articles/user/:username' loggedInUser={this.state.loggedInUser} />
           <UserByUsername path='/users/:username' />
         </Router>
       </div>

@@ -43,3 +43,20 @@ export const getTopFive = (topic, sort_by) => {
     return data.articles
   })
 }
+
+export const sendNewArticle = (title, topic, body, loggedInUser) => {
+  return request.post('/articles', {
+    title: title,
+    topic: topic,
+    username: loggedInUser,
+    body: body
+  }).then(({ data }) => {
+    return data.article
+  })
+}
+
+export const getSelectedArticle = (article_id) => {
+  return request.get(`/articles/${article_id}`).then(({ data }) => {
+    return
+  })
+}

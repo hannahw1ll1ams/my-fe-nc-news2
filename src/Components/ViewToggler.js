@@ -14,12 +14,12 @@ class ViewToggler extends Component {
   };
   render() {
     const { isShowing, i } = this.state;
-    const { item } = this.props;
+    const { item, postNewArticle } = this.props;
     return (
       <div>
         <button onClick={this.handleClick}>{i === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
         </button>
-        {isShowing && <ArticleCreator />}
+        {isShowing && <ArticleCreator postNewArticle={postNewArticle} />}
       </div>
     );
   }

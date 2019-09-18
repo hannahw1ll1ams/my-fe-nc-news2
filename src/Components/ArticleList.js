@@ -4,6 +4,8 @@ import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
 import Sorter from './Sorter';
 import ViewToggler from './ViewToggler';
+import { Router } from '@reach/router'
+import SelectedArticle from './SelectedArticle'
 
 class ArticleList extends Component {
   state = {
@@ -29,14 +31,17 @@ class ArticleList extends Component {
     })
   }
 
-  postNewArticle = (newArticle) => {
+  postNewArticle = (title, topic, body) => {
     const { loggedInUser } = this.props;
-    console.log(newArticle, loggedInUser)
+    api.sendNewArticle(title, topic, body, loggedInUser).then((newArticle) => {
+      const allArticles = [newArticle, ...this.state.articles];
+      this.setState({ articles: allArticles })
+    })
   }
 
   render() {
     const { articles, isLoading } = this.state;
-    const { topic, author, topicDescription } = this.props
+    const { topic, author, topicDescription, loggedInUser } = this.props
     if (isLoading) return <p>Loading...</p>
     return (
       <div className='main'>
@@ -46,14 +51,16 @@ class ArticleList extends Component {
         <div className='topBar'>
           <Sorter fetchArticles={this.fetchArticles} />
         </div>
-        <ViewToggler item='article' />
+        {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} />}
         <ul className='articleList'>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} {...article} />
           })}
         </ul>
+        <Router>
+          <SelectedArticle path=":article_id" />
+        </Router>
         <TopArticlesList topic={topic} />
-
       </div>
     );
   }

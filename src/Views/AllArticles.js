@@ -1,9 +1,9 @@
 import React from 'react';
 import ArticleList from '../Components/ArticleList';
 
-const AllArticles = () => {
+const AllArticles = ({ loggedInUser }) => {
   return (
-    <ArticleList />
+    <ArticleList loggedInUser={loggedInUser} />
   );
 };
 
