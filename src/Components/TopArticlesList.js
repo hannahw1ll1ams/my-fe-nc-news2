@@ -1,35 +1,19 @@
 import React, { Component } from 'react';
 import * as api from '../api'
 
-// const TopArticlesList = ({ topic, topFive }) => {
-//   return (
-//     <div className='topArticles'>
-//       <h3>TOP FIVE {topic} ARTICLES</h3>
-//       <ol>
-//         {topFive.map(item => {
-//           return <li key={item} className='topArticleItem'>{item}</li>
-//         })}
-//       </ol>
-
-//     </div>
-//   );
-// };
-
-
 class TopArticlesList extends Component {
   state = {
     topFive: [],
-    sort_by: 'votes'
+    sort_by: 'votes',
+    isLoading: true
   }
 
   getTopArticles = () => {
     const { topic } = this.props;
     const { sort_by } = this.state;
-    console.log(topic)
     api.getTopFive(topic, sort_by).then((articles) => {
       let topFive = articles.slice(0, 5);
-      this.setState({ topFive })
-      console.log(sort_by, topic, topFive)
+      this.setState({ topFive, isLoading: false })
     })
   }
 
@@ -50,7 +34,8 @@ class TopArticlesList extends Component {
 
   render() {
     const { topic } = this.props;
-    const { topFive, sort_by } = this.state;
+    const { topFive, sort_by, isLoading } = this.state;
+    if (isLoading) return <p>Loading...</p>
     return (
       <div className='topArticles'>
         <h3>TOP FIVE {topic} ARTICLES</h3>
