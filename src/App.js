@@ -6,35 +6,31 @@ import Homepage from './Views/Homepage';
 import ArticlesByTopic from './Views/ArticlesByTopic'
 import ArticlesByUserPage from './Views/ArticlesByUserPage'
 import UserByUsername from './Views/UserByUsername'
+import AllArticles from './Views/AllArticles'
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <SideBar />
-//       <Router className='router'>
-//         <Homepage path='/' />
-//         <ArticlesByTopic path='/topics/:topic' />
-//         <ArticlesByUserPage path='/articles/user/:username' />
-//         <UserByUsername path='/users/:username' />
-//       </Router>
-//     </div>
-//   );
-// }
 
-// export default App;
 class App extends Component {
   state = {
+    loggedInUser: null,
     topicDescription: ""
   }
   updateTopicDescription = (topicDescription) => {
     this.setState({ topicDescription })
   }
+
+  updateLoggedInUser = (loggedInUser) => {
+    this.setState({ loggedInUser }, () => {
+      console.log(this.state.loggedInUser)
+    })
+
+  }
   render() {
     return (
       <div className="App">
-        <SideBar updateTopicDescription={this.updateTopicDescription} />
+        <SideBar updateTopicDescription={this.updateTopicDescription} loggedInUser={this.state.loggedInUser} />
         <Router className='router'>
-          <Homepage path='/' />
+          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} />
+          <AllArticles path='/articles' />
           <ArticlesByTopic path='/topics/:topic' topicDescription={this.state.topicDescription} />
           <ArticlesByUserPage path='/articles/user/:username' />
           <UserByUsername path='/users/:username' />

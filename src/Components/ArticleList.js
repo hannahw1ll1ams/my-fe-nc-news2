@@ -3,7 +3,7 @@ import * as api from '../api'
 import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
 import Sorter from './Sorter';
-import ArticleAdder from './ArticleAdder';
+import ViewToggler from './ViewToggler';
 
 class ArticleList extends Component {
   state = {
@@ -40,13 +40,13 @@ class ArticleList extends Component {
     if (isLoading) return <p>Loading...</p>
     return (
       <div className='main'>
+        {topic && <h1>Articles on {topic}</h1>}
+        {topicDescription && <h2>{topicDescription}</h2>}
+        {author && <h1>Articles by {author}</h1>}
         <div className='topBar'>
           <Sorter fetchArticles={this.fetchArticles} />
-          <ArticleAdder />
-          {topic && <h1>Articles on {topic}</h1>}
-          {topicDescription && <h2>{topicDescription}</h2>}
-          {author && <h1>Articles by {author}</h1>}
         </div>
+        <ViewToggler item='article' />
         <ul className='articleList'>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} {...article} />

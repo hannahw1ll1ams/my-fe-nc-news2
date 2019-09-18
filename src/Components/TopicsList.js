@@ -26,7 +26,7 @@ class TopicsList extends Component {
       <nav>
         <ul className='topicsList'>
           <li>
-            <Link to='/'>All</Link>
+            <Link to='/articles'>All</Link>
           </li>{topics.map(topic => {
             return <li className='topic' key={topic.slug} onClick={() => updateTopicDescription(topic.description)}><Link to={`/topics/${topic.slug}`}>{topic.slug}</Link></li>
           })}

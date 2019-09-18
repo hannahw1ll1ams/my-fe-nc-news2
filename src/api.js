@@ -31,3 +31,9 @@ export const getUserByUsername = (username) => {
     return data.user;
   })
 }
+
+export const getAllUsers = () => {
+  return request.get('/users').then(({ data }) => {
+    return data.users
+  })
+}

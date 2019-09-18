@@ -1,9 +1,9 @@
 import React from 'react';
-import ArticleList from '../Components/ArticleList';
+import AllUsersPage from '../Components/AllUsersPage';
 
-const Homepage = () => {
+const Homepage = ({ updateLoggedInUser }) => {
   return (
-    <ArticleList />
+    <AllUsersPage updateLoggedInUser={updateLoggedInUser} />
   );
 };
 
