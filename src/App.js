@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SideBar updateTopicDescription={this.updateTopicDescription} loggedInUser={this.state.loggedInUser} />
+        <SideBar updateTopicDescription={this.updateTopicDescription} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} />
         <Router className='router'>
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} />
           <AllArticles path='/articles' />
