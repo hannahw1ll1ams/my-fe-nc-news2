@@ -22,7 +22,6 @@ class App extends Component {
     this.setState({ loggedInUser }, () => {
       console.log(this.state.loggedInUser)
     })
-
   }
   render() {
     return (

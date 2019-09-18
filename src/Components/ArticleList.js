@@ -8,8 +8,8 @@ import ViewToggler from './ViewToggler';
 class ArticleList extends Component {
   state = {
     articles: [],
-    isLoading: true,
-    topFive: ["First Article", "Second Article", "Third Article", "Fourth Article", "Fifth Article"]
+    isLoading: true
+    // topFive: ["First Article", "Second Article", "Third Article", "Fourth Article", "Fifth Article"]
   }
 
   componentDidUpdate(prevProps) {
@@ -30,12 +30,17 @@ class ArticleList extends Component {
     })
   }
 
-  getTopFiveArticles = () => {
-    // sort articles into order by votes descending and just pass through top 5 to TopArticlesList Component
+  postNewArticle = (newArticle) => {
+    const { loggedInUser } = this.props;
+    console.log(newArticle, loggedInUser)
   }
 
+  // getTopFiveArticles = () => {
+  //   // sort articles into order by votes descending and just pass through top 5 to TopArticlesList Component
+  // }
+
   render() {
-    const { articles, isLoading, topFive } = this.state;
+    const { articles, isLoading } = this.state;
     const { topic, author, topicDescription } = this.props
     if (isLoading) return <p>Loading...</p>
     return (
@@ -52,7 +57,9 @@ class ArticleList extends Component {
             return <ArticleCard key={article.article_id} {...article} />
           })}
         </ul>
-        <TopArticlesList topic={topic} topFive={topFive} />
+        {/* <TopArticlesList topic={topic} topFive={topFive} /> */}
+        <TopArticlesList topic={topic} />
+
       </div>
     );
   }
