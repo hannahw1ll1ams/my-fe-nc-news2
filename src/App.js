@@ -34,8 +34,8 @@ class App extends Component {
         <Router className='router'>
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} />
           <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} />
-          <ArticlesByTopic path='/topics/:topic' topicDescription={this.state.topicDescription} loggedInUser={this.state.loggedInUser} />
-          <ArticlesByUserPage path='/articles/user/:username' loggedInUser={this.state.loggedInUser} />
+          <ArticlesByTopic path='/topics/:topic/*' topicDescription={this.state.topicDescription} loggedInUser={this.state.loggedInUser} />
+          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} />
           <UserByUsername path='/users/:username' />
         </Router>
       </div>

@@ -58,7 +58,7 @@ class ArticleList extends Component {
           })}
         </ul>
         <Router>
-          <SelectedArticle path=":article_id" />
+          <SelectedArticle path=":article_id" loggedInUser={loggedInUser} />
         </Router>
         <TopArticlesList topic={topic} />
       </div>

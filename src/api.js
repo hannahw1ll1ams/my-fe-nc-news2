@@ -57,6 +57,18 @@ export const sendNewArticle = (title, topic, body, loggedInUser) => {
 
 export const getSelectedArticle = (article_id) => {
   return request.get(`/articles/${article_id}`).then(({ data }) => {
-    return
+    return data.article
+  })
+}
+
+export const patchVotes = (item, id, votesDifference) => {
+  return request.patch(`/${item}/${id}`, {
+    inc_votes: votesDifference
+  })
+}
+
+export const getCommentsByArticleId = (article_id) => {
+  return request.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments
   })
 }

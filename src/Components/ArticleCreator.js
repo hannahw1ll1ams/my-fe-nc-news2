@@ -36,7 +36,6 @@ class ArticleCreator extends Component {
             <option value='football'>Football</option>
             <option value='cooking'>Cooking</option>
           </select>
-          {/* <input name='topic' placeholder='topic' onChange={this.handleChange} required /> */}
           <input name='body' placeholder='body' onChange={this.handleChange} required value={body} />
           <button>Add</button>
         </label>
