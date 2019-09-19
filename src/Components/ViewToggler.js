@@ -14,12 +14,12 @@ class ViewToggler extends Component {
   };
   render() {
     const { isShowing, i } = this.state;
-    const { item, postNewArticle, postNewComment, updateTopics, slugs } = this.props;
+    const { item, postNewArticle, postNewComment, updateTopics, slugs, topic } = this.props;
     return (
       <div>
         <button onClick={this.handleClick}>{i === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
         </button>
-        {(isShowing) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} />}
+        {(isShowing) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} />}
         {(isShowing) && (item === 'comment') && <CommentCreator postNewComment={postNewComment} />}
       </div>
     );

@@ -17,6 +17,9 @@ class ArticleList extends Component {
     if (prevProps.topic !== this.props.topic) {
       this.fetchArticles()
     }
+    if (prevProps.slug !== this.props.slug) {
+      this.fetchArticles()
+    }
   }
 
   componentDidMount() {
@@ -32,6 +35,7 @@ class ArticleList extends Component {
   }
 
   postNewArticle = (title, topic, body) => {
+    console.log(title, topic, body)
     const { loggedInUser } = this.props;
     api.sendNewArticle(title, topic, body, loggedInUser).then((newArticle) => {
       const allArticles = [newArticle, ...this.state.articles];
@@ -53,7 +57,7 @@ class ArticleList extends Component {
         <div className='topBar'>
           <Sorter fetchArticles={this.fetchArticles} />
         </div>
-        {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} />}
+        {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} />}
         <ul className='articleList'>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} {...article} />

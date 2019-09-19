@@ -38,7 +38,7 @@ class TopArticlesList extends Component {
     if (isLoading) return <p>Loading...</p>
     return (
       <div className='topArticles'>
-        <h3>TOP FIVE {topic} ARTICLES</h3>
+        <h3>TOP {topic} ARTICLES</h3>
         <form onChange={this.handleChange}>
           <select>
             <option value='votes'>By Votes</option>
