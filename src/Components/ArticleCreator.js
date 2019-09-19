@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import ViewToggler from './ViewToggler';
+// import TopicCreator from './TopicCreator';
 
 class ArticleCreator extends Component {
   state = {
     title: '',
     topic: 'coding',
-    body: ''
+    body: '',
+    slug: '',
+    description: '',
+    isShowing: false,
+    i: true
   }
 
   handleChange = (event) => {
@@ -15,19 +19,30 @@ class ArticleCreator extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { postNewArticle } = this.props;
-    const { title, topic, body } = this.state;
+    const { postNewArticle, updateTopics } = this.props;
+    const { title, topic, body, slug, description } = this.state;
     postNewArticle(title, topic, body)
+    updateTopics(slug, description)
     this.setState({
       title: '',
       topic: 'coding',
-      body: ''
+      body: '',
+      slug: '',
+      description: ''
     })
+  }
 
+  createNewTopic = (slug, description) => {
+    this.setState({ slug, description })
+  }
+
+  handleClick = () => {
+    const { isShowing, i } = this.state
+    this.setState({ isShowing: !isShowing, i: !i })
   }
   render() {
-    const { title, body } = this.state;
-    const { slugs, updateTopics } = this.props;
+    const { title, body, isShowing, i, slug, description } = this.state;
+    const { slugs } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <label> Write your article here:
@@ -37,7 +52,12 @@ class ArticleCreator extends Component {
               return <option value='slug' key={slug}>{slug}</option>
             })}
           </select>
-          <ViewToggler item='topic' updateTopics={updateTopics} />
+          <button onClick={this.handleClick}>{i === true ? <p>Add Topic</p> : <p>Hide Form</p>}</button>
+          {isShowing &&
+            <div>
+              <input name='slug' placeholder='Topic' onChange={this.handleChange} required value={slug} />
+              <input name='description' placeholder='Description of Topic' onChange={this.handleChange} required value={description} />
+            </div>}
           <input name='body' placeholder='body' onChange={this.handleChange} required value={body} />
           <button>Add</button>
         </label>

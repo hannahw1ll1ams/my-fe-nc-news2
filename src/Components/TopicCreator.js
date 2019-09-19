@@ -13,9 +13,9 @@ class TopicCreator extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { updateTopics } = this.props;
+    const { createNewTopic } = this.props;
     let { slug, description } = this.state;
-    updateTopics(slug, description)
+    createNewTopic(slug, description)
     this.setState({
       slug: '',
       description: ''
