@@ -24,7 +24,6 @@ class App extends Component {
 
   updateLoggedInUser = (loggedInUser) => {
     this.setState({ loggedInUser }, () => {
-      console.log(this.state.loggedInUser)
     })
   }
   render() {
@@ -36,7 +35,7 @@ class App extends Component {
           <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} />
           <ArticlesByTopic path='/topics/:topic/*' topicDescription={this.state.topicDescription} loggedInUser={this.state.loggedInUser} />
           <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} />
-          <UserByUsername path='/users/:username' />
+          <UserByUsername path='/users/:username' loggedInUser={this.state.loggedInUser} />
         </Router>
       </div>
     );

@@ -72,3 +72,12 @@ export const getCommentsByArticleId = (article_id) => {
     return data.comments
   })
 }
+
+export const sendNewComment = (article_id, username, newComment) => {
+  return request.post(`/articles/${article_id}/comments`, {
+    username: username,
+    body: newComment
+  }).then(({ data }) => {
+    return data.comment
+  })
+}

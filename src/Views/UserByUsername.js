@@ -1,9 +1,9 @@
 import React from 'react';
 import UserByUsernamePage from '../Components/UserByUsernamePage';
 
-const UserByUsername = ({ username }) => {
+const UserByUsername = ({ username, loggedInUser }) => {
   return (
-    <UserByUsernamePage username={username} />
+    <UserByUsernamePage username={username} loggedInUser={loggedInUser} />
   );
 };
 

@@ -16,7 +16,6 @@ class ArticleCreator extends Component {
     event.preventDefault()
     const { postNewArticle } = this.props;
     const { title, topic, body } = this.state;
-    console.log(title, topic, body)
     postNewArticle(title, topic, body)
     this.setState({
       title: '',

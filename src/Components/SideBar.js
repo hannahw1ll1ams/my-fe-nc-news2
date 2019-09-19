@@ -9,6 +9,7 @@ const SideBar = ({ updateTopicDescription, loggedInUser, updateLoggedInUser }) =
       {loggedInUser && <Link to='/'><p onClick={() => updateLoggedInUser(null)}>Change User</p></Link>}
       <h1 className='title'>NC</h1>
       {loggedInUser && <TopicsList updateTopicDescription={updateTopicDescription} />}
+      {loggedInUser && <p><Link to={`/users/${loggedInUser}`}>Users</Link></p>}
     </div>
   );
 };

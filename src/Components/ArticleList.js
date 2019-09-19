@@ -45,6 +45,7 @@ class ArticleList extends Component {
     if (isLoading) return <p>Loading...</p>
     return (
       <div className='main'>
+        <p>{articles.length} Articles Found</p>
         {topic && <h1>Articles on {topic}</h1>}
         {topicDescription && <h2>{topicDescription}</h2>}
         {author && <h1>Articles by {author}</h1>}

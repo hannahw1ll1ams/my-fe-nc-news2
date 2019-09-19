@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ArticleCreator from './ArticleCreator';
-
+import CommentCreator from './CommentCreator'
 
 class ViewToggler extends Component {
   state = {
@@ -14,12 +14,13 @@ class ViewToggler extends Component {
   };
   render() {
     const { isShowing, i } = this.state;
-    const { item, postNewArticle } = this.props;
+    const { item, postNewArticle, postNewComment } = this.props;
     return (
       <div>
         <button onClick={this.handleClick}>{i === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
         </button>
-        {isShowing && <ArticleCreator postNewArticle={postNewArticle} />}
+        {(isShowing) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} />}
+        {(isShowing) && (item === 'comment') && <CommentCreator postNewComment={postNewComment} />}
       </div>
     );
   }

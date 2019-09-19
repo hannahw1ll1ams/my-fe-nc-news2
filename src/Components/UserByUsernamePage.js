@@ -28,6 +28,7 @@ class UserByUsernamePage extends Component {
   }
 
   render() {
+    const { loggedInUser } = this.props;
     const { user, isLoading } = this.state;
     if (isLoading) return <p>Loading...</p>
 
@@ -35,6 +36,7 @@ class UserByUsernamePage extends Component {
 
     return (
       <div>
+        {this.props.username === loggedInUser && <p>This is you!</p>}
         <p>INTRODUCING {name}</p>
         <img src={avatar_url} alt={name} />
         <p>Username: {username}</p>

@@ -35,15 +35,21 @@ class SelectedArticle extends Component {
   fetchCommentsByArticleId = () => {
     const { article_id } = this.props;
     api.getCommentsByArticleId(article_id).then((comments) => {
-      this.setState({ comments, isShowing: true, i: false })
+      this.setState({ comments })
+    })
+  }
+
+  postNewComment = (newComment) => {
+    const { loggedInUser, article_id } = this.props;
+    api.sendNewComment(article_id, loggedInUser, newComment).then((newComment) => {
+      const allComments = [newComment, ...this.state.comments];
+      this.setState({ comments: allComments })
     })
   }
 
   handleClick = () => {
     const { isShowing, i } = this.state
-    this.setState({ isShowing: !isShowing, i: !i }, () => {
-      console.log(this.state.isShowing)
-    })
+    this.setState({ isShowing: !isShowing, i: !i })
   }
 
   render() {
@@ -60,7 +66,7 @@ class SelectedArticle extends Component {
         <p>{body}</p>
         {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
         <button onClick={this.handleClick}>{i === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {comment_count}</button>
-        {isShowing === true && <CommentsByArticleList comments={comments} loggedInUser={loggedInUser} />}
+        {isShowing === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} />}
       </div>
     );
   }
