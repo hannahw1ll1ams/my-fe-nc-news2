@@ -42,7 +42,6 @@ class ArticleList extends Component {
   render() {
     const { articles, isLoading } = this.state;
     const { topic, author, loggedInUser, description, updateTopics, slugs } = this.props
-    console.log(description)
     if (isLoading) return <p>Loading...</p>
     // const chosenTopic = topics.filter(topicObj => { return topicObj.slug === topic })
     return (

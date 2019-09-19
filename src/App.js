@@ -48,13 +48,16 @@ class App extends Component {
   componentDidMount() {
     this.fetchTopics()
   }
+  componentDidUpdate() {
+    this.fetchTopics()
+  }
 
   updateTopics = (slug, description) => {
     api.addNewTopic(slug, description).then((newTopic) => {
-      this.setState(currentState => {
-        console.log(currentState)
-        return
-        { topics: [...currentState.topics, ...newTopic] }
+      let allSlugs = [newTopic.slug, ...this.state.slugs]
+      const allTopics = [newTopic, ...this.state.topics];
+      this.setState({ topics: allTopics, slugs: allSlugs }, () => {
+        console.log(this.state)
       })
     })
   }
