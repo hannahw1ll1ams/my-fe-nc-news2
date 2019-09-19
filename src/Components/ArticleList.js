@@ -44,6 +44,7 @@ class ArticleList extends Component {
   }
 
   render() {
+
     const { articles, isLoading } = this.state;
     const { topic, author, loggedInUser, description, updateTopics, slugs } = this.props
     if (isLoading) return <p>Loading...</p>

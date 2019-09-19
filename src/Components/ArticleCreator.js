@@ -12,6 +12,7 @@ class ArticleCreator extends Component {
   }
 
   handleChange = (event) => {
+    console.log('hello')
     const { name, value } = event.target;
     this.setState({ [name]: value }
     )
@@ -43,6 +44,7 @@ class ArticleCreator extends Component {
     this.setState({ isShowing: !isShowing, i: !i }
     )
   }
+
   render() {
     const { title, body, isShowing, i, slug, description } = this.state;
     const { slugs, selectedTopic } = this.props;
