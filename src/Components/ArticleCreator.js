@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ViewToggler from './ViewToggler';
 
 class ArticleCreator extends Component {
   state = {
@@ -26,15 +27,17 @@ class ArticleCreator extends Component {
   }
   render() {
     const { title, body } = this.state;
+    const { slugs, updateTopics } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <label> Write your article here:
           <input name='title' placeholder='title' onChange={this.handleChange} required value={title} />
           <select name="topic" onChange={this.handleChange}>
-            <option value='coding'>Coding</option>
-            <option value='football'>Football</option>
-            <option value='cooking'>Cooking</option>
+            {slugs.map(slug => {
+              return <option value='slug' key={slug}>{slug}</option>
+            })}
           </select>
+          <ViewToggler item='topic' updateTopics={updateTopics} />
           <input name='body' placeholder='body' onChange={this.handleChange} required value={body} />
           <button>Add</button>
         </label>

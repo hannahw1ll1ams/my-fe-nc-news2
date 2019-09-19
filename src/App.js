@@ -17,23 +17,6 @@ class App extends Component {
     slugs: []
   }
 
-  updateLoggedInUser = (loggedInUser) => {
-    this.setState({ loggedInUser }, () => {
-    })
-  }
-
-  fetchTopics = () => {
-    api.getTopics().then((topics) => {
-      let slugs = topics.map(topic => { return topic.slug })
-      // let descriptions = topics.map(topic => { return topic.description })
-      this.setState({ topics, slugs, isLoading: false })
-    })
-  }
-
-  componentDidMount() {
-    this.fetchTopics()
-  }
-
   render() {
     const { isLoading } = this.state;
     if (isLoading) return <p>Loading...</p>
@@ -42,13 +25,38 @@ class App extends Component {
         <SideBar slugs={this.state.slugs} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} />
         <Router className='router'>
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} />
-          <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} />
-          <ArticlesByTopic path='/topics/:topic/*' topics={this.state.topics} loggedInUser={this.state.loggedInUser} />
-          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} />
+          <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
+          <ArticlesByTopic path='/topics/:topic/*' topics={this.state.topics} loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
+          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <UserByUsername path='/users/:username' loggedInUser={this.state.loggedInUser} />
         </Router>
       </div>
     );
+  }
+
+  updateLoggedInUser = (loggedInUser) => {
+    this.setState({ loggedInUser }, () => {
+    })
+  }
+
+  fetchTopics = () => {
+    api.getTopics().then((topics) => {
+      let slugs = topics.map(topic => { return topic.slug })
+      this.setState({ topics, slugs, isLoading: false })
+    })
+  }
+  componentDidMount() {
+    this.fetchTopics()
+  }
+
+  updateTopics = (slug, description) => {
+    api.addNewTopic(slug, description).then((newTopic) => {
+      this.setState(currentState => {
+        console.log(currentState)
+        return
+        { topics: [...currentState.topics, ...newTopic] }
+      })
+    })
   }
 }
 

@@ -81,3 +81,12 @@ export const sendNewComment = (article_id, username, newComment) => {
     return data.comment
   })
 }
+
+export const addNewTopic = (slug, description) => {
+  return request.post(`/topics`, {
+    slug: slug,
+    description: description
+  }).then(({ data }) => {
+    return data.topic
+  })
+}
