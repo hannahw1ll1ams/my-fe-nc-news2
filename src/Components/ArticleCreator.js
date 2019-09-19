@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import TopicCreator from './TopicCreator';
 
 class ArticleCreator extends Component {
   state = {
