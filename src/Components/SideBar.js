@@ -2,13 +2,13 @@ import React from 'react';
 import TopicsList from './TopicsList';
 import { Link } from '@reach/router';
 
-const SideBar = ({ updateTopicDescription, loggedInUser, updateLoggedInUser }) => {
+const SideBar = ({ updateTopicDescription, loggedInUser, updateLoggedInUser, slugs }) => {
   return (
     <div className='sideBar'>
       {!loggedInUser ? <p>Who are you? <br /><Link to='/'>Choose User</Link></p> : <p>Logged in as {loggedInUser}</p>}
       {loggedInUser && <Link to='/'><p onClick={() => updateLoggedInUser(null)}>Change User</p></Link>}
       <h1 className='title'>NC</h1>
-      {loggedInUser && <TopicsList updateTopicDescription={updateTopicDescription} />}
+      {loggedInUser && <TopicsList slugs={slugs} />}
       {loggedInUser && <p><Link to={`/users/${loggedInUser}`}>Users</Link></p>}
     </div>
   );

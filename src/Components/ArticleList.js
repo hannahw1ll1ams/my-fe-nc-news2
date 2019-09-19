@@ -41,13 +41,15 @@ class ArticleList extends Component {
 
   render() {
     const { articles, isLoading } = this.state;
-    const { topic, author, topicDescription, loggedInUser } = this.props
+    const { topic, author, loggedInUser, description } = this.props
+    console.log(description)
     if (isLoading) return <p>Loading...</p>
+    // const chosenTopic = topics.filter(topicObj => { return topicObj.slug === topic })
     return (
       <div className='main'>
         <p>{articles.length} Articles Found</p>
         {topic && <h1>Articles on {topic}</h1>}
-        {topicDescription && <h2>{topicDescription}</h2>}
+        {topic && <h2>{description}</h2>}
         {author && <h1>Articles by {author}</h1>}
         <div className='topBar'>
           <Sorter fetchArticles={this.fetchArticles} />
