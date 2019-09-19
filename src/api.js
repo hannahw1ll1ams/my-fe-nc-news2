@@ -90,3 +90,7 @@ export const addNewTopic = (slug, description) => {
     return data.topic
   })
 }
+
+export const deleteItem = (id, type) => {
+  return request.delete(`/${type}/${id}`)
+}

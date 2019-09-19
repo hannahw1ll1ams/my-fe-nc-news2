@@ -3,6 +3,7 @@ import * as api from '../api'
 import { Link } from '@reach/router'
 import VoteUpdater from './VoteUpdater';
 import CommentsByArticleList from './CommentsByArticleList';
+import DeleteButton from './DeleteButton';
 
 class SelectedArticle extends Component {
   state = {
@@ -54,7 +55,7 @@ class SelectedArticle extends Component {
 
   render() {
     const { article, isLoading, isShowing, comments, i } = this.state;
-    const { loggedInUser } = this.props;
+    const { loggedInUser, deleteArticleByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
     const { title, author, topic, body, comment_count, votes, article_id } = article
     return (
@@ -64,6 +65,7 @@ class SelectedArticle extends Component {
         <p>Written by <Link to={`/users/${author}`}>{author}</Link></p>
         <p>{topic}</p>
         <p>{body}</p>
+        {author === loggedInUser && <DeleteButton article_id={article_id} deleteArticleByClick={deleteArticleByClick} />}
         {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
         <button onClick={this.handleClick}>{i === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {comment_count}</button>
         {isShowing === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} />}
