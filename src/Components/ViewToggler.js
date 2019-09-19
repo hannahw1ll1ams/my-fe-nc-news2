@@ -4,23 +4,23 @@ import CommentCreator from './CommentCreator'
 
 class ViewToggler extends Component {
   state = {
-    isShowing: false,
-    i: true
+    isShowingForm: false,
+    messageToggle: true
 
   }
   handleClick = () => {
-    const { isShowing, i } = this.state;
-    this.setState({ isShowing: !isShowing, i: !i });
+    const { isShowingForm, messageToggle } = this.state;
+    this.setState({ isShowingForm: !isShowingForm, messageToggle: !messageToggle });
   };
   render() {
-    const { isShowing, i } = this.state;
+    const { isShowingForm, messageToggle } = this.state;
     const { item, postNewArticle, postNewComment, updateTopics, slugs, topic } = this.props;
     return (
       <div>
-        <button onClick={this.handleClick}>{i === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
+        <button onClick={this.handleClick}>{messageToggle === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
         </button>
-        {(isShowing) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} />}
-        {(isShowing) && (item === 'comment') && <CommentCreator postNewComment={postNewComment} />}
+        {(isShowingForm) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} />}
+        {(isShowingForm) && (item === 'comment') && <CommentCreator postNewComment={postNewComment} />}
       </div>
     );
   }

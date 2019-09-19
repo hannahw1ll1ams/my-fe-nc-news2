@@ -10,8 +10,8 @@ class SelectedArticle extends Component {
     article: {},
     isLoading: true,
     comments: [],
-    isShowing: false,
-    i: true
+    isShowingComments: false,
+    messageToggle: true
   }
 
   componentDidMount() {
@@ -48,14 +48,21 @@ class SelectedArticle extends Component {
     })
   }
 
+  deleteElementByClick = (id) => {
+    this.setState((currentState) => {
+      return { comments: currentState.comments.filter(comment => comment.comment_id !== id) }
+    })
+    api.deleteItem(id, 'comments')
+  }
+
   handleClick = () => {
-    const { isShowing, i } = this.state
-    this.setState({ isShowing: !isShowing, i: !i })
+    const { isShowingComments, messageToggle } = this.state
+    this.setState({ isShowingComments: !isShowingComments, messageToggle: !messageToggle })
   }
 
   render() {
-    const { article, isLoading, isShowing, comments, i } = this.state;
-    const { loggedInUser, deleteArticleByClick } = this.props;
+    const { article, isLoading, isShowingComments, comments, messageToggle } = this.state;
+    const { loggedInUser, deleteElementByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
     const { title, author, topic, body, comment_count, votes, article_id } = article
     return (
@@ -65,10 +72,10 @@ class SelectedArticle extends Component {
         <p>Written by <Link to={`/users/${author}`}>{author}</Link></p>
         <p>{topic}</p>
         <p>{body}</p>
-        {author === loggedInUser && <DeleteButton article_id={article_id} deleteArticleByClick={deleteArticleByClick} />}
+        {author === loggedInUser && <DeleteButton id={article_id} deleteElementByClick={deleteElementByClick} />}
         {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
-        <button onClick={this.handleClick}>{i === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {comment_count}</button>
-        {isShowing === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} />}
+        <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {comment_count}</button>
+        {isShowingComments === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} />}
       </div>
     );
   }

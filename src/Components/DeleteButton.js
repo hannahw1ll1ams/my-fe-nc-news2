@@ -1,8 +1,8 @@
 import React from 'react';
 
-const DeleteButton = ({ article_id, deleteArticleByClick }) => {
+const DeleteButton = ({ id, deleteElementByClick }) => {
   return (
-    <button onClick={() => deleteArticleByClick(article_id)}>DELETE</button>
+    <button onClick={() => deleteElementByClick(id)}>DELETE</button>
   );
 };
 

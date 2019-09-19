@@ -43,7 +43,7 @@ class ArticleList extends Component {
     })
   }
 
-  deleteArticleByClick = (id) => {
+  deleteElementByClick = (id) => {
     this.setState((currentState) => {
       return { articles: currentState.articles.filter(article => article.article_id !== id) }
     })
@@ -68,11 +68,11 @@ class ArticleList extends Component {
         {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} />}
         <ul className='articleList'>
           {articles.map(article => {
-            return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteArticleByClick={this.deleteArticleByClick} />
+            return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
           })}
         </ul>
         <Router>
-          <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteArticleByClick={this.deleteArticleByClick} />
+          <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
         </Router>
         <TopArticlesList topic={topic} />
       </div>
