@@ -17,7 +17,8 @@ class App extends Component {
     isLoadingTopics: true,
     isLoadingUsers: true,
     slugs: [],
-    users: []
+    users: [],
+    error: null
   }
 
   render() {

@@ -4,6 +4,7 @@ import { Link } from '@reach/router'
 import VoteUpdater from './VoteUpdater';
 import CommentsByArticleList from './CommentsByArticleList';
 import DeleteButton from './DeleteButton';
+import ErrorPage from './ErrorPage';
 
 class SelectedArticle extends Component {
   state = {
@@ -11,7 +12,10 @@ class SelectedArticle extends Component {
     isLoading: true,
     comments: [],
     isShowingComments: false,
-    messageToggle: true
+    messageToggle: true,
+    articleError: null,
+    commentsError: null,
+    addAndDeleteError: null
   }
 
   componentDidMount() {
@@ -31,6 +35,14 @@ class SelectedArticle extends Component {
     api.getSelectedArticle(article_id).then((article) => {
       this.setState({ article, isLoading: false })
     })
+      .catch(error => {
+        this.setState({
+          articleError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   fetchCommentsByArticleId = () => {
@@ -38,6 +50,14 @@ class SelectedArticle extends Component {
     api.getCommentsByArticleId(article_id).then((comments) => {
       this.setState({ comments })
     })
+      .catch(error => {
+        this.setState({
+          commentsError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   postNewComment = (newComment) => {
@@ -46,13 +66,28 @@ class SelectedArticle extends Component {
       const allComments = [newComment, ...this.state.comments];
       this.setState({ comments: allComments })
     })
+      .catch(error => {
+        this.setState({
+          addAndDeleteError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   deleteElementByClick = (id) => {
     this.setState((currentState) => {
       return { comments: currentState.comments.filter(comment => comment.comment_id !== id) }
     })
-    api.deleteItem(id, 'comments')
+    api.deleteItem(id, 'comments').catch(error => {
+      this.setState({
+        addAndDeleteError: {
+          msg: error.response.data.msg,
+          status: error.response.status
+        }, isLoading: false
+      })
+    })
   }
 
   handleClick = () => {
@@ -61,9 +96,11 @@ class SelectedArticle extends Component {
   }
 
   render() {
-    const { article, isLoading, isShowingComments, comments, messageToggle } = this.state;
+    const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError } = this.state;
     const { loggedInUser, deleteElementByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
+    if (articleError) return <ErrorPage error={articleError} />
+
     const { title, author, topic, body, comment_count, votes, article_id } = article
     return (
       <div>
@@ -75,7 +112,7 @@ class SelectedArticle extends Component {
         {author === loggedInUser && <DeleteButton id={article_id} deleteElementByClick={deleteElementByClick} />}
         {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
         <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {comment_count}</button>
-        {isShowingComments === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} />}
+        {isShowingComments === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} />}
         {/* <button onClick={this.handleNextClick}>PREV</button>
         <button onClick={this.handleNextClick}>NEXT</button> */}
       </div>

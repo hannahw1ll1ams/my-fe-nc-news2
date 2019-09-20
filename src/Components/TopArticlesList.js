@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import * as api from '../api'
+import ErrorPage from './ErrorPage';
 
 class TopArticlesList extends Component {
   state = {
     topFive: [],
     sort_by: 'votes',
-    isLoading: true
+    isLoading: true,
+    error: null
   }
 
   getTopArticles = () => {
@@ -15,6 +17,14 @@ class TopArticlesList extends Component {
       let topFive = articles.slice(0, 5);
       this.setState({ topFive, isLoading: false })
     })
+      .catch(error => {
+        this.setState({
+          error: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   componentDidMount() {
@@ -34,8 +44,9 @@ class TopArticlesList extends Component {
 
   render() {
     const { topic } = this.props;
-    const { topFive, sort_by, isLoading } = this.state;
+    const { topFive, sort_by, isLoading, error } = this.state;
     if (isLoading) return <p>Loading...</p>
+    if (error) return <ErrorPage error={error} />
     return (
       <div className='topArticles'>
         <h3>TOP {topic} ARTICLES</h3>
