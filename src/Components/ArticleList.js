@@ -6,11 +6,13 @@ import Sorter from './Sorter';
 import ViewToggler from './ViewToggler';
 import { Router } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
+import ErrorPage from './ErrorPage';
 
 class ArticleList extends Component {
   state = {
     articles: [],
-    isLoading: true
+    isLoading: true,
+    error: null
   }
 
   componentDidUpdate(prevProps) {
@@ -32,6 +34,14 @@ class ArticleList extends Component {
       this.setState({ articles, isLoading: false }
       )
     })
+      .catch(error => {
+        this.setState({
+          error: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   postNewArticle = (title, topic, body) => {
@@ -41,6 +51,14 @@ class ArticleList extends Component {
       const allArticles = [newArticle, ...this.state.articles];
       this.setState({ articles: allArticles })
     })
+      .catch(error => {
+        this.setState({
+          error: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   deleteElementByClick = (id) => {
@@ -48,13 +66,22 @@ class ArticleList extends Component {
       return { articles: currentState.articles.filter(article => article.article_id !== id) }
     })
     api.deleteItem(id, 'articles')
+      .catch(error => {
+        this.setState({
+          error: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoading: false
+        })
+      })
   }
 
   render() {
 
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, error } = this.state;
     const { topic, author, loggedInUser, description, updateTopics, slugs } = this.props
     if (isLoading) return <p>Loading...</p>
+    if (error) return <ErrorPage error={error} />
     // const chosenTopic = topics.filter(topicObj => { return topicObj.slug === topic })
     return (
       <div className='main'>

@@ -8,6 +8,7 @@ import ArticlesByUserPage from './Views/ArticlesByUserPage'
 import UserByUsername from './Views/UserByUsername'
 import AllArticles from './Views/AllArticles'
 import * as api from './api'
+import ErrorPage from './Components/ErrorPage';
 
 class App extends Component {
   state = {
@@ -33,6 +34,7 @@ class App extends Component {
           <ArticlesByTopic path='/topics/:topic/*' topics={this.state.topics} loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <UserByUsername path='/users/:username' loggedInUser={this.state.loggedInUser} users={this.state.users} />
+          <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
         </Router>
       </div>
     );

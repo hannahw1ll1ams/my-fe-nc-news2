@@ -76,6 +76,8 @@ class SelectedArticle extends Component {
         {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
         <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {comment_count}</button>
         {isShowingComments === true && <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} />}
+        {/* <button onClick={this.handleNextClick}>PREV</button>
+        <button onClick={this.handleNextClick}>NEXT</button> */}
       </div>
     );
   }
