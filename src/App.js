@@ -18,23 +18,23 @@ class App extends Component {
     isLoadingUsers: true,
     slugs: [],
     users: [],
-    error: null
+    topicsError: null,
+    usersError: null
   }
 
   render() {
-    const { isLoadingTopics, isLoadingUsers } = this.state;
-    if (isLoadingTopics) return <p>Loading...</p>
-    if (isLoadingUsers) return <p>Loading...</p>
-
+    const { isLoadingTopics, isLoadingUsers, topicsError, usersError } = this.state;
+    // if (isLoadingTopics) return <p>Loading...</p>
+    // if (isLoadingUsers) return <p>Loading...</p>
     return (
       <div className="App">
-        <SideBar slugs={this.state.slugs} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} />
+        <SideBar slugs={this.state.slugs} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
         <Router className='router'>
-          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={this.state.users} postNewUser={this.postNewUser} />
+          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={this.state.users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} />
           <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <ArticlesByTopic path='/topics/:topic/*' topics={this.state.topics} loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
-          <UserByUsername path='/users/:username' loggedInUser={this.state.loggedInUser} users={this.state.users} />
+          <UserByUsername path='/users/:username' loggedInUser={this.state.loggedInUser} users={this.state.users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
           <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
         </Router>
       </div>
@@ -51,6 +51,14 @@ class App extends Component {
       let slugs = topics.map(topic => { return topic.slug })
       this.setState({ topics, slugs, isLoadingTopics: false })
     })
+      .catch(error => {
+        this.setState({
+          topicsError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoadingTopics: false
+        })
+      })
   }
   componentDidMount() {
     this.fetchTopics()
@@ -75,6 +83,14 @@ class App extends Component {
     api.getAllUsers().then((users) => {
       this.setState({ users, isLoadingUsers: false })
     })
+      .catch(error => {
+        this.setState({
+          usersError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoadingUsers: false
+        })
+      })
   }
 
   postNewUser = (username, avatar_url, name) => {

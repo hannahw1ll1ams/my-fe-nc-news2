@@ -37,7 +37,7 @@ class UserByUsernamePage extends Component {
   }
 
   render() {
-    const { loggedInUser, users } = this.props;
+    const { loggedInUser, users, usersError, isLoadingUsers } = this.props;
     const { user, isLoading, error } = this.state;
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />

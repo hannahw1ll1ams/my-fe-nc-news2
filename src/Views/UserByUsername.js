@@ -1,9 +1,9 @@
 import React from 'react';
 import UserByUsernamePage from '../Components/UserByUsernamePage';
 
-const UserByUsername = ({ username, loggedInUser, users }) => {
+const UserByUsername = ({ username, loggedInUser, users, usersError, isLoadingUsers }) => {
   return (
-    <UserByUsernamePage username={username} loggedInUser={loggedInUser} users={users} />
+    <UserByUsernamePage username={username} loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
   );
 };
 
