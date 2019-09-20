@@ -6,7 +6,6 @@ class UserByUsernamePage extends Component {
   state = {
     user: null,
     isLoading: true,
-    users: []
   }
 
   componentDidMount() {
