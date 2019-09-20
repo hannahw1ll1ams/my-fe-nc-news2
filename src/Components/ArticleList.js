@@ -79,10 +79,9 @@ class ArticleList extends Component {
   render() {
 
     const { articles, isLoading, error } = this.state;
-    const { topic, author, loggedInUser, description, updateTopics, slugs } = this.props
+    const { topic, author, loggedInUser, description, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
-    // const chosenTopic = topics.filter(topicObj => { return topicObj.slug === topic })
     return (
       <div className='main'>
         <p>{articles.length} Articles Found</p>
@@ -92,7 +91,7 @@ class ArticleList extends Component {
         <div className='topBar'>
           <Sorter fetchArticles={this.fetchArticles} />
         </div>
-        {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} />}
+        {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
         <ul className='articleList'>
           {articles.map(article => {
             return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />

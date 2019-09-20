@@ -23,18 +23,22 @@ class App extends Component {
   }
 
   render() {
-    const { isLoadingTopics, isLoadingUsers, topicsError, usersError } = this.state;
-    // if (isLoadingTopics) return <p>Loading...</p>
-    // if (isLoadingUsers) return <p>Loading...</p>
+    const { isLoadingTopics, isLoadingUsers, topicsError, usersError, loggedInUser, slugs, users, topics } = this.state;
     return (
       <div className="App">
-        <SideBar slugs={this.state.slugs} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+        <SideBar slugs={slugs} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
         <Router className='router'>
-          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={this.state.users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} />
-          <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
-          <ArticlesByTopic path='/topics/:topic/*' topics={this.state.topics} loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
-          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
-          <UserByUsername path='/users/:username' loggedInUser={this.state.loggedInUser} users={this.state.users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
+
+          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} />
+
+          <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+
+          <ArticlesByTopic path='/topics/:topic/*' topics={topics} loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+
+          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} />
+
+          <UserByUsername path='/users/:username' loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
+
           <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
         </Router>
       </div>
