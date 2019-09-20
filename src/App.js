@@ -86,8 +86,8 @@ class App extends Component {
       .catch(error => {
         this.setState({
           usersError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: 'WRITE A MESSAGE HERE',
+            status: 400
           }, isLoadingUsers: false
         })
       })
