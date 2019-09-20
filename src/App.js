@@ -28,7 +28,7 @@ class App extends Component {
       <div className="App">
         <SideBar slugs={this.state.slugs} loggedInUser={this.state.loggedInUser} updateLoggedInUser={this.updateLoggedInUser} />
         <Router className='router'>
-          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={this.state.users} />
+          <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={this.state.users} postNewUser={this.postNewUser} />
           <AllArticles path='/articles/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <ArticlesByTopic path='/topics/:topic/*' topics={this.state.topics} loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
           <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={this.state.loggedInUser} updateTopics={this.updateTopics} slugs={this.state.slugs} />
@@ -54,6 +54,12 @@ class App extends Component {
     this.fetchAllUsers()
   }
 
+  componentDidUpdate(prevState) {
+    if (prevState.users !== this.state.users) {
+      this.fetchAllUsers()
+    }
+  }
+
   updateTopics = (slug, description) => {
     api.addNewTopic(slug, description).then((newTopic) => {
       let allSlugs = [newTopic.slug, ...this.state.slugs]
@@ -65,6 +71,12 @@ class App extends Component {
   fetchAllUsers = () => {
     api.getAllUsers().then((users) => {
       this.setState({ users, isLoadingUsers: false })
+    })
+  }
+
+  postNewUser = (username, avatar_url, name) => {
+    api.sendNewUser(username, avatar_url, name).then((newUser) => {
+      console.log(newUser)
     })
   }
 }

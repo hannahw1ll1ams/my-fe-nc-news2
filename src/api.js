@@ -94,3 +94,14 @@ export const addNewTopic = (slug, description) => {
 export const deleteItem = (id, type) => {
   return request.delete(`/${type}/${id}`)
 }
+
+export const sendNewUser = (username, avatar_url, name) => {
+  return request.post('/users', {
+    username: username,
+    avatar_url: avatar_url,
+    name: name
+  })
+    .then(({ data }) => {
+      return data.user
+    })
+}

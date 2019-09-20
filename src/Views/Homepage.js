@@ -1,9 +1,13 @@
 import React from 'react';
 import LoginUserPage from '../Components/LoginUserPage';
+import ViewToggler from '../Components/ViewToggler';
 
-const Homepage = ({ updateLoggedInUser, users }) => {
+const Homepage = ({ updateLoggedInUser, users, postNewUser }) => {
   return (
-    <LoginUserPage updateLoggedInUser={updateLoggedInUser} users={users} />
+    <div>
+      <LoginUserPage updateLoggedInUser={updateLoggedInUser} users={users} />
+      <ViewToggler item='user' postNewUser={postNewUser} />
+    </div>
   );
 };
 
