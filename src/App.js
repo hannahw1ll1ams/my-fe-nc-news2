@@ -65,12 +65,6 @@ class App extends Component {
     this.fetchAllUsers()
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState.users !== this.state.users) {
-      this.fetchAllUsers()
-    }
-  }
-
   updateTopics = (slug, description) => {
     api.addNewTopic(slug, description).then((newTopic) => {
       let allSlugs = [newTopic.slug, ...this.state.slugs]
@@ -81,6 +75,7 @@ class App extends Component {
 
   fetchAllUsers = () => {
     api.getAllUsers().then((users) => {
+      console.log('uh oh')
       this.setState({ users, isLoadingUsers: false })
     })
       .catch(error => {
@@ -96,6 +91,8 @@ class App extends Component {
   postNewUser = (username, avatar_url, name) => {
     api.sendNewUser(username, avatar_url, name).then((newUser) => {
       console.log(newUser)
+      const allUsers = [...this.state.users, newUser];
+      this.setState({ users: allUsers })
     })
   }
 }

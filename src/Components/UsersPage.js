@@ -2,13 +2,14 @@ import React from 'react';
 import ErrorPage from './ErrorPage';
 import { Link } from '@reach/router'
 
-const PractiseUserPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }) => {
-
+const UsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }) => {
   let chosenUser = users.filter(users => users.username === username)
-  console.log(chosenUser)
   return (
     <div>
-      <p>INTRODUCING {chosenUser.name}</p>
+      {username === loggedInUser ? <p>YOU ARE {chosenUser[0].username}</p> : <p>INTRODUCING {chosenUser[0].name}</p>}
+      <img src={chosenUser[0].avatar_url} alt={chosenUser[0].name} />
+      <p>Username: {chosenUser[0].username}</p>
+      <Link to={`/articles/user/${chosenUser[0].username}`}><p>For more articles by {chosenUser[0].name}</p></Link>
       <h1>OTHER USERS:</h1>
       {isLoadingUsers ? <p>Loading USERS...</p> : usersError ? <ErrorPage error={usersError} /> :
         users.map(user => {
@@ -24,4 +25,4 @@ const PractiseUserPage = ({ username, loggedInUser, users, isLoadingUsers, users
   );
 };
 
-export default PractiseUserPage;
+export default UsersPage;
