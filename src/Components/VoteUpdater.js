@@ -31,9 +31,9 @@ class VoteUpdater extends Component {
 
     return (
       <div>
-        <button type='submit' onClick={() => this.updateVotes(1)} disabled={votesChange === 1}>VOTE UP</button>
+        <button onClick={() => this.updateVotes(1)} disabled={votesChange === 1}>VOTE UP</button>
         <p>VOTES : {votes + votesChange}</p>
-        <button type='submit' onClick={() => this.updateVotes(-1)} disabled={votesChange === -1}>VOTE DOWN</button>
+        <button onClick={() => this.updateVotes(-1)} disabled={votesChange === -1}>VOTE DOWN</button>
         {error && <ErrorPage error={error} />}
       </div>
     );
