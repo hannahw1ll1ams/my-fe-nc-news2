@@ -15,27 +15,26 @@ class App extends Component {
     loggedInUser: null,
     topics: [],
     isLoadingTopics: true,
-    isLoadingUsers: true,
-    slugs: [],
     users: [],
+    isLoadingUsers: true,
     topicsError: null,
     usersError: null
   }
 
   render() {
-    const { isLoadingTopics, isLoadingUsers, topicsError, usersError, loggedInUser, slugs, users, topics } = this.state;
+    const { isLoadingTopics, isLoadingUsers, topicsError, usersError, loggedInUser, users, topics } = this.state;
     return (
       <div className="App">
-        <SideBar slugs={slugs} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+        <SideBar slugs={topics.map(topic => topic.slug)} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
         <Router className='router'>
 
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} />
 
-          <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+          <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
 
-          <ArticlesByTopic path='/topics/:topic/*' topics={topics} loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+          <ArticlesByTopic path='/topics/:topic/*' topics={topics} loggedInUser={loggedInUser} updateTopics={this.updateTopics} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
 
-          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} />
+          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} />
 
           <UserByUsername path='/users/:username' loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
 
@@ -52,8 +51,7 @@ class App extends Component {
 
   fetchTopics = () => {
     api.getTopics().then((topics) => {
-      let slugs = topics.map(topic => { return topic.slug })
-      this.setState({ topics, slugs, isLoadingTopics: false })
+      this.setState({ topics, isLoadingTopics: false })
     })
       .catch(error => {
         this.setState({
@@ -71,9 +69,8 @@ class App extends Component {
 
   updateTopics = (slug, description) => {
     api.addNewTopic(slug, description).then((newTopic) => {
-      let allSlugs = [newTopic.slug, ...this.state.slugs]
       const allTopics = [newTopic, ...this.state.topics];
-      this.setState({ topics: allTopics, slugs: allSlugs })
+      this.setState({ topics: allTopics })
     })
   }
 
