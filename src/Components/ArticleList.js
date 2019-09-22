@@ -87,10 +87,11 @@ class ArticleList extends Component {
       <div className='main'>
         <div className='mainBody'>
           <div className='leftArticles'>
-            <p className='numOfArticles'>{articles.length} Articles Found</p>
             {topic && <h2>Articles on {topic}</h2>}
             {topic && <h3>{description}</h3>}
             {author && <h2>Articles by {author}</h2>}
+            <p className='numOfArticles'>{articles.length} Articles Found</p>
+
             <div className='topBar'>
               <Sorter fetchArticles={this.fetchArticles} />
               {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
