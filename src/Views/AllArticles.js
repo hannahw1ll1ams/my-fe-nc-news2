@@ -3,7 +3,11 @@ import ArticleList from '../Components/ArticleList';
 
 const AllArticles = ({ loggedInUser, updateTopics, slugs, isLoadingTopics, topicsError }) => {
   return (
-    <ArticleList loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+    <>
+      {loggedInUser &&
+        <ArticleList loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+      }
+    </>
   );
 };
 

@@ -8,12 +8,8 @@
 }
 
 .sideBar {
-  background-color: hotPink;
-  max-width:150px;
-  height:100vh;
   grid-area:sideBar;
-  position:fixed;
-}
+} 
 
 .topArticleItem {
   background-color: white;
@@ -35,7 +31,8 @@
 .router{
   grid-area:router;
   display: flex;
-  background-color:rgb(238, 255, 6);
+  padding-left: 100px;
+
 
   /* grid-auto-columns: 3fr 1fr;
   grid-template-areas: "articlesList topArticles"; */

@@ -1,0 +1,25 @@
+.sideBar {
+  background-color: hotPink;
+  max-width:15vw;
+  height:100vh;
+  position:fixed;
+  text-align: left;
+}
+
+.title {
+  min-width: 300px;
+  padding-left: 40px;
+  margin:0;
+  font-size: 210px;
+}
+
+.who {
+  color: red;
+    padding-left: 10px;
+}
+
+.logged {
+  color: lime;
+    padding-left: 10px;
+}
+

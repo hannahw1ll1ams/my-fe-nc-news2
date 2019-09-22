@@ -5,9 +5,9 @@ import { Link } from '@reach/router'
 const UsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }) => {
   let chosenUser = users.filter(users => users.username === username)
   return (
-    <div>
+    <>
       {isLoadingUsers ? <p>LOADING USERS...</p> : usersError ? <ErrorPage error={usersError} /> :
-        <div>{username === loggedInUser ? <p>YOU ARE {chosenUser[0].username}</p> : <p>INTRODUCING {chosenUser[0].name}</p>}
+        <>{username === loggedInUser ? <p>YOU ARE {chosenUser[0].username}</p> : <p>INTRODUCING {chosenUser[0].name}</p>}
 
           <img src={chosenUser[0].avatar_url} alt={chosenUser[0].name} />
           <p>Username: {chosenUser[0].username}</p>
@@ -22,9 +22,9 @@ const UsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }
               </Link>
             </li>
           })
-          }</div>
+          }</>
       }
-    </div>
+    </>
   );
 };
 

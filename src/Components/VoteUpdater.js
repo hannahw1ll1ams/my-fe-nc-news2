@@ -30,12 +30,12 @@ class VoteUpdater extends Component {
     const { votesChange, error } = this.state;
 
     return (
-      <div>
+      <>
         <button onClick={() => this.updateVotes(1)} disabled={votesChange === 1}>VOTE UP</button>
         <p>VOTES : {votes + votesChange}</p>
         <button onClick={() => this.updateVotes(-1)} disabled={votesChange === -1}>VOTE DOWN</button>
         {error && <ErrorPage error={error} />}
-      </div>
+      </>
     );
   }
 }

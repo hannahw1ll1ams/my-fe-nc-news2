@@ -5,15 +5,14 @@ class ArticleCreator extends Component {
   state = {
     title: '',
     topic: 'coding',
-    body: '',
-    slug: '',
-    description: '',
+    articleBody: '',
+    newTopic: '',
+    newTopicDescription: '',
     isShowing: false,
     i: true
   }
 
   handleChange = (event) => {
-    console.log('hello')
     const { name, value } = event.target;
     this.setState({ [name]: value }
     )
@@ -22,20 +21,20 @@ class ArticleCreator extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const { postNewArticle, updateTopics, selectedTopic } = this.props;
-    const { title, topic, body, slug, description, isShowing } = this.state;
-    updateTopics(slug, description)
+    const { title, topic, articleBody, newTopic, newTopicDescription, isShowing } = this.state;
+    updateTopics(newTopic, newTopicDescription)
     if (isShowing === false) {
-      postNewArticle(title, topic, body)
+      postNewArticle(title, topic, articleBody)
     }
     if (isShowing === true) {
-      postNewArticle(title, slug, body)
+      postNewArticle(title, newTopic, articleBody)
     }
     this.setState({
       title: '',
       topic: selectedTopic,
-      body: '',
-      slug: '',
-      description: '',
+      articleBody: '',
+      newTopic: '',
+      newTopicDescription: '',
       isShowing: false
     })
   }
@@ -47,7 +46,7 @@ class ArticleCreator extends Component {
   }
 
   render() {
-    const { title, body, isShowing, i, slug, description } = this.state;
+    const { title, articleBody, isShowing, i, newTopic, newTopicDescription } = this.state;
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
     console.log(selectedTopic)
     return (
@@ -65,14 +64,13 @@ class ArticleCreator extends Component {
               <button onClick={this.handleClick}>{i === true ? <p>Add Topic</p> : <p>Hide Form</p>}</button>
               {isShowing &&
                 <div>
-                  <input name='slug' placeholder='New Topic' onChange={this.handleChange} required value={slug} />
-                  <input name='description' placeholder='Description of Topic' onChange={this.handleChange} required value={description} />
+                  <input name='newTopic' placeholder='New Topic' onChange={this.handleChange} required value={newTopic} />
+                  <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />
                 </div>}
-              <input name='body' placeholder='body' onChange={this.handleChange} required value={body} />
+              <input name='articleBody' placeholder='body' onChange={this.handleChange} required value={articleBody} />
               <button>Add</button>
             </label>
           </form>}
-
       </div>
     );
   }

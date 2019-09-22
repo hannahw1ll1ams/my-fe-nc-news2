@@ -5,7 +5,7 @@ import { Router } from '@reach/router'
 import Homepage from './Views/Homepage';
 import ArticlesByTopic from './Views/ArticlesByTopic'
 import ArticlesByUserPage from './Views/ArticlesByUserPage'
-import UserByUsername from './Views/UserByUsername'
+import UserByUsernamePage from './Views/UserByUsernamePage'
 import AllArticles from './Views/AllArticles'
 import * as api from './api'
 import ErrorPage from './Components/ErrorPage';
@@ -26,18 +26,13 @@ class App extends Component {
     return (
       <div className="App">
         <SideBar slugs={topics.map(topic => topic.slug)} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+
         <Router className='router'>
-
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} />
-
           <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
-
           <ArticlesByTopic path='/topics/:topic/*' topics={topics} loggedInUser={loggedInUser} updateTopics={this.updateTopics} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
-
           <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} />
-
-          <UserByUsername path='/users/:username' loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
-
+          <UserByUsernamePage path='/users/:username' loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
           <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
         </Router>
       </div>
@@ -76,7 +71,7 @@ class App extends Component {
 
   fetchAllUsers = () => {
     api.getAllUsers().then((users) => {
-      console.log('uh oh')
+      console.log('fetching users')
       this.setState({ users, isLoadingUsers: false })
     })
       .catch(error => {

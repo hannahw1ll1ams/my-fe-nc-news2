@@ -1,11 +1,11 @@
 import React from 'react';
-import '../App.css';
+import '../css/homepage.css';
 import { Link } from '@reach/router'
 import ErrorPage from './ErrorPage';
 
 
 const TopicsList = ({ slugs, isLoadingTopics, topicsError }) => {
-  return (<div>
+  return (<>
     {isLoadingTopics && <p>Loading Topics...</p>}
     {topicsError && <ErrorPage error={topicsError} />}
     <ul className='topicsList'>
@@ -15,7 +15,7 @@ const TopicsList = ({ slugs, isLoadingTopics, topicsError }) => {
         return <li className='topic' key={slug}><Link to={`/topics/${slug}`}>{slug}</Link></li>
       })}
     </ul>
-  </div>
+  </>
   );
 };
 export default TopicsList;

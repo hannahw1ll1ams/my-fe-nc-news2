@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/homepage.css'
 
 class UserCreator extends Component {
   state = {
@@ -28,7 +29,7 @@ class UserCreator extends Component {
     const { username, avatar_url, name } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <label className='form'>
           <input name='username' placeholder='username' onChange={this.handleChange} required value={username} />
           <input name='avatar_url' placeholder='avatar_url' onChange={this.handleChange} required value={avatar_url} />
           <input name='name' placeholder='name' onChange={this.handleChange} required value={name} />
