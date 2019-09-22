@@ -48,23 +48,25 @@ class TopArticlesList extends Component {
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
     return (
-      <div className='topArticles'>
-        <h3>TOP {topic} ARTICLES</h3>
-        <form onChange={this.handleChange}>
-          <select>
-            <option value='votes'>By Votes</option>
-            <option value='comment_count'>By Comment Count</option>
-          </select>
-        </form>
-        <ol>
-          {topFive.map(item => {
-            return <li key={item.article_id}>
-              <p>{item.title}</p>
-              {sort_by === 'votes' && <p>Votes: {item.votes}</p>}
-              {sort_by === 'comment_count' && <p>Comments: {item.comment_count}</p>}
-            </li>
-          })}
-        </ol>
+      <div className='rightSide'>
+        <div className='topArticles'>
+          <h3>TOP {topic} ARTICLES</h3>
+          <form onChange={this.handleChange}>
+            <select>
+              <option value='votes'>By Votes</option>
+              <option value='comment_count'>By Comment Count</option>
+            </select>
+          </form>
+          <ol>
+            {topFive.map(item => {
+              return <li key={item.article_id}>
+                <p>{item.title}</p>
+                {sort_by === 'votes' && <p>Votes: {item.votes}</p>}
+                {sort_by === 'comment_count' && <p>Comments: {item.comment_count}</p>}
+              </li>
+            })}
+          </ol>
+        </div>
       </div>
     );
   }

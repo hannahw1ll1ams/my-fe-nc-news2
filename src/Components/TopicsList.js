@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/homepage.css';
+import '../css/sideBar.css';
 import { Link } from '@reach/router'
 import ErrorPage from './ErrorPage';
 

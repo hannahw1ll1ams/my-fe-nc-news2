@@ -1,25 +1,45 @@
 .sideBar {
-  background-color: hotPink;
+  background-color:hotpink;
   max-width:15vw;
   height:100vh;
   position:fixed;
   text-align: left;
 }
 
-.title {
-  min-width: 300px;
+.titleNC {
+  /* min-width: 300px; */
+  height:auto;
   padding-left: 40px;
   margin:0;
-  font-size: 210px;
+  font-size: 15vw;
+  color: rgb(247, 70, 84);
+}
+
+.titleNEWS{
+  height:auto;
+  padding-left: 2vw;
 }
 
 .who {
   color: red;
-    padding-left: 10px;
+  padding-left: 2vw;
 }
 
 .logged {
   color: lime;
-    padding-left: 10px;
+  padding-left: 2vw;
 }
 
+.change{
+  padding-left: 2vw;
+}
+
+.Users{
+  padding-left: 2vw;
+}
+
+.topicsList {
+  padding-left: 2vw;
+  padding-right: 2vw;
+overflow: scroll;
+}

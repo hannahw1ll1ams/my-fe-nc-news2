@@ -7,6 +7,7 @@ import ViewToggler from './ViewToggler';
 import { Router } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
 import ErrorPage from './ErrorPage';
+import '../css/router.css'
 
 class ArticleList extends Component {
   state = {
@@ -84,22 +85,26 @@ class ArticleList extends Component {
     if (error) return <ErrorPage error={error} />
     return (
       <div className='main'>
-        <p>{articles.length} Articles Found</p>
-        {topic && <h1>Articles on {topic}</h1>}
-        {topic && <h2>{description}</h2>}
-        {author && <h1>Articles by {author}</h1>}
-        <div className='topBar'>
-          <Sorter fetchArticles={this.fetchArticles} />
+        <div className='mainBody'>
+          <div className='leftArticles'>
+            <p className='numOfArticles'>{articles.length} Articles Found</p>
+            {topic && <h2>Articles on {topic}</h2>}
+            {topic && <h3>{description}</h3>}
+            {author && <h2>Articles by {author}</h2>}
+            <div className='topBar'>
+              <Sorter fetchArticles={this.fetchArticles} />
+              {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
+            </div>
+            <ul className='articleList'>
+              {articles.map(article => {
+                return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
+              })}
+            </ul>
+          </div>
+          <Router>
+            <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
+          </Router>
         </div>
-        {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
-        <ul className='articleList'>
-          {articles.map(article => {
-            return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
-          })}
-        </ul>
-        <Router>
-          <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
-        </Router>
         <TopArticlesList topic={topic} />
       </div>
     );

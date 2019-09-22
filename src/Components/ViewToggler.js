@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ArticleCreator from './ArticleCreator';
 import CommentCreator from './CommentCreator'
 import UserCreator from './UserCreator';
+import '../css/homepage.css'
+import '../css/router.css'
+
 
 class ViewToggler extends Component {
   state = {
