@@ -47,6 +47,8 @@ class ArticleList extends Component {
 
   postNewArticle = (title, newArticleTopic, body) => {
     const { loggedInUser, topic } = this.props;
+    console.log(loggedInUser, '<---in article list')
+
     console.log(title, newArticleTopic, body, topic)
     api.sendNewArticle(title, newArticleTopic, body, loggedInUser).then((newArticle) => {
       const allArticles = [newArticle, ...this.state.articles];

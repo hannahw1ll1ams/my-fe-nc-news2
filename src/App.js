@@ -40,8 +40,13 @@ class App extends Component {
   }
 
   updateLoggedInUser = (loggedInUser) => {
-    this.setState({ loggedInUser }, () => {
-    })
+    if (loggedInUser === null) {
+      this.setState({ loggedInUser })
+    }
+    else {
+      localStorage.setItem('loggedInUser', loggedInUser)
+      this.setState({ 'loggedInUser': localStorage.loggedInUser })
+    }
   }
 
   fetchTopics = () => {
@@ -67,18 +72,25 @@ class App extends Component {
       const allTopics = [newTopic, ...this.state.topics];
       this.setState({ topics: allTopics })
     })
+      .catch(error => {
+        this.setState({
+          topicsError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoadingTopics: false
+        })
+      })
   }
 
   fetchAllUsers = () => {
     api.getAllUsers().then((users) => {
-      console.log('fetching users')
       this.setState({ users, isLoadingUsers: false })
     })
       .catch(error => {
         this.setState({
           usersError: {
-            msg: 'CUSTOM ERROR',
-            status: 400
+            msg: error.response.data.msg,
+            status: error.response.status
           }, isLoadingUsers: false
         })
       })
@@ -87,9 +99,17 @@ class App extends Component {
   postNewUser = (username, avatar_url, name) => {
     api.sendNewUser(username, avatar_url, name).then((newUser) => {
       console.log(newUser)
-      const allUsers = [...this.state.users, newUser];
+      const allUsers = [newUser, ...this.state.users];
       this.setState({ users: allUsers })
     })
+      .catch(error => {
+        this.setState({
+          usersError: {
+            msg: error.response.data.msg,
+            status: error.response.status
+          }, isLoadingUsers: false
+        })
+      })
   }
 }
 

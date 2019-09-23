@@ -12,7 +12,7 @@ const LoginUserPage = ({ users, updateLoggedInUser, isLoadingUsers, usersError }
             return <li className='user' key={user.name}>
               <Link className='link' to='/articles'>
                 <img className='userImg' src={user.avatar_url} alt={user.name} onClick={() => updateLoggedInUser(user.username)} />
-                <p className='userName'>{user.username}</p>
+                <p className='userName' onClick={() => updateLoggedInUser(user.username)} >{user.username}</p>
               </Link>
             </li>
           })}

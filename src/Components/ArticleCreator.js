@@ -63,7 +63,7 @@ class ArticleCreator extends Component {
                   return <option value={slug} key={slug}>{slug}</option>
                 })}
               </select>}
-              <button onClick={this.handleClick}>{i === true ? <p>Add Topic</p> : <p>Hide Form</p>}</button>
+              <button onClick={this.handleClick}>{i === true ? <p>Add a new Topic</p> : <p>Hide Form</p>}</button>
               <br />
               {isShowing &&
                 <div>
