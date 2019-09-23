@@ -54,10 +54,11 @@ class App extends Component {
       this.setState({ topics, isLoadingTopics: false })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           topicsError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoadingTopics: false
         })
       })
@@ -69,14 +70,16 @@ class App extends Component {
 
   updateTopics = (slug, description) => {
     api.addNewTopic(slug, description).then((newTopic) => {
-      const allTopics = [newTopic, ...this.state.topics];
-      this.setState({ topics: allTopics })
+      this.setState(currentState => {
+        return { topics: [...currentState.topics, newTopic] }
+      })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           topicsError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoadingTopics: false
         })
       })
@@ -87,10 +90,11 @@ class App extends Component {
       this.setState({ users, isLoadingUsers: false })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           usersError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoadingUsers: false
         })
       })
@@ -98,15 +102,16 @@ class App extends Component {
 
   postNewUser = (username, avatar_url, name) => {
     api.sendNewUser(username, avatar_url, name).then((newUser) => {
-      console.log(newUser)
-      const allUsers = [newUser, ...this.state.users];
-      this.setState({ users: allUsers })
+      this.setState(currentState => {
+        return { users: [newUser, ...currentState.users] }
+      })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           usersError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoadingUsers: false
         })
       })

@@ -15,11 +15,12 @@ class VoteUpdater extends Component {
     })
     api.patchVotes(item, id, votesDifference)
       .catch((error) => {
+        const { data, status } = error.response
         this.setState(currentState => {
           return {
             error: {
-              msg: error.response.data.msg,
-              status: error.response.status
+              msg: data.msg,
+              status: status
             }, votesChange: currentState.votesChange - votesDifference
           }
         })

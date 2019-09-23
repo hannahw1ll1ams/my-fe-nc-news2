@@ -37,10 +37,11 @@ class SelectedArticle extends Component {
       this.setState({ article, isLoading: false })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           articleError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })
@@ -52,10 +53,11 @@ class SelectedArticle extends Component {
       this.setState({ comments })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           commentsError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })
@@ -68,10 +70,11 @@ class SelectedArticle extends Component {
       this.setState({ comments: allComments })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           addAndDeleteError: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })
@@ -82,18 +85,20 @@ class SelectedArticle extends Component {
       return { comments: currentState.comments.filter(comment => comment.comment_id !== id) }
     })
     api.deleteItem(id, 'comments').catch(error => {
+      const { data, status } = error.response
       this.setState({
         addAndDeleteError: {
-          msg: error.response.data.msg,
-          status: error.response.status
+          msg: data.msg,
+          status: status
         }, isLoading: false
       })
     })
   }
 
   handleClick = () => {
-    const { isShowingComments, messageToggle } = this.state
-    this.setState({ isShowingComments: !isShowingComments, messageToggle: !messageToggle })
+    this.setState(currentState => {
+      return { isShowingComments: !currentState.isShowingComments, messageToggle: !currentState.messageToggle }
+    })
   }
 
   render() {

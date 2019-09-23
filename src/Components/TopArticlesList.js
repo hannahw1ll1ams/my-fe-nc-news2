@@ -18,10 +18,11 @@ class TopArticlesList extends Component {
       this.setState({ topFive, isLoading: false })
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           error: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })

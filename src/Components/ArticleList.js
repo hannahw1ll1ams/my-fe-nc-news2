@@ -36,10 +36,11 @@ class ArticleList extends Component {
       )
     })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           error: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })
@@ -50,22 +51,26 @@ class ArticleList extends Component {
     console.log(loggedInUser, '<---in article list')
 
     console.log(title, newArticleTopic, body, topic)
-    api.sendNewArticle(title, newArticleTopic, body, loggedInUser).then((newArticle) => {
-      const allArticles = [newArticle, ...this.state.articles];
-      this.setState({ articles: allArticles })
-      // if (newArticleTopic === topic || !topic) {
-      //   const allArticles = [newArticle, ...this.state.articles];
-      //   this.setState({ articles: allArticles })
-      // }
-      // else {
-      //   this.setState({ articles: newArticle })
-      // }
-    })
+    api.sendNewArticle(title, newArticleTopic, body, loggedInUser)
+      .then(newArticle => {
+        this.setState(currentState => {
+          return { articles: [newArticle, ...currentState.articles] }
+        })
+      })
+      //   // if (newArticleTopic === topic || !topic) {
+      //   //   const allArticles = [newArticle, ...this.state.articles];
+      //   //   this.setState({ articles: allArticles })
+      //   // }
+      //   // else {
+      //   //   this.setState({ articles: newArticle })
+      //   // }
+      // })
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           error: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })
@@ -77,10 +82,11 @@ class ArticleList extends Component {
     })
     api.deleteItem(id, 'articles')
       .catch(error => {
+        const { data, status } = error.response
         this.setState({
           error: {
-            msg: error.response.data.msg,
-            status: error.response.status
+            msg: data.msg,
+            status: status
           }, isLoading: false
         })
       })
