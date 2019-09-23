@@ -12,7 +12,7 @@
   padding-left: 40px;
   margin:0;
   font-size: 15vw;
-  color: rgb(247, 70, 84);
+  color: black;
 }
 
 .titleNEWS{
@@ -41,5 +41,11 @@
 .topicsList {
   padding-left: 2vw;
   padding-right: 2vw;
-overflow: scroll;
+  overflow: scroll;
+  
+}
+
+.List{
+  height:50vh;
+  overflow: scroll;
 }

@@ -24,12 +24,12 @@ class ArticleCreator extends Component {
     event.preventDefault()
     const { postNewArticle, updateTopics, selectedTopic } = this.props;
     const { title, topic, articleBody, newTopic, newTopicDescription, isShowing } = this.state;
-    updateTopics(newTopic, newTopicDescription)
+    if (isShowing) {
+      updateTopics(newTopic, newTopicDescription)
+      postNewArticle(title, newTopic, articleBody)
+    }
     if (isShowing === false) {
       postNewArticle(title, topic, articleBody)
-    }
-    if (isShowing === true) {
-      postNewArticle(title, newTopic, articleBody)
     }
     this.setState({
       title: '',
@@ -50,7 +50,6 @@ class ArticleCreator extends Component {
   render() {
     const { title, articleBody, isShowing, i, newTopic, newTopicDescription } = this.state;
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
-    console.log(selectedTopic)
     return (
       <div>
         {isLoadingTopics ? <p>Loading Topics...</p> : topicsError ? <ErrorPage error={topicsError} /> :
@@ -59,7 +58,7 @@ class ArticleCreator extends Component {
               Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
               <br />
               Topic: {isShowing === false && <select name="topic" onChange={this.handleChange}>
-                Topic: <option value={selectedTopic} key={selectedTopic}>{selectedTopic}</option>
+                <option value={selectedTopic} key={selectedTopic}>{selectedTopic}</option>
                 {slugs.map(slug => {
                   return <option value={slug} key={slug}>{slug}</option>
                 })}
@@ -72,6 +71,7 @@ class ArticleCreator extends Component {
                   <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />
                 </div>}
               Body: <input name='articleBody' placeholder='body' onChange={this.handleChange} required value={articleBody} />
+              {/* {newTopic ? <Link to={`/topics/${newTopic}`}*/}
               <button>Add</button>
             </label>
           </form>}

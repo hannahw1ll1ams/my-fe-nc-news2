@@ -45,12 +45,19 @@ class ArticleList extends Component {
       })
   }
 
-  postNewArticle = (title, topic, body) => {
-    console.log(title, topic, body)
-    const { loggedInUser } = this.props;
-    api.sendNewArticle(title, topic, body, loggedInUser).then((newArticle) => {
+  postNewArticle = (title, newArticleTopic, body) => {
+    const { loggedInUser, topic } = this.props;
+    console.log(title, newArticleTopic, body, topic)
+    api.sendNewArticle(title, newArticleTopic, body, loggedInUser).then((newArticle) => {
       const allArticles = [newArticle, ...this.state.articles];
       this.setState({ articles: allArticles })
+      // if (newArticleTopic === topic || !topic) {
+      //   const allArticles = [newArticle, ...this.state.articles];
+      //   this.setState({ articles: allArticles })
+      // }
+      // else {
+      //   this.setState({ articles: newArticle })
+      // }
     })
       .catch(error => {
         this.setState({
@@ -91,9 +98,8 @@ class ArticleList extends Component {
             {topic && <h3>{description}</h3>}
             {author && <h2>Articles by {author}</h2>}
             <p className='numOfArticles'>{articles.length} Articles Found</p>
-
             <div className='topBar'>
-              <Sorter fetchArticles={this.fetchArticles} />
+              {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
               {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
             </div>
             <ul className='articleList'>

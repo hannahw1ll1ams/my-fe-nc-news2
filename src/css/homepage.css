@@ -29,7 +29,10 @@
 }
 
 .link {
-  width: inherit;
+  /* width: 100vw; */
+  object-fit:scale-down;
+  /* height: 100vh; */
+
   /* background-color: azure; */
   margin-left: auto;
   margin-right: auto;

@@ -15,12 +15,6 @@
   background-color: white;
 }
 
-.title {
-  text-align: center;
-  font-size: 10vw;
-  height : 80px;
-}
-
 .App{
   display: grid;
   grid-auto-columns: 1fr 4fr;

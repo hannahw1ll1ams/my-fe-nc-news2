@@ -19,6 +19,8 @@
   min-height: 100px;
   margin:15px;
 padding:10px;
+  object-fit:none;
+
 }
 
 .loggedInUser {
@@ -29,6 +31,8 @@ padding:10px;
   margin-bottom: 50px;
   display:flex;
   border:1px solid black;
+    object-fit:none;
+
 }
 
 .usersImg{
