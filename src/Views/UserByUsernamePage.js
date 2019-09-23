@@ -5,8 +5,9 @@ import '../css/allUsers.css'
 const UserByUsernamePage = ({ username, loggedInUser, users, usersError, isLoadingUsers }) => {
   return (
     <div className='allUsersPage'>
-      {loggedInUser &&
+      {loggedInUser ?
         <AllUsersPage username={username} loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
+        : <p> ----You need to LOG IN</p>
       }
     </div>
   );

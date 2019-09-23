@@ -4,18 +4,18 @@ import { Link } from '@reach/router'
 import '../css/allUsers.css'
 
 const UsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }) => {
-  let chosenUser = users.filter(users => users.username === username)
+  let chosenUser = users.find(users => users.username === username)
   return (
     <>
       {isLoadingUsers ? <p>LOADING USERS...</p> : usersError ? <ErrorPage error={usersError} /> :
         <>
-          {username === loggedInUser ? <p>YOU ARE {chosenUser[0].username}</p> : <p>INTRODUCING {chosenUser[0].name}</p>}
+          {username === loggedInUser ? <p>YOU ARE {chosenUser.username}</p> : <p>INTRODUCING {chosenUser.name}</p>}
           <div className='loggedInUser'>
-            <img className='usersImg' src={chosenUser[0].avatar_url} alt={chosenUser[0].name} />
-            <p className='userName'>Username: {chosenUser[0].username}</p>
+            <img className='usersImg' src={chosenUser.avatar_url} alt={chosenUser.name} />
+            <p className='userName'>Username: {chosenUser.username}</p>
           </div>
-          <Link to={`/articles/user/${chosenUser[0].username}`}>
-            <p>For more articles by {chosenUser[0].name}</p></Link>
+          <Link to={`/articles/user/${chosenUser.username}`}>
+            <p>For more articles by {chosenUser.name}</p></Link>
 
           <h1>OTHER USERS:</h1>
           <ul className='otherUsersList'>

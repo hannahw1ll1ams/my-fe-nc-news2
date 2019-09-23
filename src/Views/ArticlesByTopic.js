@@ -5,8 +5,8 @@ const ArticlesByTopic = ({ topic, loggedInUser, topics, updateTopics, isLoadingT
   const chosenTopic = topics.filter(topicObj => { return topicObj.slug === topic })
   return (
     <>
-      {loggedInUser &&
-        <ArticleList topic={topic} description={chosenTopic[0].description} loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+      {loggedInUser ?
+        <ArticleList topic={topic} description={chosenTopic[0].description} loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} /> : <p> ----You need to LOG IN</p>
       }</>
   );
 };

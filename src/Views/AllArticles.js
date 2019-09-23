@@ -5,8 +5,8 @@ const AllArticles = ({ loggedInUser, updateTopics, slugs, isLoadingTopics, topic
   console.log(loggedInUser, '<---in all articles')
   return (
     <>
-      {loggedInUser &&
-        <ArticleList loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+      {loggedInUser ?
+        <ArticleList loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} /> : <p> ----You need to LOG IN</p>
       }
     </>
   );
