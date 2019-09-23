@@ -11,10 +11,12 @@ class CommentCreator extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { postNewComment } = this.props;
+    const { postNewComment, comment_count, updateCommentCount } = this.props;
     const { body } = this.state;
     postNewComment(body)
     this.setState({ body: '' })
+    updateCommentCount(comment_count, 1)
+
   }
 
   render() {
