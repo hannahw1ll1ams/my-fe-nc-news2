@@ -6,7 +6,7 @@ import { navigate } from '@reach/router'
 class ArticleCreator extends Component {
   state = {
     title: '',
-    topic: `${this.props.selectedTopic}`,
+    topic: `${this.props.selectedTopic ? this.props.selectedTopic : 'coding'}`,
     articleBody: '',
     newTopic: '',
     newTopicDescription: '',
@@ -22,8 +22,11 @@ class ArticleCreator extends Component {
   }
   handleTopicChange = (event) => {
     const { name, value } = event.target;
+    const { selectedTopic } = this.props
     this.setState({ [name]: value })
-    navigate(`/topics/${value}`)
+    if (selectedTopic) {
+      navigate(`/topics/${value}`)
+    }
   }
 
   handleSubmit = (event) => {
@@ -63,8 +66,12 @@ class ArticleCreator extends Component {
 
   handleClick = () => {
     const { isShowingAddTopic, i } = this.state
+    const { updateIsShowing } = this.props
     this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }
     )
+    navigate(`/articles`)
+    updateIsShowing(true)
+
   }
 
   render() {
@@ -77,8 +84,8 @@ class ArticleCreator extends Component {
             <label> Write your article here: <br />
               Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
               <br />
-              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleTopicChange}>
-                <option value={topic} key={selectedTopic}>{selectedTopic}</option>
+              Topic: {isShowingAddTopic === false && <select required name="topic" onChange={this.handleTopicChange}>
+                <option value={topic} key={selectedTopic}>{selectedTopic ? selectedTopic : 'Please select'}</option>
                 {slugs.map(slug => {
                   return <option value={slug} key={slug}>{slug}</option>
                 })}
