@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
+import { navigate } from '@reach/router'
 
 class ArticleCreator extends Component {
   state = {
@@ -19,24 +20,33 @@ class ArticleCreator extends Component {
     this.setState({ [name]: value }
     )
   }
+  handleTopicChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value })
+    navigate(`/topics/${value}`)
+  }
 
   handleSubmit = (event) => {
     event.preventDefault()
     const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
     const { title, topic, articleBody, newTopic, newTopicDescription, isShowingAddTopic } = this.state;
+
+
     if (isShowingAddTopic) {
       console.log('isShowingAddTopic=true')
       updateTopics(newTopic, newTopicDescription)
       postNewArticle(title, newTopic, articleBody)
       updateIsShowing(false)
     }
-    else if ((isShowingAddTopic === false) && (!topic)) {
+    else if ((isShowingAddTopic === false) && (topic === undefined)) {
       console.log('isShowingAddTopic=false & !topic')
       postNewArticle(title, 'coding', articleBody)
       updateIsShowing(false)
     }
     else {
       console.log('else')
+      console.log(isShowingAddTopic, '<--isShowingAddTopic')
+      console.log(topic, '<--topic')
       postNewArticle(title, topic, articleBody)
       updateIsShowing(false)
     }
@@ -58,7 +68,7 @@ class ArticleCreator extends Component {
   }
 
   render() {
-    const { title, articleBody, isShowingAddTopic, i, newTopic, newTopicDescription } = this.state;
+    const { title, articleBody, isShowingAddTopic, i, newTopic, newTopicDescription, topic } = this.state;
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
     return (
       <div>
@@ -67,8 +77,8 @@ class ArticleCreator extends Component {
             <label> Write your article here: <br />
               Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
               <br />
-              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleChange}>
-                <option value={selectedTopic} key={selectedTopic}>{selectedTopic}</option>
+              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleTopicChange}>
+                <option value={topic} key={selectedTopic}>{selectedTopic}</option>
                 {slugs.map(slug => {
                   return <option value={slug} key={slug}>{slug}</option>
                 })}
