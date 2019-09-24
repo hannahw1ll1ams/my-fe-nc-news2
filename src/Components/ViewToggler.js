@@ -10,7 +10,6 @@ class ViewToggler extends Component {
   state = {
     isShowingForm: false,
     messageToggle: true
-
   }
   handleClick = () => {
     const { isShowingForm, messageToggle } = this.state;

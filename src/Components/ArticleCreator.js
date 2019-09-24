@@ -33,8 +33,6 @@ class ArticleCreator extends Component {
     event.preventDefault()
     const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
     const { title, topic, articleBody, newTopic, newTopicDescription, isShowingAddTopic } = this.state;
-
-
     if (isShowingAddTopic) {
       console.log('isShowingAddTopic=true')
       updateTopics(newTopic, newTopicDescription)
@@ -65,13 +63,14 @@ class ArticleCreator extends Component {
   }
 
   handleClick = () => {
+    console.log('click')
     const { isShowingAddTopic, i } = this.state
     const { updateIsShowing } = this.props
-    this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }
+    this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }, () => {
+      updateIsShowing(true)
+    }
     )
     navigate(`/articles`)
-    updateIsShowing(true)
-
   }
 
   render() {
@@ -84,13 +83,13 @@ class ArticleCreator extends Component {
             <label> Write your article here: <br />
               Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
               <br />
-              Topic: {isShowingAddTopic === false && <select required name="topic" onChange={this.handleTopicChange}>
-                <option value={topic} key={selectedTopic}>{selectedTopic ? selectedTopic : 'Please select'}</option>
+              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleTopicChange}>
+                <option value={topic} key={selectedTopic}>{selectedTopic ? selectedTopic : 'coding'}</option>
                 {slugs.map(slug => {
-                  return <option value={slug} key={slug}>{slug}</option>
+                  return <option required value={slug} key={slug}>{slug}</option>
                 })}
               </select>}
-              <button onClick={this.handleClick}>{i === true ? <p>Show new topic form</p> : <p>Hide Form</p>}</button>
+              <button onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
               <br />
               {isShowingAddTopic &&
                 <div>
@@ -98,7 +97,6 @@ class ArticleCreator extends Component {
                   <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />
                 </div>}
               Body: <input name='articleBody' placeholder='body' onChange={this.handleChange} required value={articleBody} />
-              {/* {newTopic ? <Link to={`/topics/${newTopic}`}*/}
               <button>Add</button>
             </label>
           </form>}
