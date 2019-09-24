@@ -5,12 +5,12 @@ import '../css/router.css'
 class ArticleCreator extends Component {
   state = {
     title: '',
-    topic: 'coding',
+    topic: `${this.props.selectedTopic}`,
     articleBody: '',
     newTopic: '',
     newTopicDescription: '',
     // newColour: '',
-    isShowing: false,
+    isShowingAddTopic: false,
     i: true
   }
 
@@ -22,33 +22,43 @@ class ArticleCreator extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { postNewArticle, updateTopics, selectedTopic } = this.props;
-    const { title, topic, articleBody, newTopic, newTopicDescription, isShowing } = this.state;
-    if (isShowing) {
+    const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
+    const { title, topic, articleBody, newTopic, newTopicDescription, isShowingAddTopic } = this.state;
+    if (isShowingAddTopic) {
+      console.log('isShowingAddTopic=true')
       updateTopics(newTopic, newTopicDescription)
       postNewArticle(title, newTopic, articleBody)
+      updateIsShowing(false)
     }
-    if (isShowing === false) {
+    else if ((isShowingAddTopic === false) && (!topic)) {
+      console.log('isShowingAddTopic=false & !topic')
+      postNewArticle(title, 'coding', articleBody)
+      updateIsShowing(false)
+    }
+    else {
+      console.log('else')
       postNewArticle(title, topic, articleBody)
+      updateIsShowing(false)
     }
+
     this.setState({
       title: '',
       topic: selectedTopic,
       articleBody: '',
       newTopic: '',
       newTopicDescription: '',
-      isShowing: false
+      isShowingAddTopic: false
     })
   }
 
   handleClick = () => {
-    const { isShowing, i } = this.state
-    this.setState({ isShowing: !isShowing, i: !i }
+    const { isShowingAddTopic, i } = this.state
+    this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }
     )
   }
 
   render() {
-    const { title, articleBody, isShowing, i, newTopic, newTopicDescription } = this.state;
+    const { title, articleBody, isShowingAddTopic, i, newTopic, newTopicDescription } = this.state;
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
     return (
       <div>
@@ -57,7 +67,7 @@ class ArticleCreator extends Component {
             <label> Write your article here: <br />
               Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
               <br />
-              Topic: {isShowing === false && <select name="topic" onChange={this.handleChange}>
+              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleChange}>
                 <option value={selectedTopic} key={selectedTopic}>{selectedTopic}</option>
                 {slugs.map(slug => {
                   return <option value={slug} key={slug}>{slug}</option>
@@ -65,7 +75,7 @@ class ArticleCreator extends Component {
               </select>}
               <button onClick={this.handleClick}>{i === true ? <p>Show new topic form</p> : <p>Hide Form</p>}</button>
               <br />
-              {isShowing &&
+              {isShowingAddTopic &&
                 <div>
                   <input name='newTopic' placeholder='New Topic' onChange={this.handleChange} required value={newTopic} />
                   <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />

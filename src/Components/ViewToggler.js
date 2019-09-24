@@ -16,14 +16,21 @@ class ViewToggler extends Component {
     const { isShowingForm, messageToggle } = this.state;
     this.setState({ isShowingForm: !isShowingForm, messageToggle: !messageToggle });
   };
+
+  updateIsShowing = (boolean) => {
+    console.log('updating')
+    this.setState({ isShowingForm: boolean, messageToggle: !boolean })
+  }
+
   render() {
     const { isShowingForm, messageToggle } = this.state;
     const { item, postNewArticle, postNewComment, updateTopics, slugs, topic, postNewUser, isLoadingTopics, topicsError, updateCommentCount, comment_count } = this.props;
+    console.log(isShowingForm, messageToggle, 'current state')
     return (
       <>
         <button className={`add${item}`} onClick={this.handleClick}>{messageToggle === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
         </button>
-        {(isShowingForm) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
+        {(isShowingForm) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} updateIsShowing={this.updateIsShowing} />}
         {(isShowingForm) && (item === 'comment') && <CommentCreator comment_count={comment_count} updateCommentCount={updateCommentCount} postNewComment={postNewComment} />}
         {(isShowingForm) && (item === 'user') && <UserCreator postNewUser={postNewUser} />}
       </>
