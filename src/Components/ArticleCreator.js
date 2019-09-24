@@ -39,11 +39,6 @@ class ArticleCreator extends Component {
       postNewArticle(title, newTopic, articleBody)
       updateIsShowing(false)
     }
-    else if ((isShowingAddTopic === false) && (topic === undefined)) {
-      console.log('isShowingAddTopic=false & !topic')
-      postNewArticle(title, 'coding', articleBody)
-      updateIsShowing(false)
-    }
     else {
       console.log('else')
       console.log(isShowingAddTopic, '<--isShowingAddTopic')

@@ -17,7 +17,7 @@ class ViewToggler extends Component {
   };
 
   updateIsShowing = (boolean) => {
-    console.log('updating')
+    console.log('updating', boolean)
     this.setState({ isShowingForm: boolean, messageToggle: !boolean })
   }
 
