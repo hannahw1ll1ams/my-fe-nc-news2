@@ -102,12 +102,13 @@ class SelectedArticle extends Component {
     })
   }
 
-  updateCommentCount = (commentsNum, votesDifference) => {
-    // console.log(typeof commentsNum, typeof votesDifference)
-    // console.log(commentsNum, votesDifference)
-    // console.log(Number(commentsNum), (votesDifference))
-    // console.log(Number(commentsNum) + Number(votesDifference))
-    this.setState({ hardCodedCommentCount: Number(commentsNum) + Number(votesDifference) })
+  updateCommentCount = (commentsNum, numDifferece) => {
+    // console.log(typeof commentsNum, typeof numDifferece)
+    // console.log(commentsNum, numDifferece)
+    // console.log(Number(commentsNum), (numDifferece))
+    // console.log(Number(commentsNum) + Number(numDifferece))
+    //can use the comment count that is in state. then if you add one and take away one straight away it will just be hardcoded the change and no one will know., this funciton only needs to be invoked then with numDifference
+    this.setState({ hardCodedCommentCount: Number(commentsNum) + Number(numDifferece) })
   }
 
   render() {

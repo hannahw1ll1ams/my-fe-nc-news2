@@ -63,9 +63,10 @@ class ArticleCreator extends Component {
     const { updateIsShowing } = this.props
     this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }, () => {
       updateIsShowing(true)
+
+      navigate(`/articles`)
     }
     )
-    navigate(`/articles`)
   }
 
   render() {
@@ -78,7 +79,8 @@ class ArticleCreator extends Component {
             <label> Write your article here: <br />
               Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
               <br />
-              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleTopicChange}>
+              Topic: {isShowingAddTopic === false && <select name="topic" onChange={this.handleTopicChange} required>
+                <option value="">Please Select</option>
                 <option value={topic} key={selectedTopic}>{selectedTopic ? selectedTopic : 'coding'}</option>
                 {slugs.map(slug => {
                   return <option required value={slug} key={slug}>{slug}</option>
