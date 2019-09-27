@@ -19,10 +19,12 @@ class App extends Component {
     isLoadingUsers: true,
     topicsError: null,
     usersError: null
+    // loggedInUserImage: null
   }
 
   render() {
     const { isLoadingTopics, isLoadingUsers, topicsError, usersError, loggedInUser, users, topics } = this.state;
+
     return (
       <div className="App">
         <SideBar slugs={topics.map(topic => topic.slug)} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
@@ -42,6 +44,7 @@ class App extends Component {
   updateLoggedInUser = (loggedInUser) => {
     if (loggedInUser === null) {
       this.setState({ loggedInUser })
+      localStorage.removeItem('loggedInUser')
     }
     else {
       localStorage.setItem('loggedInUser', loggedInUser)

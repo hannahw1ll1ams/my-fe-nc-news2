@@ -63,7 +63,6 @@ class ArticleCreator extends Component {
     const { updateIsShowing } = this.props
     this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }, () => {
       updateIsShowing(true)
-
       navigate(`/articles`)
     }
     )

@@ -3,6 +3,9 @@ import ArticleList from '../Components/ArticleList'
 
 const ArticlesByTopic = ({ topic, loggedInUser, topics, updateTopics, isLoadingTopics, topicsError }) => {
   const chosenTopic = topics.find(topicObj => topicObj.slug === topic)
+  console.log(topics)
+  console.log(topic)
+
   return (
     <>
       {loggedInUser ?
