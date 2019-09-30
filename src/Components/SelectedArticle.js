@@ -102,13 +102,10 @@ class SelectedArticle extends Component {
     })
   }
 
-  updateCommentCount = (commentsNum, numDifferece) => {
-    // console.log(typeof commentsNum, typeof numDifferece)
-    // console.log(commentsNum, numDifferece)
-    // console.log(Number(commentsNum), (numDifferece))
-    // console.log(Number(commentsNum) + Number(numDifferece))
-    //can use the comment count that is in state. then if you add one and take away one straight away it will just be hardcoded the change and no one will know., this funciton only needs to be invoked then with numDifference
-    this.setState({ hardCodedCommentCount: Number(commentsNum) + Number(numDifferece) })
+  updateCommentCount = (numDifferece) => {
+    this.setState(currentState => {
+      return { hardCodedCommentCount: Number(currentState.hardCodedCommentCount) + numDifferece }
+    })
   }
 
   render() {
@@ -116,23 +113,19 @@ class SelectedArticle extends Component {
     const { loggedInUser, deleteElementByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
     if (articleError) return <ErrorPage error={articleError} />
-    const { title, author, topic, body, comment_count, votes, article_id } = article
+    const { title, author, topic, body, votes, article_id, comment_count } = article
     return (
       <div className={`selectedArticle-${topic}`}>
         <div className={`articleBody-${topic}`}>
           <p>{topic}: {title}</p>
           <p>Written by <Link to={`/users/${author}`}>{author}</Link></p>
           <p>{body}</p>
-          {author === loggedInUser && <DeleteButton id={article_id} deleteElementByClick={deleteElementByClick} />}
+          {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
           {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
           <br />
-
-          {/* {comment_count === 0 &&
-            <CommentsByArticleList postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} />} */}
-
-          <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {hardCodedCommentCount ? hardCodedCommentCount : comment_count}</button>
+          <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {hardCodedCommentCount ? Number(comment_count) + Number(hardCodedCommentCount) : comment_count}</button>
         </div>
-        {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} comment_count={comment_count} />}
+        {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} />}
         {/* <button onClick={this.handleNextClick}>PREV</button>
         <button onClick={this.handleNextClick}>NEXT</button> */}
       </div>
