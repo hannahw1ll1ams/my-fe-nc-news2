@@ -57,7 +57,6 @@ class App extends Component {
       this.setState({ topics, isLoadingTopics: false })
     })
       .catch(error => {
-        console.dir(error)
         const { data, status } = error.response
         this.setState({
           topicsError: {

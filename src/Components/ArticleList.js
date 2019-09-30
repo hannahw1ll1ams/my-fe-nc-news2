@@ -96,7 +96,7 @@ class ArticleList extends Component {
   render() {
 
     const { articles, isLoading, error } = this.state;
-    const { topic, author, loggedInUser, description, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
+    const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
     return (
@@ -104,7 +104,7 @@ class ArticleList extends Component {
         <div className='mainBody'>
           <div className='leftArticles'>
             {topic && <h2>Articles on {topic}</h2>}
-            {topic && <h3>{description}</h3>}
+            {topic && <h3>{chosenTopic.description}</h3>}
             {author && <h2>Articles by {author}</h2>}
             <p className='numOfArticles'>{articles.length} Articles Found</p>
             <div className='topBar'>
