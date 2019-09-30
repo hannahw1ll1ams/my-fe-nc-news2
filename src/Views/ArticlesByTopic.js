@@ -8,9 +8,10 @@ const ArticlesByTopic = ({ topic, loggedInUser, topics, updateTopics, isLoadingT
 
   return (
     <>
-      {loggedInUser ?
-        <ArticleList topic={topic} description={chosenTopic.description} loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} /> : <p> ----You need to LOG IN</p>
-      }</>
+      {
+        !loggedInUser ? <p>----You need to Log in</p> : isLoadingTopics ? <p>Loading...</p> : <ArticleList topic={topic} description={chosenTopic.description} loggedInUser={loggedInUser} updateTopics={updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+      }
+    </>
   );
 };
 
