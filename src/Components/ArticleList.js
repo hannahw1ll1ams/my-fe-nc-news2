@@ -51,21 +51,13 @@ class ArticleList extends Component {
     const { loggedInUser, topic } = this.props;
     console.log(loggedInUser, '<---in article list')
 
-    console.log(title, newArticleTopic, body, topic)
+    console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topic')
     api.sendNewArticle(title, newArticleTopic, body, loggedInUser)
       .then(newArticle => {
         this.setState(currentState => {
           return { articles: [newArticle, ...currentState.articles] }
         })
       })
-      //   // if (newArticleTopic === topic || !topic) {
-      //   //   const allArticles = [newArticle, ...this.state.articles];
-      //   //   this.setState({ articles: allArticles })
-      //   // }
-      //   // else {
-      //   //   this.setState({ articles: newArticle })
-      //   // }
-      // })
       .catch(error => {
         const { data, status } = error.response
         this.setState({

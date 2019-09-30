@@ -2,7 +2,6 @@ import React from 'react';
 import ArticleList from '../Components/ArticleList';
 
 const AllArticles = ({ loggedInUser, updateTopics, slugs, isLoadingTopics, topicsError }) => {
-  console.log(loggedInUser, '<---in all articles')
   return (
     <>
       {loggedInUser ?
