@@ -11,8 +11,9 @@ class CommentCreator extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    const { postNewComment, updateCommentCount } = this.props;
+    const { postNewComment, updateCommentCount, updateIsLoadingNewComment } = this.props;
     const { body } = this.state;
+    updateIsLoadingNewComment(true)
     postNewComment(body)
     this.setState({ body: '' })
     updateCommentCount(1)

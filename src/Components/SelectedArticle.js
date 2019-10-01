@@ -17,7 +17,8 @@ class SelectedArticle extends Component {
     articleError: null,
     commentsError: null,
     addAndDeleteError: null,
-    commentCountChange: null
+    commentCountChange: null,
+    isLoadingNewComment: false
   }
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class SelectedArticle extends Component {
   fetchSelectedArticleById = () => {
     const { article_id } = this.props;
     api.getSelectedArticle(article_id).then((article) => {
-      this.setState({ article, isLoading: false })
+      this.setState({ article, isLoading: false, isLoadingNewComment: false })
     })
       .catch(error => {
         const { data, status } = error.response
@@ -43,7 +44,7 @@ class SelectedArticle extends Component {
           articleError: {
             msg: data.msg,
             status: status
-          }, isLoading: false
+          }, isLoading: false, isLoadingNewComment: false
         })
       })
   }
@@ -51,7 +52,7 @@ class SelectedArticle extends Component {
   fetchCommentsByArticleId = () => {
     const { article_id } = this.props;
     api.getCommentsByArticleId(article_id).then((comments) => {
-      this.setState({ comments })
+      this.setState({ comments, isLoadingNewComment: false })
     })
       .catch(error => {
         const { data, status } = error.response
@@ -59,7 +60,7 @@ class SelectedArticle extends Component {
           commentsError: {
             msg: data.msg,
             status: status
-          }, isLoading: false
+          }, isLoading: false, isLoadingNewComment: false
         })
       })
   }
@@ -76,9 +77,13 @@ class SelectedArticle extends Component {
           addAndDeleteError: {
             msg: data.msg,
             status: status
-          }, isLoading: false
+          }, isLoading: false, isLoadingNewComment: false
         })
       })
+  }
+
+  updateIsLoadingNewComment = (boolean) => {
+    this.setState({ isLoadingNewComment: boolean })
   }
 
   deleteElementByClick = (id) => {
@@ -112,7 +117,7 @@ class SelectedArticle extends Component {
   }
 
   render() {
-    const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, commentCountChange } = this.state;
+    const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, commentCountChange, isLoadingNewComment } = this.state;
     const { loggedInUser, deleteElementByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
     if (articleError) return <ErrorPage error={articleError} />
@@ -128,7 +133,7 @@ class SelectedArticle extends Component {
           <br />
           <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</button>
         </div>
-        {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} />}
+        {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} isLoadingNewComment={isLoadingNewComment} updateIsLoadingNewComment={this.updateIsLoadingNewComment} />}
         {/* <button onClick={this.handleNextClick}>PREV</button>
         <button onClick={this.handleNextClick}>NEXT</button> */}
       </div>

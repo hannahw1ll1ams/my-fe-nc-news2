@@ -22,13 +22,13 @@ class ViewToggler extends Component {
 
   render() {
     const { isShowingForm, messageToggle } = this.state;
-    const { item, postNewArticle, postNewComment, updateTopics, slugs, topic, postNewUser, isLoadingTopics, topicsError, updateCommentCount } = this.props;
+    const { item, postNewArticle, postNewComment, updateTopics, slugs, topic, postNewUser, isLoadingTopics, topicsError, updateCommentCount, updateIsLoadingNewComment } = this.props;
     return (
       <>
         <button className={`add${item}`} onClick={this.handleClick}>{messageToggle === true ? <p>+Add {item}</p> : <p>Hide Form</p>}
         </button>
         {(isShowingForm) && (item === 'article') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} updateIsShowing={this.updateIsShowing} />}
-        {(isShowingForm) && (item === 'comment') && <CommentCreator updateCommentCount={updateCommentCount} postNewComment={postNewComment} />}
+        {(isShowingForm) && (item === 'comment') && <CommentCreator updateCommentCount={updateCommentCount} postNewComment={postNewComment} updateIsLoadingNewComment={updateIsLoadingNewComment} />}
         {(isShowingForm) && (item === 'user') && <UserCreator postNewUser={postNewUser} />}
       </>
     );

@@ -5,7 +5,7 @@ import '../css/router.css'
 class ArticleCreator extends Component {
   state = {
     title: '',
-    topic: "",
+    topic: '',
     articleBody: '',
     newTopic: '',
     newTopicDescription: '',
@@ -25,7 +25,7 @@ class ArticleCreator extends Component {
     const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
     const { title, articleBody, newTopic, newTopicDescription, isShowingAddTopic, topic } = this.state;
     if (isShowingAddTopic) {
-      console.log('isShowingAddTopic=true', selectedTopic)
+      console.log('isShowingAddTopic', selectedTopic)
       console.log(title, newTopic, articleBody)
 
       updateTopics(newTopic, newTopicDescription)
