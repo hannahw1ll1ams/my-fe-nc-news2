@@ -17,7 +17,7 @@ class SelectedArticle extends Component {
     articleError: null,
     commentsError: null,
     addAndDeleteError: null,
-    hardCodedCommentCount: null
+    commentCountChange: null
   }
 
   componentDidMount() {
@@ -103,13 +103,16 @@ class SelectedArticle extends Component {
   }
 
   updateCommentCount = (numDifferece) => {
+    const { updateCommentCountInArticleList } = this.props;
     this.setState(currentState => {
-      return { hardCodedCommentCount: Number(currentState.hardCodedCommentCount) + numDifferece }
+      return { commentCountChange: Number(currentState.commentCountChange) + numDifferece }
     })
+    const { article } = this.state;
+    updateCommentCountInArticleList(numDifferece, article.article_id)
   }
 
   render() {
-    const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, hardCodedCommentCount } = this.state;
+    const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, commentCountChange } = this.state;
     const { loggedInUser, deleteElementByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
     if (articleError) return <ErrorPage error={articleError} />
@@ -123,7 +126,7 @@ class SelectedArticle extends Component {
           {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
           {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
           <br />
-          <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {hardCodedCommentCount ? Number(comment_count) + Number(hardCodedCommentCount) : comment_count}</button>
+          <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</button>
         </div>
         {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} />}
         {/* <button onClick={this.handleNextClick}>PREV</button>

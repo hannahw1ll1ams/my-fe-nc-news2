@@ -13,7 +13,9 @@ class ArticleList extends Component {
   state = {
     articles: [],
     isLoading: true,
-    error: null
+    error: null,
+    commentCountChange: null,
+    selectedArticleID: null
   }
 
   componentDidUpdate(prevProps) {
@@ -47,11 +49,17 @@ class ArticleList extends Component {
       })
   }
 
+  updateCommentCountInArticleList = (numDifference, selectedArticleID) => {
+    this.setState(currentState => {
+      return { commentCountChange: Number(currentState.commentCountChange) + numDifference, selectedArticleID }
+    })
+  }
+
   postNewArticle = (title, newArticleTopic, body) => {
     const { loggedInUser, topic } = this.props;
     console.log(loggedInUser, '<---in article list')
 
-    console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topic')
+    console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topicOnUrl')
     api.sendNewArticle(title, newArticleTopic, body, loggedInUser)
       .then(newArticle => {
         this.setState(currentState => {
@@ -87,7 +95,8 @@ class ArticleList extends Component {
 
   render() {
 
-    const { articles, isLoading, error } = this.state;
+    const { articles, isLoading, error, commentCountChange, selectedArticleID } = this.state;
+    // console.log(commentCountChange, selectedArticleID)
     const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
@@ -105,12 +114,12 @@ class ArticleList extends Component {
             </div>
             <ul className='articleList'>
               {articles.map(article => {
-                return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
+                return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} />
               })}
             </ul>
           </div>
           <Router>
-            <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} />
+            <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} />
           </Router>
         </div>
         <TopArticlesList topic={topic} />
