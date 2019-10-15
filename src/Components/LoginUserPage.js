@@ -8,7 +8,7 @@ const LoginUserPage = ({ users, updateLoggedInUser, isLoadingUsers, usersError, 
     <>
       {isLoadingUsers ? <p>Loading Users...</p> : usersError ? <ErrorPage error={usersError} /> :
         <>
-          {loggedInUser ? <h2>Choose a different user</h2> : <h2>Who are you?</h2>}
+          {/* {loggedInUser ? <h2>Choose a different user</h2> : <h2>Who are you?</h2>} */}
           <ul className='userList'>
             {users.map(user => {
               return <li className='user' key={user.name}>

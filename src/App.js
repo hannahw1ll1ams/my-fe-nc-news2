@@ -75,6 +75,7 @@ class App extends Component {
   }
 
   updateTopics = (slug, description) => {
+    // const joinedSlug = slug.split(' ').join('_')
     api.addNewTopic(slug, description).then((newTopic) => {
       this.setState(currentState => {
         return { topics: [...currentState.topics, newTopic] }

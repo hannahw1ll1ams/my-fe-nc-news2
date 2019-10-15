@@ -60,6 +60,7 @@ class ArticleList extends Component {
     console.log(loggedInUser, '<---in article list')
 
     console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topicOnUrl')
+    // const articleTopic = newArticleTopic.split(' ').join('_')
     api.sendNewArticle(title, newArticleTopic, body, loggedInUser)
       .then(newArticle => {
         this.setState(currentState => {
@@ -77,6 +78,7 @@ class ArticleList extends Component {
       })
   }
 
+  //need to account for if api request fails, how to put comment or article back in state.
   deleteElementByClick = (id) => {
     this.setState((currentState) => {
       return { articles: currentState.articles.filter(article => article.article_id !== id) }
@@ -88,7 +90,7 @@ class ArticleList extends Component {
           error: {
             msg: data.msg,
             status: status
-          }, isLoading: false
+          }, isLoading: false,
         })
       })
   }
@@ -101,27 +103,27 @@ class ArticleList extends Component {
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
     return (
-      <div className='main'>
-        <div className='mainBody'>
-          <div className='leftArticles'>
-            {topic && <h2>Articles on {topic}</h2>}
-            {topic && <h3>{chosenTopic.description}</h3>}
-            {author && <h2>Articles by {author}</h2>}
-            <p className='numOfArticles'>{articles.length} Articles Found</p>
-            <div className='topBar'>
-              {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
-              {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
-            </div>
-            <ul className='articleList'>
-              {articles.map(article => {
-                return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} />
-              })}
-            </ul>
+      // <div className='main'>
+      <div className='mainBody'>
+        <div className='leftArticles'>
+          {topic && <h2>Articles on {topic}</h2>}
+          {topic && <h3>{chosenTopic.description}</h3>}
+          {author && <h2>Articles by {author}</h2>}
+          <p className='numOfArticles'>{articles.length} Articles Found</p>
+          <div className='topBar'>
+            {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
+            {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
           </div>
-          <Router>
-            <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} />
-          </Router>
+          <ul className='articleList'>
+            {articles.map(article => {
+              return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} />
+            })}
+          </ul>
         </div>
+        <Router className='selectedArticle'>
+          <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} />
+        </Router>
+        {/* </div> */}
         <TopArticlesList topic={topic} />
       </div>
     );

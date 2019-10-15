@@ -1,9 +1,11 @@
 .sideBar {
-  background-color:hotpink;
-  max-width:15vw;
+  background-color:#222E32;
+  width:15vw;
   height:100vh;
   position:fixed;
   text-align: left;
+  list-style: none;
+
 }
 
 .titleNC {
@@ -11,8 +13,9 @@
   height:auto;
   padding-left: 40px;
   margin:0;
-  font-size: 15vw;
-  color: black;
+  font-size: 13vw;
+  color: #72C79E;
+  background-color: #F8F6EC;
 }
 
 .titleNEWS{
@@ -36,16 +39,23 @@
 
 .Users{
   padding-left: 2vw;
+    height:auto;
+
 }
 
 .topicsList {
   padding-left: 2vw;
-  padding-right: 2vw;
+  /* padding-right: 2vw; */
   overflow: scroll;
-  
+  background-color: grey;
+    list-style: none;
+  text-decoration: none;
+
 }
 
 .List{
-  height:50vh;
+  /* height:50vh; */
   overflow: scroll;
+  text-decoration: none;
+  background-color: #F8F6EC;
 }

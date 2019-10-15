@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import DeleteButton from './DeleteButton';
 
+
 const ArticleCard = ({ title, topic, author, created_at, article_id, votes, comment_count, loggedInUser, deleteElementByClick, commentCountChange, selectedArticleID }) => {
   return (
     <li className={`singleArticle-${topic}`}>

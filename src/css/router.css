@@ -1,76 +1,113 @@
-.main {
+/* .main {
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  min-width: 70vw;
+    text-align: center; */
+
+  /* padding-left: 50px; */
+  /* background-color: aquamarine; */
+/* } */
+
+.mainBody{
+  display:flex;
+  max-width: 80vw;
   /* background-color:rgb(231, 167, 194); */
-  max-width: 945px;
-  padding-left: 50px;
+  padding-right: 2vw;
+  padding-left: 5vw;
 }
+
+.leftArticles{
+  background-color: rgb(137, 252, 121);
+  width: 1200px;
+    padding-left: 5vw;
+
+}
+
 
 .numOfArticles{
   text-align: center;
-  background-color: grey;
-
+  /* background-color: #F0433E; */
 }
 
 .topBar {
   display:flex;
   justify-content: space-between;
   flex-wrap:wrap;
-  background-color: grey;
+  background-color: #F0433E;
+  /* padding-left: 10px;  */
+    margin:10px;
+    min-width:300px;
+  /* max-width:900px; */
+  width:100%;
 }
 
 .addarticle {
     min-width: 100px;
-    max-height: 30px;;
+    max-height: 30px;
+    background-color: chartreuse;
 }
 
 .articleList {
   min-width:300px;
-  max-width:600px;
-  background-color:aliceblue;
-  height:95vh;
+  /* max-width:900px; */
+  width:90%;
+  /* background-color:aliceblue; */
+  height:90vh;
   overflow: scroll;
+    list-style: none;
+  text-align: left;
+/* width: 50vw; */
 }
 
+
+
 .rightSide {
-  width:200px;
-  margin: 20px;
-  padding:20px; 
-  /* background-color:#E34497; */
+    max-width:15vw;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  border-left-color: black;
+  border-left-style: solid;
 }
 
 .topArticles{
+  /* background-color: white; */
+  /* position: fixed; */
+  min-width:200px;
+  /* padding-right: 2vw; */
+}
+.activeUsers {
   background-color: white;
-  position: fixed;
-  max-width:200px;
+  min-width:200px;
 }
 
 .singleArticle-football {
   background-color:#778899;
   list-style: none;
   /* margin: 0 auto;  */
+  padding: 10px; 
+    margin:10px;
 }
 
 .singleArticle-cooking {
   background-color: #A9A9A9;
   list-style: none;
   /* margin: 0 auto;  */
+  padding: 10px; 
+    margin:10px;
 }
 
 .singleArticle-coding {
   background-color:#DCDCDC;
   list-style: none;
   /* margin: 0 auto;  */
-}
-.singleArticle-test {
-  list-style: none;
-  /* margin: 0 auto;  */
+  padding: 10px; 
+    margin:10px;
 }
 
-.mainBody{
-  display:flex;
-}
+
+
 
 .selectedArticle{
     padding: 10px; 
@@ -78,6 +115,8 @@
     display:flex;
     flex-direction: column;
     min-width: 500px;
+    background-color: blue;
+
 }
 
 .commentList{
@@ -90,3 +129,12 @@
   outline-style: solid;
 outline-color: #778899;
 }
+
+/* .selectedArticle-football{
+    padding: 10px; 
+
+} */
+
+
+
+

@@ -4,7 +4,7 @@
 }
 
 .topicsList {
-  list-style-type: none;
+  list-style: none;
 }
 
 .sideBar {
@@ -17,15 +17,15 @@
 
 .App{
   display: grid;
-  grid-auto-columns: 1fr 4fr;
+  grid-auto-columns: 10% 90%;
   grid-template-areas: "sideBar router";
-  background-color:aliceblue;
+  background-color:#F8F6EC;
   min-height: 100vh;
 }
 
 .router{
   grid-area:router;
   display: flex;
-  padding-left: 100px;
+  /* padding-left: 100px; */
 } 
 

@@ -68,6 +68,7 @@ class TopArticlesList extends Component {
             })}
           </ol>
         </div>
+        <h3 className='activeUsers'>MOST ACTIVE USERS</h3>
       </div>
     );
   }
