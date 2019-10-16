@@ -17,7 +17,7 @@
 
 .App{
   display: grid;
-  grid-auto-columns: 10% 90%;
+  grid-auto-columns: 5% 95%;
   grid-template-areas: "sideBar router";
   background-color:#F8F6EC;
   min-height: 100vh;
@@ -26,6 +26,7 @@
 .router{
   grid-area:router;
   display: flex;
+  justify-content: flex-end;
   /* padding-left: 100px; */
 } 
 

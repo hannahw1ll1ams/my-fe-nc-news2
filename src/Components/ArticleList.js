@@ -109,11 +109,12 @@ class ArticleList extends Component {
           {topic && <h2>Articles on {topic}</h2>}
           {topic && <h3>{chosenTopic.description}</h3>}
           {author && <h2>Articles by {author}</h2>}
-          <p className='numOfArticles'>{articles.length} Articles Found</p>
+
           <div className='topBar'>
             {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
             {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
           </div>
+          <p className='numOfArticles'>{articles.length} Articles Found</p>
           <ul className='articleList'>
             {articles.map(article => {
               return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} />
