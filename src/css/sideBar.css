@@ -1,26 +1,31 @@
 .sideBar {
-  background-color:#222E32;
+  background-color:#2C3142;
   width:12vw;
   height:100vh;
   position:fixed;
   text-align: left;
   list-style: none;
-
+border-right-color: rgb(69, 73, 88);
+  border-right-style: solid;
 }
 
 .titleNC {
   /* min-width: 300px; */
   height:auto;
-  padding-left: 40px;
+  padding-left: 2vw;
   margin:0;
-  font-size: 13vw;
+  font-size: 9vw;
   color: #72C79E;
-  background-color: #F8F6EC;
+  background-color:rgb(6, 9, 27);
+  /* margin-right: 5px; */
+    /* background-color: rgb(224, 198, 63); */
+
 }
 
 .titleNEWS{
   height:auto;
   padding-left: 2vw;
+
 }
 
 .who {
@@ -57,5 +62,5 @@
   /* height:50vh; */
   overflow: scroll;
   text-decoration: none;
-  background-color: #F8F6EC;
+  background-color: grey;
 }

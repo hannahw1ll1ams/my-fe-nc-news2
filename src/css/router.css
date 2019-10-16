@@ -1,20 +1,8 @@
-/* .main {
-  display:flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  min-width: 70vw;
-    text-align: center; */
-
-  /* padding-left: 50px; */
-  /* background-color: aquamarine; */
-/* } */
-
 .mainBody{
   display:flex;
-  max-width: 80vw;
-  /* background-color:rgb(231, 167, 194); */
+  width: 80vw;
   padding-right: 2vw;
-  padding-left: 5vw;
+  /* padding-left: 5vw; */
   /* padding-top: 2vh; */
       text-align: center;
 
@@ -23,26 +11,37 @@
 .leftArticles{
   /* background-color: rgb(137, 252, 121); */
   width: 1200px;
-    padding-left: 2vw;
+    /* padding-left: 2vw; */
   padding-top: 2vh;
-min-width:30%;
+/* min-width:30%; */
 display: flex;
 flex-direction: column;
+  /* background-color:rgb(231, 167, 194); */
+align-items: center;
 }
 
 .topOfPage{
+/* width:90%; */
+  width:90%;
+/* margin-left: 20px;*/
+margin-right: 20px; 
+  background-color: rgb(69, 73, 88);
 
 }
 
 .main{
   display: flex;
   flex-direction: row;
+  width:90%
 }
 
 
 .numOfArticles{
   text-align: center;
   /* background-color: #F0433E; */
+    width:90%;
+  color: white;
+
 }
 
 .topBar {
@@ -56,7 +55,7 @@ flex-direction: column;
   border-bottom-color: black;
   /* margin-left: 20px; */
   min-width:400px;
-  max-width:90%;
+  /* max-width:90%; */
   /* width:100%; */
 }
 
@@ -71,8 +70,9 @@ flex-direction: column;
   /* min-width:400px; */
   /* max-width:900px; */
     /* max-width:90%; */
-max-width:3fr;
-max-width:3fr;
+  width: 1160px;
+min-width: 300px;
+/* max-width:3fr; */
 
   /* background-color:aliceblue; */
   max-height:80vh;
@@ -90,13 +90,13 @@ max-width:3fr;
   padding-top: 4vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-left-color: black;
-  border-left-style: solid;
+  align-items: flex-end;
+  /* border-left-color: rgb(69, 73, 88);
+  border-left-style: solid; */
 }
 
 .topArticles{
-  /* background-color: white; */
+  background-color: rgb(69, 73, 88);
   /* position: fixed; */
   max-width:175px;
   font-size: 15px;
@@ -143,9 +143,11 @@ max-width:3fr;
     margin:10px;
     display:flex;
     flex-direction: column;
-    width: 6fr;
+    width: 70%;
   overflow: scroll;
   max-height:80vh;
+        background-color: #778899;
+
 }
 
 .commentList{

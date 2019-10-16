@@ -17,9 +17,12 @@
 
 .App{
   display: grid;
-  grid-auto-columns: 5% 95%;
+  grid-auto-columns: 2fr 10fr;
   grid-template-areas: "sideBar router";
-  background-color:#F8F6EC;
+  /* background-color:#F8F6EC; */
+    background-color:rgb(6, 9, 27);
+        /* background-color:#B3C0CB */
+;
   min-height: 100vh;
 }
 
