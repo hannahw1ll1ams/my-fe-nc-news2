@@ -123,7 +123,7 @@ class SelectedArticle extends Component {
     if (articleError) return <ErrorPage error={articleError} />
     const { title, author, topic, body, votes, article_id, comment_count } = article
     return (
-      <div className={`selectedArticle-${topic}`}>
+      <>
         <div className={`articleBody-${topic}`}>
           <p>{topic}: {title}</p>
           <p>Written by <Link to={`/users/${author}`}>{author}</Link></p>
@@ -136,7 +136,7 @@ class SelectedArticle extends Component {
         {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} isLoadingNewComment={isLoadingNewComment} updateIsLoadingNewComment={this.updateIsLoadingNewComment} />}
         {/* <button onClick={this.handleNextClick}>PREV</button>
         <button onClick={this.handleNextClick}>NEXT</button> */}
-      </div>
+      </>
     );
   }
 }
