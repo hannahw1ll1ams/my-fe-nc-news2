@@ -31,9 +31,14 @@ class UserCreator extends Component {
       <form onSubmit={this.handleSubmit}>
         <label className='form'>
           <input name='username' placeholder='username' onChange={this.handleChange} required value={username} />
+          <br />
           <input name='avatar_url' placeholder='avatar_url' onChange={this.handleChange} required value={avatar_url} />
+          <br />
+
           <input name='name' placeholder='name' onChange={this.handleChange} required value={name} />
         </label>
+        <br />
+
         <button>ADD!</button>
       </form>
     );

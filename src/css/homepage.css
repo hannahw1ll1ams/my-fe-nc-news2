@@ -1,13 +1,20 @@
 
 .homepage {
   display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userCreator{
+  display: flex;
   flex-direction: column;
+  
 }
 
 .adduser{
   max-width: 100px;
-  margin-left: 80px;
-  margin-top: 40px 
+  margin-top: 40px; 
+  max-height: 100px;
 }
 
 .userList {

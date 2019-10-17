@@ -27,9 +27,9 @@ class ViewToggler extends Component {
       <>
         <button className={`add${item}`} onClick={this.handleClick}>{messageToggle === true ? <p>ADD {item}</p> : <p>Hide Form</p>}
         </button>
-        <div class="break"></div>
 
-        {(isShowingForm) && (item === 'ARTICLE') && <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} updateIsShowing={this.updateIsShowing} />}
+        {(isShowingForm) && (item === 'ARTICLE') && <><div class="break"></div>
+          <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} updateIsShowing={this.updateIsShowing} /></>}
         {(isShowingForm) && (item === 'comment') && <CommentCreator updateCommentCount={updateCommentCount} postNewComment={postNewComment} updateIsLoadingNewComment={updateIsLoadingNewComment} />}
         {(isShowingForm) && (item === 'user') && <UserCreator postNewUser={postNewUser} />}
       </>

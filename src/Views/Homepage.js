@@ -6,7 +6,9 @@ import '../css/homepage.css'
 const Homepage = ({ updateLoggedInUser, users, postNewUser, usersError, isLoadingUsers, loggedInUser }) => {
   return (
     <div className='homepage'>
-      <ViewToggler item='user' postNewUser={postNewUser} />
+      <div className='userCreator'>
+        <ViewToggler item='user' postNewUser={postNewUser} />
+      </div>
       <LoginUserPage updateLoggedInUser={updateLoggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} loggedInUser={loggedInUser} />
     </div>
   );
