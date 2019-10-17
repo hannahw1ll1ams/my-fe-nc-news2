@@ -23,11 +23,10 @@ class CommentCreator extends Component {
   render() {
     const { body } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='commentInputs'>
         <label>
-          TYPE YOUR NEW COMMENT HERE:
-          <textarea name="comment_body" onChange={this.handleChange} value={body} required />
-          <button>Submit</button>
+          <textarea name="comment_body" onChange={this.handleChange} value={body} required placeholder='Comment...' />
+          <button className='commentSubmit'>Submit</button>
         </label>
       </form>
     );

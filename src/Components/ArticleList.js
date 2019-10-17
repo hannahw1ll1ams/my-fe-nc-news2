@@ -4,10 +4,11 @@ import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
 import Sorter from './Sorter';
 import ViewToggler from './ViewToggler';
-import { Router } from '@reach/router'
+import { Router, Link } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
+
 
 class ArticleList extends Component {
   state = {
@@ -107,8 +108,8 @@ class ArticleList extends Component {
       <div className='mainBody'>
         <div className='leftArticles'>
           <div className='topOfPage'>
-            {topic && <h2>Articles on {topic}</h2>}
-            {topic && <h3>{chosenTopic.description}</h3>}
+            {/* {topic && <h2>Articles on {topic}</h2>} */}
+            {topic && <h2>{chosenTopic.description}</h2>}
             {author && <h2>Articles by {author}</h2>}
 
             <div className='topBar'>
@@ -120,7 +121,7 @@ class ArticleList extends Component {
           <div className='main'>
             <ul className='articleList'>
               {articles.map(article => {
-                return <ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} />
+                return <Link to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} /></Link>
               })}
             </ul>
             <Router className='selectedArticle'>

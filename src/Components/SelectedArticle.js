@@ -125,7 +125,7 @@ class SelectedArticle extends Component {
     return (
       <>
         <div className={`articleBody-${topic}`}>
-          <p>{topic}: {title}</p>
+          <h2>{topic}: {title}</h2>
           <p>Written by <Link to={`/users/${author}`}>{author}</Link></p>
           <p>{body}</p>
           {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}

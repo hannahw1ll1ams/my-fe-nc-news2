@@ -73,7 +73,7 @@ border-right-color: rgb(69, 73, 88);
   padding-left: 2vw;
   /* padding-right: 2vw; */
   overflow: scroll;
-  background-color: grey;
+  background-color:  rgb(69, 73, 88);
     list-style: none;
   text-decoration: none;
 
@@ -83,5 +83,22 @@ border-right-color: rgb(69, 73, 88);
   /* height:50vh; */
   overflow: scroll;
   text-decoration: none;
-  background-color: grey;
+  background-color: rgb(69, 73, 88);
+    text-decoration: none;
+
+}
+
+.topics-cooking{
+  background-color: #A9A9A9;
+  text-decoration: none;
+}
+
+.topics-football{
+    background-color:#778899;
+  text-decoration: none;
+}
+
+.topics-coding{
+    background-color:#DCDCDC;
+  text-decoration: none;
 }

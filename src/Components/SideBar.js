@@ -7,7 +7,7 @@ const SideBar = ({ loggedInUser, updateLoggedInUser, slugs, isLoadingTopics, top
   return (
     <div className="sideBar">
       <div className='logIn'>
-        {!loggedInUser ? <p><Link to='/'>Choose User</Link></p> : <p className="logged">Logged in as <Link to={`/users/${loggedInUser}`}>{loggedInUser}
+        {!loggedInUser ? <p><Link to='/'>Choose User</Link></p> : <p className="logged">Logged in as <br /> <Link to={`/users/${loggedInUser}`}>{loggedInUser}
           {/* <img src={loggedInUserImage} alt={loggedInUser} /> */}
         </Link></p>}
         {loggedInUser && <Link to='/'><p className='change' onClick={() => updateLoggedInUser(null)}>Log Out</p></Link>}
