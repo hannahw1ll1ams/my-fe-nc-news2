@@ -113,9 +113,9 @@ class ArticleList extends Component {
 
             <div className='topBar'>
               {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
-              {loggedInUser && <ViewToggler item='article' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
+              {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
             </div>
-            <p className='numOfArticles'>{articles.length} Articles Found</p>
+            {/* <p className='numOfArticles'>{articles.length} Articles Found</p> */}
           </div>
           <div className='main'>
             <ul className='articleList'>

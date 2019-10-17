@@ -69,41 +69,36 @@ class ArticleCreator extends Component {
     const { title, articleBody, isShowingAddTopic, i, newTopic, newTopicDescription } = this.state;
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
     return (
-      <div>
+      <div className='addingArticleForm'>
         {isLoadingTopics ? <p>Loading Topics...</p> : topicsError ? <ErrorPage error={topicsError} /> :
           <form onSubmit={this.handleSubmit}>
-            <label> Write your article here: <br />
+            {
+              selectedTopic ? <p>{selectedTopic}</p> :
+                isShowingAddTopic ?
+                  <>
+                    <div>
+                      <input name='newTopic' placeholder='New Topic' onChange={this.handleChange} required value={newTopic} />
+                      <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />
+                    </div>
+                    <button onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
+                  </>
+                  :
+                  <>
+                    {<select name="topic" required onChange={this.handleChange}>
+                      <option value="" >Please Select</option>
+                      {slugs.map(slug => {
+                        return <option value={slug} key={slug}>{slug}</option>
+                      })}
+                    </select>}
+                    <button onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
+                  </>
+            }
+            <br />
+            <input className='titletext' name='title' placeholder='Title...' onChange={this.handleChange} required value={title} />
+            <br />
 
-              Title: <input name='title' placeholder='title...' onChange={this.handleChange} required value={title} />
-              <br />
-
-              Topic:
-              {
-                selectedTopic ? <p>{selectedTopic}</p> :
-                  isShowingAddTopic ?
-                    <>
-                      <div>
-                        <input name='newTopic' placeholder='New Topic' onChange={this.handleChange} required value={newTopic} />
-                        <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />
-                      </div>
-                      <button onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
-                    </>
-                    :
-                    <>
-                      {<select name="topic" required onChange={this.handleChange}>
-                        <option value="" >Please Select</option>
-                        {slugs.map(slug => {
-                          return <option value={slug} key={slug}>{slug}</option>
-                        })}
-                      </select>}
-                      <button onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
-                    </>
-              }
-
-
-              Body: <input name='articleBody' placeholder='body' onChange={this.handleChange} required value={articleBody} />
-              <button>Add</button>
-            </label>
+            <textarea className='bodytext' name='articleBody' placeholder='Body' onChange={this.handleChange} required value={articleBody} />
+            <button>POST ARTICLE</button>
           </form>}
       </div>
     );

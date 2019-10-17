@@ -1,12 +1,33 @@
 .sideBar {
-  background-color:#2C3142;
+  /* background-color:#2C3142; */
   width:12vw;
   height:100vh;
   position:fixed;
   text-align: left;
   list-style: none;
+/* border-right-color: rgb(69, 73, 88);
+  border-right-style: solid; */
+}
+
+.logIn{
+  background-color:#2C3142;
+  border-right-color: rgb(69, 73, 88);
+  border-right-style: solid;
+  border-bottom-color: rgb(69, 73, 88);
+  border-bottom-style: solid;
+  padding-top: 10px;
+  border-bottom-right-radius: 15px;
+}
+
+.bottomList{
+  background-color:#2C3142;
 border-right-color: rgb(69, 73, 88);
   border-right-style: solid;
+  border-top-color: rgb(69, 73, 88);
+  border-top-style: solid;
+  margin-top: 0px;
+  border-top-right-radius: 15px;
+  height:100%;
 }
 
 .titleNC {
