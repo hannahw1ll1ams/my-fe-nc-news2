@@ -6,6 +6,8 @@ import CommentsByArticleList from './CommentsByArticleList';
 import DeleteButton from './DeleteButton';
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
+import moment from 'moment'
+
 
 class SelectedArticle extends Component {
   state = {
@@ -121,12 +123,13 @@ class SelectedArticle extends Component {
     const { loggedInUser, deleteElementByClick } = this.props;
     if (isLoading) return <p>Loading...</p>
     if (articleError) return <ErrorPage error={articleError} />
-    const { title, author, topic, body, votes, article_id, comment_count } = article
+    const { title, author, topic, body, votes, article_id, comment_count, created_at } = article
     return (
       <>
         <div className={`articleBody-${topic}`}>
+          <p>Posted by <Link to={`/users/${author}`}>{author}</Link> {moment(created_at).fromNow()}</p>
           <h2>{topic}: {title}</h2>
-          <p>Written by <Link to={`/users/${author}`}>{author}</Link></p>
+
           <p>{body}</p>
           {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
           {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}

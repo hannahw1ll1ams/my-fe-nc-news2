@@ -1,14 +1,44 @@
 
 .homepage {
   display:flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .userCreator{
   display: flex;
   flex-direction: column;
-  
+  align-content: stretch;
+  max-width:400px;
+  min-width: 200px;
+  background-color: rgb(38, 40, 54);
+}
+
+.username{
+  width: 100%;
+    background-color:#2C3142;
+border: none;
+    overflow: auto;
+    outline: none;
+}
+.avatarurl{
+  width: 100%;
+    background-color:#2C3142;
+border: none;
+    overflow: auto;
+    outline: none;
+}
+.name{
+  width: 100%;
+    background-color:#2C3142;
+border: none;
+    overflow: auto;
+    outline: none;
+}
+
+.addUserButton{
+  align-self: flex-end;
+      overflow: auto;
+    outline: none;
 }
 
 .adduser{
@@ -21,28 +51,38 @@
   list-style: none;
   width: 50vw;
   display:flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
 }
 
 .user{
-  max-width:20px;
+  max-width:400px;
   min-width: 200px;
-  max-height:200px;
-  min-height: 200px;
+  max-height:150px;
+  min-height: 150px;
   margin:15px;
-/* padding:20px; */
-/* background-color: white; */
+padding:20px;
+  background-color:#2C3142;
+}
+
+.user:hover{
+    background-color:rgb(187, 193, 212);
+
 }
 
 .link {
   /* width: 100vw; */
   object-fit:scale-down;
   /* height: 100vh; */
+display: flex;
+  flex-direction: row;
+  /* margin-left: auto;
+  margin-right: auto; */
+  justify-content: space-between;
+  padding-right:10px;
+    padding-left:10px;
 
-  /* background-color: azure; */
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* .userImg {
@@ -53,17 +93,31 @@ max-height: 150px;
 } */
 
 .userName {
-font-size: 10px;
 text-align: center;
 }
 
 .userImg {
-  border: 1px solid #ddd;
-  padding: 5px;
+  /* border: 1px solid #ddd;
+  padding: 5px; */
   width: 150px;
-  height:150px
+  height:150px;
+  border-radius: 50%;
 }
 
 .userImg:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.names{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-decoration: none;
+  font-size: 10px;
+  align-self: center;
+}
+
+.name{
+    font-size: 9px;
 }
