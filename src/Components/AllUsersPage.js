@@ -47,14 +47,15 @@ class AllUsersPage extends Component {
     if (isLoadingUsers) return <p>Loading...</p>
     if (usersError) return <ErrorPage error={usersError} />
     return (
-      <>
-        {username === loggedInUser ? <p>YOU ARE {chosenUser.name}</p> : <p>INTRODUCING {chosenUser.name}</p>}
+      <div className='allUsersPage'>
         <div className='loggedInUser'>
+
+          {username === loggedInUser ? <h1>YOU ARE {chosenUser.name}</h1> : <h1>INTRODUCING {chosenUser.name}</h1>}
           <img className='usersImg' src={chosenUser.avatar_url} alt={chosenUser.name} />
           <p className='userName'>Username: {chosenUser.username}</p>
+          <Link to={`/articles/user/${chosenUser.username}`}>
+            <p>For more articles by {chosenUser.name}</p></Link>
         </div>
-        <Link to={`/articles/user/${chosenUser.username}`}>
-          <p>For more articles by {chosenUser.name}</p></Link>
 
         <h1>All USERS:</h1>
         <ul className='otherUsersList'>
@@ -68,7 +69,7 @@ class AllUsersPage extends Component {
           })
           }
         </ul>
-      </>
+      </div>
     );
   }
 }
