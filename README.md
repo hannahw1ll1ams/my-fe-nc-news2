@@ -4,9 +4,14 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 
 ## Hosted Link:
-FE Github repo:
-Api url: https://hw-nc-news.herokuapp.com/api
-BE Github repo:
+.....
+## FE Github repo:
+.....
+## Api url: 
+https://hw-nc-news.herokuapp.com/api
+
+## BE Github repo:
+https://github.com/hannahw1ll1ams/my-be-nc-news.git
 
 You first choose a user to be logged in as and you will post throughout the site as that chosen user, you can sign out and choose another user or you may create your own.
 
