@@ -10,16 +10,14 @@ const LoginUserPage = ({ users, updateLoggedInUser, isLoadingUsers, usersError, 
         <>
           <ul className='userList'>
             {users.map(user => {
-              return <li className='user' key={user.name}>
-                <Link className='link' to='/articles'>
-                  <img className='userImg' src={user.avatar_url} alt={user.name} onClick={() => updateLoggedInUser(user.username)} />
+              return <Link onClick={() => updateLoggedInUser(user.username)} className='link' to='/articles'>
+                <li className='user' key={user.name}>
+                  <img className='singleUserImg' src={user.avatar_url} alt={user.name} />
                   <div className='names'>
-                    <h1 className='userName' onClick={() => updateLoggedInUser(user.username)} >{user.username}</h1>
-                    <br />
-                    <h1 className='name' onClick={() => updateLoggedInUser(user.name)} >{user.name}</h1>
+                    <h3 className='userName' >{user.username}</h3>
                   </div>
-                </Link>
-              </li>
+                </li>
+              </Link>
             })}
           </ul>
         </>}

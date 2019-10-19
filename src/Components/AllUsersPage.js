@@ -49,29 +49,81 @@ class AllUsersPage extends Component {
     return (
       <div className='allUsersPage'>
         <div className='loggedInUser'>
-
-          {username === loggedInUser ? <h1>YOU ARE {chosenUser.name}</h1> : <h1>INTRODUCING {chosenUser.name}</h1>}
-          <img className='usersImg' src={chosenUser.avatar_url} alt={chosenUser.name} />
-          <p className='userName'>Username: {chosenUser.username}</p>
-          <Link to={`/articles/user/${chosenUser.username}`}>
-            <p>For more articles by {chosenUser.name}</p></Link>
+          {username === loggedInUser ? <h2>YOU ARE</h2> : <h2>INTRODUCING</h2>}
+          <div className='selectedUserCard'>
+            <div>
+              <h1> {chosenUser.name}</h1>
+              <h2 className='userName'> {chosenUser.username}</h2>
+            </div>
+            <img className='userImg' src={chosenUser.avatar_url} alt={chosenUser.name} />
+            <Link to={`/articles/user/${chosenUser.username}`}>
+              <h3>For articles by {chosenUser.name}</h3></Link>
+          </div>
         </div>
-
-        <h1>All USERS:</h1>
-        <ul className='otherUsersList'>
-          {users.map(user => {
-            return <li key={user.name} className='singleUser'>
-              <Link className='links' to={`/users/${user.username}`}>
-                <img className='usersImg' src={user.avatar_url} alt={user.name} />
-                <p>{user.username}</p>
-              </Link>
-            </li>
-          })
-          }
-        </ul>
+        <div className='otherUsers'>
+          <h2 className='allUsersTitle'>All USERS</h2>
+          <ul className='otherUsersList'>
+            {users.map(user => {
+              return <li key={user.name} className='singleUser'>
+                <Link className='links' to={`/users/${user.username}`}>
+                  <img className='usersImg' src={user.avatar_url} alt={user.name} />
+                  <h2>{user.username}</h2>
+                </Link>
+              </li>
+            })
+            }
+          </ul>
+        </div>
       </div>
     );
   }
 }
 
 export default AllUsersPage;
+
+
+
+
+
+// const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }) => {
+//   const filtered = users.filter(user => user.username !== username)
+//   const singleChosenUser = users.filter(user => user.username === username)
+//   console.log(singleChosenUser, '<--- singleChosenUser')
+
+//   // if (isLoadingChosenUser) return <p>Loading...</p>
+//   // if (error) return <ErrorPage error={error} />
+//   if (isLoadingUsers) return <p>Loading...</p>
+//   if (usersError) return <ErrorPage error={usersError} />
+//   return (
+//     <div className='allUsersPage'>
+//       <div className='loggedInUser'>
+//         {username === loggedInUser ? <h2>YOU ARE</h2> : <h2>INTRODUCING</h2>}
+//         <div className='selectedUserCard'>
+//           <div>
+//             <h1> {singleChosenUser[0].name}</h1>
+//             <h2 className='userName'> {singleChosenUser[0].username}</h2>
+//           </div>
+//           <img className='userImg' src={singleChosenUser[0].avatar_url} alt={singleChosenUser[0].name} />
+//           <Link to={`/articles/user/${singleChosenUser[0].username}`}>
+//             <h3>For articles by {singleChosenUser[0].name}</h3></Link>
+//         </div>
+//       </div>
+//       <div className='otherUsers'>
+//         <h2 className='allUsersTitle'>OTHER USERS</h2>
+//         <ul className='otherUsersList'>
+//           {filtered.map(user => {
+//             return <li key={user.name} className='singleUser'>
+//               <Link className='links' to={`/users/${user.username}`}>
+//                 <img className='usersImg' src={user.avatar_url} alt={user.name} />
+//                 <h2>{user.username}</h2>
+//               </Link>
+//             </li>
+//           })
+//           }
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default AllUsersPage;
