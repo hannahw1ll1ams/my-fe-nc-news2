@@ -58,7 +58,7 @@ class ArticleList extends Component {
 
   postNewArticle = (title, newArticleTopic, body) => {
     const { loggedInUser, topic } = this.props;
-    console.log(loggedInUser, '<---in article list')
+    // console.log(loggedInUser, '<---in article list')
 
     console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topicOnUrl')
     // const articleTopic = newArticleTopic.split(' ').join('_')
@@ -121,7 +121,7 @@ class ArticleList extends Component {
           <div className='main'>
             <ul className='articleList'>
               {articles.map(article => {
-                return <Link to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} /></Link>
+                return <Link key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} /></Link>
               })}
             </ul>
             <Router className='selectedArticle'>
