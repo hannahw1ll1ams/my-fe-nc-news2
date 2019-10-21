@@ -39,7 +39,7 @@ class UserCreator extends Component {
         </label>
         <br />
 
-        <button className='addUserButton'>ADD!</button>
+        <button className='submitUserButton'>ADD!</button>
       </form>
     );
   }
