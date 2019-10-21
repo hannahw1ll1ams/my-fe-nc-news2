@@ -77,16 +77,17 @@ align-items: center;
   /* min-width:400px; */
   /* max-width:900px; */
     /* max-width:90%; */
-  max-width: 1160px;
+  /* max-width: 1160px; */
   /* width: 1160px; */
-min-width: 300px;
+/* min-width: 300px; */
 /* max-width:3fr; */
+width:100%;
 margin-left:0px;
 padding-left:0px;
 /* margin-top:0px; */
   /* background-color:aliceblue; */
-  max-height:90vh;
-  overflow: scroll;
+  /* max-height:90vh; */
+  /* overflow: scroll; */
   list-style: none;
   text-align: left;
 /* width: 50vw; */
@@ -107,7 +108,7 @@ padding-left:0px;
 
 .topArticles{
   background-color: rgb(69, 73, 88);
-  /* position: fixed; */
+  position: fixed;
   max-width:175px;
   font-size: 15px;
   /* align-content: center; */
@@ -153,13 +154,13 @@ padding: 10px;
   margin-bottom:10px;
 }
 .singleArticle-coding:hover{
-  background-color: rgb(241, 245, 241);
+  background-color: rgb(245, 190, 89);
 }
 .singleArticle-football:hover{
-  background-color: rgb(241, 245, 241);
+  background-color: rgb(245, 190, 89);
 }
 .singleArticle-cooking:hover{
-  background-color: rgb(241, 245, 241);
+  background-color: rgb(245, 190, 89);
 }
 
 
@@ -173,6 +174,7 @@ padding: 10px;
   overflow: scroll;
   max-height:80vh;
   background-color: rgb(38, 40, 54);
+  /* position: fixed; */
 }
 
 

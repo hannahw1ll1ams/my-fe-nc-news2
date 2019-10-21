@@ -47,8 +47,6 @@ class SelectedArticle extends Component {
             msg: data.msg,
             status: status
           }, isLoading: false, isLoadingNewComment: false
-        }, () => {
-          console.log(this.state.articleError)
         })
       })
   }
@@ -122,7 +120,7 @@ class SelectedArticle extends Component {
 
   render() {
     const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, commentCountChange, isLoadingNewComment } = this.state;
-    const { loggedInUser, deleteElementByClick } = this.props;
+    const { loggedInUser, deleteElementByClick, updateVotesCountInArticleList } = this.props;
     if (isLoading) return <p>Loading...</p>
     if (articleError) return <ErrorPage error={articleError} />
     const { title, author, topic, body, votes, article_id, comment_count, created_at } = article
@@ -134,7 +132,7 @@ class SelectedArticle extends Component {
 
           <p>{body}</p>
           {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
-          {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" />}
+          {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" updateVotesCountInArticleList={updateVotesCountInArticleList} />}
           <br />
           <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</button>
         </div>

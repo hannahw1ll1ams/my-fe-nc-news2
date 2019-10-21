@@ -4,7 +4,7 @@ import DeleteButton from './DeleteButton';
 import moment from 'moment'
 
 
-const ArticleCard = ({ title, topic, author, created_at, article_id, votes, comment_count, loggedInUser, deleteElementByClick, commentCountChange, selectedArticleID }) => {
+const ArticleCard = ({ title, topic, author, created_at, article_id, votes, comment_count, loggedInUser, deleteElementByClick, commentCountChange, selectedArticleIdComments, votesCountChange, selectedArticleIdVotes }) => {
 
 
   return (
@@ -12,8 +12,9 @@ const ArticleCard = ({ title, topic, author, created_at, article_id, votes, comm
       <p>Posted by {author} {moment(created_at).fromNow()}</p>
       <h2>{title}</h2>
       {loggedInUser === author && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
-      <p>{votes} votes</p>
-      {selectedArticleID === article_id ? <p>Comments: {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</p> : <p> {comment_count} comments {votes} votes</p>}
+
+      {selectedArticleIdVotes === article_id ? <p>{votesCountChange ? Number(votes) + Number(votesCountChange) : votes} votes </p> : <p> {votes} votes</p>}
+      {selectedArticleIdComments === article_id ? <p>Comments: {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</p> : <p> {comment_count} comments</p>}
     </li>
   );
 };

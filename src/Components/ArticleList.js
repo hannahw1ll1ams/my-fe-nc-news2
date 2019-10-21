@@ -3,7 +3,7 @@ import * as api from '../api'
 import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
 import Sorter from './Sorter';
-import ViewToggler from './ViewToggler';
+// import ViewToggler from './ViewToggler';
 import { Router, Link } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
 import ErrorPage from './ErrorPage';
@@ -16,7 +16,10 @@ class ArticleList extends Component {
     isLoading: true,
     error: null,
     commentCountChange: null,
-    selectedArticleID: null
+    selectedArticleIdComments: null,
+    votesCountChange: null,
+    selectedArticleIdVotes: null,
+
   }
 
   componentDidUpdate(prevProps) {
@@ -50,9 +53,15 @@ class ArticleList extends Component {
       })
   }
 
-  updateCommentCountInArticleList = (numDifference, selectedArticleID) => {
+  updateCommentCountInArticleList = (numDifference, selectedArticleIdComments) => {
     this.setState(currentState => {
-      return { commentCountChange: Number(currentState.commentCountChange) + numDifference, selectedArticleID }
+      return { commentCountChange: Number(currentState.commentCountChange) + numDifference, selectedArticleIdComments }
+    })
+  }
+
+  updateVotesCountInArticleList = (numDifference, selectedArticleIdVotes) => {
+    this.setState(currentState => {
+      return { votesCountChange: Number(currentState.votesCountChange) + numDifference, selectedArticleIdVotes }
     })
   }
 
@@ -94,8 +103,9 @@ class ArticleList extends Component {
 
   render() {
 
-    const { articles, isLoading, error, commentCountChange, selectedArticleID } = this.state;
-    const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
+    const { articles, isLoading, error, commentCountChange, selectedArticleIdComments, votesCountChange, selectedArticleIdVotes } = this.state;
+    const { topic, author, loggedInUser, chosenTopic } = this.props
+    // const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
     return (
@@ -104,7 +114,6 @@ class ArticleList extends Component {
           <div className='topOfPage'>
             {topic && <h2>{chosenTopic.description}</h2>}
             {author && <h2>Articles by {author}</h2>}
-
             <div className='topBar'>
               {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
               {/* {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />} */}
@@ -113,11 +122,11 @@ class ArticleList extends Component {
           <div className='main'>
             <ul className='articleList'>
               {articles.map(article => {
-                return <Link key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} /></Link>
+                return <Link key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleIdComments={selectedArticleIdComments} selectedArticleIdVotes={selectedArticleIdVotes} votesCountChange={votesCountChange} /></Link>
               })}
             </ul>
             <Router className='selectedArticle'>
-              <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} />
+              <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} updateVotesCountInArticleList={this.updateVotesCountInArticleList} />
             </Router>
           </div>
         </div>

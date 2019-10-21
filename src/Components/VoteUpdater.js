@@ -27,14 +27,14 @@ class VoteUpdater extends Component {
       })
   }
   render() {
-    const { votes } = this.props;
+    const { votes, updateVotesCountInArticleList, id } = this.props;
     const { votesChange, error } = this.state;
 
     return (
       <>
-        <button onClick={() => this.updateVotes(1)} disabled={votesChange === 1}>VOTE UP</button>
+        <button onClick={() => { this.updateVotes(1); updateVotesCountInArticleList(1, id) }} disabled={votesChange === 1}>VOTE UP</button>
         VOTES : {votes + votesChange}
-        <button onClick={() => this.updateVotes(-1)} disabled={votesChange === -1}>VOTE DOWN</button>
+        <button onClick={() => { this.updateVotes(-1); updateVotesCountInArticleList(-1, id) }} disabled={votesChange === -1}>VOTE DOWN</button>
         {error && <ErrorPage error={error} />}
       </>
     );
