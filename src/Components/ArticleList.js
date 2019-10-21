@@ -57,11 +57,7 @@ class ArticleList extends Component {
   }
 
   postNewArticle = (title, newArticleTopic, body) => {
-    const { loggedInUser, topic } = this.props;
-    // console.log(loggedInUser, '<---in article list')
-
-    console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topicOnUrl')
-    // const articleTopic = newArticleTopic.split(' ').join('_')
+    const { loggedInUser } = this.props;
     api.sendNewArticle(title, newArticleTopic, body, loggedInUser)
       .then(newArticle => {
         this.setState(currentState => {
@@ -99,24 +95,20 @@ class ArticleList extends Component {
   render() {
 
     const { articles, isLoading, error, commentCountChange, selectedArticleID } = this.state;
-    // console.log(commentCountChange, selectedArticleID)
     const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
     if (isLoading) return <p>Loading...</p>
     if (error) return <ErrorPage error={error} />
     return (
-      // <div className='main'>
       <div className='mainBody'>
         <div className='leftArticles'>
           <div className='topOfPage'>
-            {/* {topic && <h2>Articles on {topic}</h2>} */}
             {topic && <h2>{chosenTopic.description}</h2>}
             {author && <h2>Articles by {author}</h2>}
 
             <div className='topBar'>
               {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
-              {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
+              {/* {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />} */}
             </div>
-            {/* <p className='numOfArticles'>{articles.length} Articles Found</p> */}
           </div>
           <div className='main'>
             <ul className='articleList'>
@@ -129,8 +121,6 @@ class ArticleList extends Component {
             </Router>
           </div>
         </div>
-
-        {/* </div> */}
         <TopArticlesList topic={topic} />
       </div>
     );
