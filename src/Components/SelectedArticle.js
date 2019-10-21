@@ -38,7 +38,7 @@ class SelectedArticle extends Component {
   fetchSelectedArticleById = () => {
     const { article_id } = this.props;
     api.getSelectedArticle(article_id).then((article) => {
-      this.setState({ article, isLoading: false, isLoadingNewComment: false })
+      this.setState({ article, isLoading: false, isLoadingNewComment: false, articleError: null, commentsError: null })
     })
       .catch(error => {
         const { data, status } = error.response
@@ -47,6 +47,8 @@ class SelectedArticle extends Component {
             msg: data.msg,
             status: status
           }, isLoading: false, isLoadingNewComment: false
+        }, () => {
+          console.log(this.state.articleError)
         })
       })
   }
