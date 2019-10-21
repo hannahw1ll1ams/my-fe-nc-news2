@@ -165,16 +165,19 @@ padding: 10px;
 
 
 .selectedArticle{
-  margin-top:30px;
-  margin-left:30px;
-  padding:20px;
+  /* margin-top:30px;
+  margin-left:30px; */
+  /* padding:20px;
   display:flex;
-  flex-direction: column;
-  width: 80%;
-  overflow: scroll;
-  max-height:80vh;
+  flex-direction: column; */
+  /* width: 80%; */
+  /* overflow: scroll;
+  max-height:80vh; */
   background-color: rgb(38, 40, 54);
   /* position: fixed; */
+  max-width:70%;
+  padding:0px;
+  margin:0px;
 }
 
 
@@ -185,17 +188,29 @@ padding: 10px;
 
 .articleBody-football{
       background-color: #778899;
+overflow: scroll;
+  max-height:80vh;
+    width: 100%;
+padding:20px;
       /* width:80%; */
 }
 
 .articleBody-coding{
   background-color:#DCDCDC;
-      /* width:80% */
+  overflow: scroll;
+  max-height:80vh;
+    width: 100%;
+    padding:20px;
+
 }
 
 .articleBody-cooking{
   background-color: #A9A9A9;
-      /* width:80% */
+  overflow: scroll;
+  max-height:80vh;
+    width: 100%;
+    padding:20px;
+
 }
 
 /* .selectedArticle-football{
