@@ -87,6 +87,10 @@ import '../css/allUsers.css'
 
 
 const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersError }) => {
+
+  const handleClick = () => {
+    window.scrollTo({ top: 0 });
+  }
   const filtered = users.filter(user => user.username !== username)
   const singleChosenUser = users.filter(user => user.username === username)
   // if (isLoadingChosenUser) return <p>Loading...</p>
@@ -111,7 +115,7 @@ const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersErro
         <h2 className='allUsersTitle'>OTHER USERS</h2>
         <ul className='otherUsersList'>
           {filtered.map(user => {
-            return <Link key={user.name} className='links' to={`/users/${user.username}`}>
+            return <Link key={user.name} className='links' to={`/users/${user.username}`} onClick={handleClick}>
               <li className='singleUser'>
                 <img className='usersImg' src={user.avatar_url} alt={user.name} />
                 <h2>{user.username}</h2>
