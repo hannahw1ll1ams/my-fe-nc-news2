@@ -134,7 +134,7 @@ padding-right:0px;
 /* padding: 10px;  */
   margin-bottom:10px;
       width:100%;
-min-width: 200px;
+min-width: 100px;
 
 }
 
@@ -196,14 +196,14 @@ position: sticky;
     max-width:30%;
   */
     max-width:70%;
-
+min-width: 70%;
   padding:0px;
   margin:0px;
 }
 
 
 .commentList{
-  max-height:90vh;
+  max-height:100vh;
   min-height: 20vh;
 }
 
@@ -215,6 +215,7 @@ position: sticky;
 padding:10px;
 margin-top: 32px;
 margin-left: 10px;
+min-width: 80%;
 /* margin-left: 0px; */
 
       /* width:80%; */
@@ -230,6 +231,7 @@ margin-top: 32px;
 /* margin-left: 20px; */
 margin-left: 10px;
 padding:10px;
+min-width: 80%;
 
 }
 
@@ -238,10 +240,9 @@ padding:10px;
 /* overflow: scroll; */
   max-height:900%;
     width: 95%;
-/* padding-left:10px; */
 margin-top: 32px;
-/* margin-left: 20px; */
 padding:10px;
+/* min-width: 80%; */
 
 margin-left: 10px;
 
