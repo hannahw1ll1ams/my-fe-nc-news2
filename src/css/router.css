@@ -41,9 +41,8 @@ align-items: center;
 .numOfArticles{
   text-align: center;
   /* background-color: #F0433E; */
-    width:90%;
+  width:90%;
   color: white;
-
 }
 
 .topBar {
@@ -52,7 +51,6 @@ align-items: center;
   flex-wrap:wrap;
   /* background-color: #F0433E; */
     padding-top: 30px; 
-
   /* margin:10px; */
   /* border-bottom-style: solid;
   border-bottom-color: black; */
@@ -62,6 +60,10 @@ align-items: center;
   /* width:100%; */
   /* border-bottom-color: rgb(69, 73, 88);
   border-bottom-style: solid; */
+}
+
+.sorter{
+background-color: azure;
 
 }
 
@@ -80,10 +82,12 @@ align-items: center;
   /* max-width: 1160px; */
   /* width: 1160px; */
 /* min-width: 300px; */
-/* max-width:3fr; */
+/* max-width:s3fr; */
 width:100%;
-margin-left:0px;
+/* margin-left:0px; */
 padding-left:0px;
+padding-right:0px;
+
 /* margin-top:0px; */
   /* background-color:aliceblue; */
   /* max-height:90vh; */
@@ -127,9 +131,10 @@ padding-left:0px;
   background-color:#778899;
   list-style: none;
   margin-top: 0px;
-padding: 10px; 
+/* padding: 10px;  */
   margin-bottom:10px;
       width:100%;
+min-width: 200px;
 
 }
 
@@ -137,9 +142,10 @@ padding: 10px;
   background-color: #A9A9A9;
   list-style: none;
     margin-top: 0px;
-    padding: 10px; 
+    /* padding: 10px;  */
   margin-bottom:10px;
       width:100%;
+min-width: 200px;
 
 }
 
@@ -148,34 +154,49 @@ padding: 10px;
   list-style: none;
     margin-top: 0px;
     width:100%;
-
+min-width: 200px;
   /* margin: 0 auto;  */
-  padding: 10px; 
+  /* padding: 10px;  */
   margin-bottom:10px;
 }
 .singleArticle-coding:hover{
   background-color: rgb(245, 190, 89);
+  width:100%;
 }
 .singleArticle-football:hover{
   background-color: rgb(245, 190, 89);
+    width:100%;
+
 }
 .singleArticle-cooking:hover{
   background-color: rgb(245, 190, 89);
+    width:100%;
+
 }
 
 
 .selectedArticle{
-  /* margin-top:30px;
-  margin-left:30px; */
-  /* padding:20px;
+  margin-top:30px;
+  margin-left:30px;
+  /* padding:20px; */
   display:flex;
-  flex-direction: column; */
+  flex-direction: column;
+  align-items: flex-end;
   /* width: 80%; */
-  /* overflow: scroll;
-  max-height:80vh; */
-  background-color: rgb(38, 40, 54);
-  /* position: fixed; */
-  max-width:70%;
+  overflow: scroll;
+  max-height:100vh;
+    background-color:rgb(6, 9, 27);
+    /* background-color:white; */
+
+position: sticky;
+  /* overflow-y: hidden; */
+
+  top: 20px;;
+  /* right:40px; 
+    max-width:30%;
+  */
+    max-width:70%;
+
   padding:0px;
   margin:0px;
 }
@@ -188,28 +209,41 @@ padding: 10px;
 
 .articleBody-football{
       background-color: #778899;
-overflow: scroll;
-  max-height:80vh;
-    width: 100%;
-padding:20px;
+/* overflow: scroll; */
+  max-height:100%;
+    width: 95%;
+padding:10px;
+margin-top: 32px;
+margin-left: 10px;
+/* margin-left: 0px; */
+
       /* width:80%; */
 }
 
 .articleBody-coding{
   background-color:#DCDCDC;
-  overflow: scroll;
-  max-height:80vh;
-    width: 100%;
-    padding:20px;
+/* overflow: scroll; */
+  max-height:100%;
+    width: 95%;
+/* padding-left:10px; */
+margin-top: 32px;
+/* margin-left: 20px; */
+margin-left: 10px;
+padding:10px;
 
 }
 
 .articleBody-cooking{
   background-color: #A9A9A9;
-  overflow: scroll;
-  max-height:80vh;
-    width: 100%;
-    padding:20px;
+/* overflow: scroll; */
+  max-height:900%;
+    width: 95%;
+/* padding-left:10px; */
+margin-top: 32px;
+/* margin-left: 20px; */
+padding:10px;
+
+margin-left: 10px;
 
 }
 

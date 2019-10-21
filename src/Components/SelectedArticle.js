@@ -37,7 +37,7 @@ class SelectedArticle extends Component {
   }
 
   updateIsShowingComments = () => {
-    this.setState({ isShowingComments: false }
+    this.setState({ isShowingComments: false, messageToggle: true }
     )
   }
 
