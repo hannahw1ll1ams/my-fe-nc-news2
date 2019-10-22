@@ -28,6 +28,7 @@ border-right-color: rgb(69, 73, 88);
   margin-top: 0px;
   border-top-right-radius: 15px;
   height:100%;
+
 }
 
 .titleNC {
@@ -52,15 +53,27 @@ border-right-color: rgb(69, 73, 88);
 .who {
   color: red;
   padding-left: 2vw;
+  text-decoration: none;
+
 }
 
 .logged {
   color: lime;
-  padding-left: 2vw;
+  /* padding-left: 2vw; */
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.loggedInAs{
+    padding-left: 2vw;
+  color: grey;
+
 }
 
 .change{
   padding-left: 2vw;
+    color: grey;
+
 }
 
 .Users{
