@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import * as api from '../api'
 import ErrorPage from './ErrorPage';
 
+import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md";
+import '../css/router.css'
+
+
 class VoteUpdater extends Component {
   state = {
     votesChange: 0,
@@ -32,12 +36,15 @@ class VoteUpdater extends Component {
     const { votesChange, error } = this.state;
 
     return (
-      <>
-        <button onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1}>VOTE UP</button>
+      <div className='votingButtons'>
+        <MdArrowDropUp onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1} />
+        {votes + votesChange}
+        <MdArrowDropDown onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1} />
+        {/* <button onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1}>VOTE UP</button>
         VOTES : {votes + votesChange}
-        <button onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1}>VOTE DOWN</button>
+        <button onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1}>VOTE DOWN</button> */}
         {error && <ErrorPage error={error} />}
-      </>
+      </div>
     );
   }
 }

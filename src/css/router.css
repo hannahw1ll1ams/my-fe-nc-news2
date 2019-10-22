@@ -53,7 +53,7 @@ border-right-color: rgb(69, 73, 88);
 }
 
 .sortButton{
-  background-color: rgb(43, 84, 235);
+  background-color: rgb(79, 166, 224);
   border: none;
 }
 
@@ -187,6 +187,7 @@ border-right-color: rgb(69, 73, 88);
 .articleBody-football{
   background-color: #778899;
   overflow: scroll;
+  min-height: 700px;
   max-height:100%;
   width: 95%;
   padding:10px;
@@ -195,6 +196,8 @@ border-right-color: rgb(69, 73, 88);
   min-width: 80%;
   /* margin-left: 0px; */
   /* width:80%; */
+/* display: flex;
+flex-direction: column; */
 }
 
 .articleBody-coding{
@@ -202,6 +205,8 @@ border-right-color: rgb(69, 73, 88);
   overflow: scroll;
   max-height:100%;
   width: 95%;
+    min-height: 700px;
+
   /* padding-left:10px; */
   margin-top: 32px;
   /* margin-left: 20px; */
@@ -214,6 +219,8 @@ border-right-color: rgb(69, 73, 88);
   background-color: #A9A9A9;
   overflow: scroll;
   max-height:900%;
+    min-height: 700px;
+
   width: 95%;
   margin-top: 32px;
   padding:10px;
@@ -346,4 +353,19 @@ textarea{
 
 .sortButton{
   height: 22px;
+}
+
+.topicAndTitle{
+  color: rgb(73, 147, 197);
+    font-size: 60px;
+
+}
+
+.postedBy{
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.votingButtons{
+    color: #FAAC1C;
 }
