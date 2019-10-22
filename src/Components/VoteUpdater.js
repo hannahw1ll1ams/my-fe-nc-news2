@@ -9,7 +9,8 @@ class VoteUpdater extends Component {
   }
 
   updateVotes = (votesDifference) => {
-    const { id, item } = this.props;
+    const { id, item, updateVotesCountInArticleList } = this.props;
+    item === 'articles' && updateVotesCountInArticleList(votesDifference, id)
     this.setState(currentState => {
       return { votesChange: currentState.votesChange + votesDifference, error: null }
     })
@@ -27,14 +28,14 @@ class VoteUpdater extends Component {
       })
   }
   render() {
-    const { votes, updateVotesCountInArticleList, id } = this.props;
+    const { votes } = this.props;
     const { votesChange, error } = this.state;
 
     return (
       <>
-        <button onClick={() => { this.updateVotes(1); updateVotesCountInArticleList(1, id) }} disabled={votesChange === 1}>VOTE UP</button>
+        <button onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1}>VOTE UP</button>
         VOTES : {votes + votesChange}
-        <button onClick={() => { this.updateVotes(-1); updateVotesCountInArticleList(-1, id) }} disabled={votesChange === -1}>VOTE DOWN</button>
+        <button onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1}>VOTE DOWN</button>
         {error && <ErrorPage error={error} />}
       </>
     );
