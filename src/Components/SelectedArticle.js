@@ -7,6 +7,7 @@ import DeleteButton from './DeleteButton';
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
 import moment from 'moment'
+import LoadingPage from './LoadingPage';
 
 
 class SelectedArticle extends Component {
@@ -128,7 +129,7 @@ class SelectedArticle extends Component {
   render() {
     const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, commentCountChange, isLoadingNewComment } = this.state;
     const { loggedInUser, deleteElementByClick, updateVotesCountInArticleList } = this.props;
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <LoadingPage />
     if (articleError) return <ErrorPage error={articleError} />
     const { title, author, topic, body, votes, article_id, comment_count, created_at } = article
     return (
@@ -140,9 +141,11 @@ class SelectedArticle extends Component {
 
           <p>{body}</p>
           {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
-          {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" updateVotesCountInArticleList={updateVotesCountInArticleList} />}
-          <br />
-          <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</button>
+          <div className='votesAndCommentsButtons'>
+            {author === loggedInUser ? <p>Votes : {votes}</p> : <VoteUpdater votes={votes} id={article_id} item="articles" updateVotesCountInArticleList={updateVotesCountInArticleList} />}
+            {/* <br /> */}
+            <button onClick={this.handleClick}>{messageToggle === true ? <p>Show Comments</p> : <p>Hide Comments</p>} {commentCountChange ? Number(comment_count) + Number(commentCountChange) : comment_count}</button>
+          </div>
           {isShowingComments === true && <CommentsByArticleList updateCommentCount={this.updateCommentCount} postNewComment={this.postNewComment} comments={comments} loggedInUser={loggedInUser} article_id={article_id} deleteElementByClick={this.deleteElementByClick} commentsError={commentsError} addAndDeleteError={addAndDeleteError} isLoadingNewComment={isLoadingNewComment} updateIsLoadingNewComment={this.updateIsLoadingNewComment} />}
           {/* <button onClick={this.handleNextClick}>PREV</button>
         <button onClick={this.handleNextClick}>NEXT</button> */}

@@ -218,7 +218,7 @@ flex-direction: column; */
 .articleBody-cooking{
   background-color: #A9A9A9;
   overflow: scroll;
-  max-height:900%;
+  max-height:100%;
     min-height: 700px;
 
   width: 95%;
@@ -348,11 +348,17 @@ textarea{
 .sorterElement{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width:100%;
 }
+
 
 .sortButton{
   height: 22px;
+  margin-left: 10px;
+    margin-right: 10px;
+border-radius: 5px;
+  /* border-top-left-radius: 10px; */
 }
 
 .topicAndTitle{
@@ -368,4 +374,15 @@ textarea{
 
 .votingButtons{
     color: #FAAC1C;
+}
+
+
+.votesAndCommentsStats{
+  display: flex;
+  justify-content: space-between;
+}
+
+.votesAndCommentsButtons{
+  display: flex;
+  justify-content: space-evenly;
 }

@@ -8,6 +8,7 @@ import { Router, Link } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
+import LoadingPage from './LoadingPage'
 
 
 class ArticleList extends Component {
@@ -106,7 +107,7 @@ class ArticleList extends Component {
     const { articles, isLoading, error, commentCountChange, selectedArticleIdComments, votesCountChange, selectedArticleIdVotes } = this.state;
     const { topic, author, loggedInUser, chosenTopic } = this.props
     // const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <LoadingPage />
     if (error) return <ErrorPage error={error} />
     return (
       <div className='mainBody'>

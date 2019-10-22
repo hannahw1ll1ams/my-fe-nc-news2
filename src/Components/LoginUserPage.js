@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from '@reach/router'
 import ErrorPage from './ErrorPage';
 import '../css/homepage.css'
+import LoadingPage from './LoadingPage'
 
 const LoginUserPage = ({ users, updateLoggedInUser, isLoadingUsers, usersError, loggedInUser }) => {
   return (
     <>
-      {isLoadingUsers ? <p>Loading Users...</p> : usersError ? <ErrorPage error={usersError} /> :
+      {isLoadingUsers ? <LoadingPage /> : usersError ? <ErrorPage error={usersError} /> :
         <>
           <ul className='userList'>
             {users.map(user => {

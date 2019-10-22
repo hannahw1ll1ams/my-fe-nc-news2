@@ -2,6 +2,7 @@ import React from 'react';
 import ErrorPage from './ErrorPage';
 import { Link } from '@reach/router'
 import '../css/allUsers.css'
+import LoadingPage from './LoadingPage';
 // import * as api from '../api'
 
 
@@ -95,7 +96,7 @@ const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersErro
   const singleChosenUser = users.filter(user => user.username === username)
   // if (isLoadingChosenUser) return <p>Loading...</p>
   // if (error) return <ErrorPage error={error} />
-  if (isLoadingUsers) return <p>Loading...</p>
+  if (isLoadingUsers) return <LoadingPage />
   if (usersError) return <ErrorPage error={usersError} />
   return (
     <div className='allUsersPage'>

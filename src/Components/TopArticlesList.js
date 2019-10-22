@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as api from '../api'
 import ErrorPage from './ErrorPage';
+import LoadingPage from './LoadingPage';
 
 class TopArticlesList extends Component {
   state = {
@@ -46,7 +47,7 @@ class TopArticlesList extends Component {
   render() {
     const { topic } = this.props;
     const { topFive, sort_by, isLoading, error } = this.state;
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <LoadingPage />
     if (error) return <ErrorPage error={error} />
     return (
       <div className='rightSide'>
