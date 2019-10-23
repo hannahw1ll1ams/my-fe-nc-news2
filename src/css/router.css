@@ -75,7 +75,7 @@ border-right-color: rgb(69, 73, 88);
   /* margin-left:0px; */
   padding-left:0px;
   padding-right:0px;
-  /* margin-top:0px; */
+  margin-top:32px;
   /* background-color:aliceblue; */
   /* max-height:90vh; */
   /* overflow: scroll; */
@@ -116,44 +116,55 @@ border-right-color: rgb(69, 73, 88);
   background-color:#778899;
   list-style: none;
   margin-top: 0px;
-  /* padding: 10px;  */
+  padding: 10px; 
   margin-bottom:10px;
-  width:100%;
+  width:90%;
   min-width: 100px;
+  margin-right: 0px;
+    /* box-sizing:border-box; */
+
 }
 .singleArticle-cooking {
   background-color: #A9A9A9;
   list-style: none;
   margin-top: 0px;
-  /* padding: 10px;  */
+  padding: 10px; 
   margin-bottom:10px;
-  width:100%;
+  width:90%;
   min-width: 200px;
+    /* box-sizing:border-box; */
+
 }
 .singleArticle-coding {
   background-color:#DCDCDC;
   list-style: none;
   margin-top: 0px;
-  width:100%;
+  width:90%;
   min-width: 200px;
   /* margin: 0 auto;  */
-  /* padding: 10px;  */
+  padding-left: 10px; 
+  padding-right: 10px; 
+  padding-top: 5px; 
+  padding-bottom: 5px; 
+
   margin-bottom:10px;
+    /* box-sizing:border-box; */
+
 }
 
 .singleArticle-coding:hover{
   background-color: rgb(245, 190, 89);
-  width:100%;
 }
 .singleArticle-football:hover{
   background-color: rgb(245, 190, 89);
-    width:100%;
 }
 .singleArticle-cooking:hover{
   background-color: rgb(245, 190, 89);
-    width:100%;
 }
 
+.allLinks{
+    text-decoration: none;
+}
 
 .selectedArticle{
   margin-top:30px;

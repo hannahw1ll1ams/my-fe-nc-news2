@@ -123,7 +123,7 @@ class ArticleList extends Component {
           <div className='main'>
             <ul className='articleList'>
               {articles.map(article => {
-                return <Link key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleIdComments={selectedArticleIdComments} selectedArticleIdVotes={selectedArticleIdVotes} votesCountChange={votesCountChange} /></Link>
+                return <Link className='allLinks' key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleIdComments={selectedArticleIdComments} selectedArticleIdVotes={selectedArticleIdVotes} votesCountChange={votesCountChange} /></Link>
               })}
             </ul>
             <Router className='selectedArticle'>
