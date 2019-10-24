@@ -29,7 +29,6 @@
   align-items: flex-start;
 }
 
-
 .numOfArticles{
   text-align: center;
   width:90%;
@@ -44,8 +43,6 @@
   min-width:100%;
   background-color: rgb(69, 73, 88);
 }
-
-
 
 .sortButton{
   background-color: rgb(79, 166, 224);
@@ -67,7 +64,6 @@
   /* min-width: 300px; */
   /* max-width:s3fr; */
   width:100%;
-
   /* margin-left:0px; */
   padding-left:0px;
   padding-right:0px;
@@ -92,13 +88,9 @@
   border-left-style: solid; */
 }
 
-
 @media screen and (max-width: 1414px) {
   .rightSide { display: none; }   /* hide it elsewhere */
-
 }
-
-
 
 .topArticles{
   background-color: rgb(69, 73, 88);
@@ -126,8 +118,7 @@
   width:100%;
   min-width: 90px;
   margin-right: 0px;
-    box-sizing:border-box;
-
+  box-sizing:border-box;
 }
 .singleArticle-cooking {
   background-color: #A9A9A9;
@@ -137,28 +128,25 @@
   margin-bottom:10px;
   width:100%;
   min-width: 90px;
-    /* box-sizing:border-box; */
-    box-sizing:border-box;
-
+  /* box-sizing:border-box; */
+  box-sizing:border-box;
 }
 .singleArticle-coding {
   background-color:#DCDCDC;
   list-style: none;
   margin-top: 0px;
   /* width:90%; */
-    /* width:98%; */
+  /* width:98%; */
   width:100%;
-    box-sizing:border-box;
-
+  box-sizing:border-box;
   min-width: 100px;
   /* margin: 0 auto;  */
   /* padding-left: 10px; 
   padding-right: 10px; 
   padding-top: 5px; 
   padding-bottom: 5px;  */
-
   margin-bottom:10px;
-padding:10px;
+  padding:10px;
 }
 
 .singleArticle-coding:hover{
@@ -194,10 +182,6 @@ padding:10px;
   margin:0px;
 }
 
-
-
-
-
 .commentList{
   max-height:100vh;
   margin-top: 20px;
@@ -218,7 +202,7 @@ padding:10px;
   /* margin-left: 10px; */
   min-width: 80%;
   /* margin-left: 0px; */
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .articleBody-coding{
@@ -226,8 +210,7 @@ box-sizing: border-box;
   overflow: scroll;
   max-height:100%;
   width: 95%;
-    min-height: 700px;
-
+  min-height: 700px;
   /* padding-left:10px; */
   margin-top: 32px;
   /* margin-left: 20px; */
@@ -241,8 +224,7 @@ box-sizing: border-box;
   background-color: #A9A9A9;
   overflow: scroll;
   max-height:100%;
-    min-height: 700px;
-
+  min-height: 700px;
   width: 95%;
   margin-top: 32px;
   padding:40px;
@@ -270,7 +252,7 @@ textarea{
   width:100%;
   height: 100px;
   /* background-color:#2C3142; */
-    background-color:white;
+  background-color:white;
 
   border: none;
   overflow: auto;
@@ -375,19 +357,17 @@ textarea{
   width:100%;
 }
 
-
 .sortButton{
   height: 22px;
   margin-left: 10px;
-    margin-right: 10px;
-border-radius: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
   /* border-top-left-radius: 10px; */
 }
 
 .topicAndTitle{
   color: rgb(73, 147, 197);
-    font-size: 60px;
-
+  font-size: 60px;
 }
 
 .postedBy{
@@ -396,9 +376,8 @@ border-radius: 5px;
 }
 
 .votingButtons{
-    color: #FAAC1C;
+  color: #FAAC1C;
 }
-
 
 .votesAndCommentsStats{
   display: flex;
@@ -416,7 +395,6 @@ border-radius: 5px;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  /* padding-left: 100px; */
 } 
 /* !!!!!! can change this below width */
 .mainBody{
@@ -426,22 +404,16 @@ width:75vw;
   max-width:100%;
   min-width: 100%;
     position: relative;
-
 }
-
 .articleBody-cooking{
   width:100%;
-  /* padding:0px; */
-
 }
 .articleBody-coding{
   width:100%;
-  /* padding:0px; */
 
 }
 .articleBody-football{
   width:100%;
-  /* padding:0px; */
 }
 /* .articleList{
   width:90%;
@@ -492,17 +464,12 @@ width:75vw;
 }
 .articleBody-cooking{
     width: 100%;
-  /* padding:0px; */
-
 }
 .articleBody-coding{
     width: 100%;
-  /* padding:0px; */
-
 }
 .articleBody-football{
     width: 100%;
-  /* padding:0px; */
 }
 .articleList{
   width:100%;
