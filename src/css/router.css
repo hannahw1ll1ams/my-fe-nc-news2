@@ -27,7 +27,6 @@
   width:90%;
   justify-content: stretch;
   align-items: flex-start;
-
 }
 
 
@@ -44,12 +43,9 @@
   padding-top: 10px; 
   min-width:100%;
   background-color: rgb(69, 73, 88);
-  /* border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-border-right-color: rgb(69, 73, 88);
-  border-right-style: solid; */
-  /* heighst:30px */
 }
+
+
 
 .sortButton{
   background-color: rgb(79, 166, 224);
@@ -99,9 +95,7 @@ border-right-color: rgb(69, 73, 88);
 
 @media screen and (max-width: 1414px) {
   .rightSide { display: none; }   /* hide it elsewhere */
-  .App{
-    background-color: blue;
-  }
+
 }
 
 
@@ -415,18 +409,91 @@ border-radius: 5px;
   justify-content: space-evenly;
 }
 
-@media screen and (min-width: 591px) and (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
 .main{
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-      background-color: olive;
   /* padding-left: 100px; */
 } 
+.mainBody{
+width:65vw;
+}
 .selectedArticle{
   max-width:100%;
   min-width: 100%;
+    position: relative;
+
+}
+/* .mainBody{
+  max-width:90%;
+  min-width: 90%;
+}
+.selectedArticle{
+  max-width:90%;
+  min-width: 90%;
+  position: relative;
+}
+.articleBody-cooking{
+  width:90%;
+  padding:0px;
+
+}
+.articleBody-coding{
+  width:90%;
+  padding:0px;
+
+}
+.articleBody-football{
+  width:90%;
+  padding:0px;
+}
+.articleList{
+  width:90%;
+} */
+}
+
+
+
+
+@media screen and (max-width: 590px) {
+.mainBody{
+  max-width:100%;
+  min-width: 100%;
+}  
+  .topOfPage{
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding-top: 5px; 
+    background-color: rgb(6, 9, 27);
+  }
+  .topBar{
+    background-color: rgb(6, 9, 27);
+    margin-left: 5px;
+  }
+  .selectedArticle{
+    /* margin-top:30px; */
+  /* margin-left:30px; */
+  /* padding:20px; */
+  display:flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* width: 80%; */
+  overflow: hidden;
+  max-height:100%;
+  background-color:rgb(6, 9, 27);
+  position: relative;
+  /* top: 20px;; */
+  max-width:100%;
+  min-width: 100%;
+  padding:0px;
+  margin:0px;
+  }
+  .selectedArticle{
+  width:100%;
+  width:100%;
   position: relative;
 }
 .articleBody-cooking{
@@ -442,6 +509,11 @@ border-radius: 5px;
 .articleBody-football{
     width: 100%;
   padding:0px;
+}
+.articleList{
+  width:100%;
+}
+}
 
-}
-}
+
+

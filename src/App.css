@@ -32,24 +32,32 @@ body {
 /* On screens that are 600px or less, set the background color to olive */
 
 
-@media screen and (max-width: 590px) {
-  .App {
-    background-color: aquamarine;
-    display: flex;
-    flex-direction: column;
-  }
-  .sideBar{
-    position: relative;
-    /* width:100vw; */
-  height:20px;
-  }
-}
+
+
 
 
 .router{
   grid-area:router;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   /* padding-left: 100px; */
 } 
 
+@media screen and (max-width: 1000px) {
+  .router {
+    grid-area: router;
+    display: flex;
+    justify-content: center;
+    padding-left: 100px;
+}
+}
+
+@media screen and (max-width: 590px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  .router {
+    padding-left: 0px;
+}
+}

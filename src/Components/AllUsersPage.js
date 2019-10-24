@@ -101,7 +101,7 @@ const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersErro
   return (
     <div className='allUsersPage'>
       <div className='loggedInUser'>
-        {username === loggedInUser ? <h2>YOU ARE</h2> : <h2>INTRODUCING</h2>}
+        {username === loggedInUser ? <h2 className='introText'>YOU ARE</h2> : <h2 className='introText'>INTRODUCING</h2>}
         <div className='selectedUserCard'>
           <div>
             <h1> {singleChosenUser[0].name}</h1>
