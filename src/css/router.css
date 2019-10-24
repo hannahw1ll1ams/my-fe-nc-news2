@@ -20,6 +20,7 @@
   border-bottom-left-radius: 15px;
   border-color: rgb(69, 73, 88);
   border-style: solid;
+
 }
 .main{
   display: flex;
@@ -42,6 +43,10 @@
   padding-top: 10px; 
   min-width:100%;
   background-color: rgb(69, 73, 88);
+  box-sizing:border-box;
+padding-left: 5px;
+padding-bottom: 5px;
+
 }
 
 .sortButton{
@@ -173,7 +178,9 @@
   /* width: 80%; */
   /* overflow: scroll; */
   max-height:95vh;
-  background-color:rgb(6, 9, 27);
+  /* background-color:rgb(6, 9, 27); */
+  background-color: rgb(247, 247, 248);
+
   position: sticky;
   top: 20px;;
   max-width:70%;

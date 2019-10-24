@@ -137,7 +137,7 @@ class SelectedArticle extends Component {
         <div className={`articleBody-${topic}`}>
           {loggedInUser === author ? <p className='postedBy'>Posted by <Link to={`/users/${author}`}>you</Link> {moment(created_at).fromNow()}</p> :
             <p className='postedBy'>Posted by <Link to={`/users/${author}`} className='allLinks'>{author}</Link> {moment(created_at).fromNow()}</p>}
-          <h2 className='topicAndTitle'>{topic}: {title}</h2>
+          <h2 className='topicAndTitle'>{topic} / {title}</h2>
 
           <p>{body}</p>
           {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}

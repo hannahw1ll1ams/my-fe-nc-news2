@@ -16,8 +16,8 @@ const SideBar = ({ loggedInUser, updateLoggedInUser, slugs, isLoadingTopics, top
       <h1 className='titleNC'>NC</h1>
       <div className='bottomList'>
 
-        {loggedInUser && <h2 className='Users'><Link className='allLinks' to={`/users/${loggedInUser}`}>USERS</Link></h2>}
-        {loggedInUser && <h2 className='titleNEWS'><Link className='allLinks' to='/articles'>NEWS</Link></h2>}
+        {loggedInUser && <Link className='allLinks' to={`/users/${loggedInUser}`}><h2 className='Users'>USERS</h2></Link>}
+        {loggedInUser && <Link className='allLinks' to='/articles'><h2 className='titleNEWS'>NEWS</h2></Link>}
         {loggedInUser && <TopicsList slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
       </div>
 

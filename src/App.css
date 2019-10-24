@@ -24,7 +24,9 @@
   min-height: 100vh;
 }
 body {
-    background-color: rgb(6, 9, 27);
+    /* background-color: rgb(6, 9, 27); */
+        background-color: rgb(247, 247, 248);
+
   }
 
 

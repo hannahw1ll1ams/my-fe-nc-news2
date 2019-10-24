@@ -21,7 +21,6 @@ border-right-color: rgb(69, 73, 88);
   margin-top: 0px;
   border-top-right-radius: 15px;
   height:100%;
-
 }
 
 .titleNC {
@@ -33,7 +32,9 @@ border-right-color: rgb(69, 73, 88);
   margin:0;
   font-size: 9vw;
   color: #FAAC1C;
-  background-color:rgb(6, 9, 27);
+  /* background-color:rgb(6, 9, 27); */
+    background-color: rgb(247, 247, 248);
+
   /* margin-right: 5px; */
     /* background-color: rgb(224, 198, 63); */
 
@@ -42,6 +43,7 @@ border-right-color: rgb(69, 73, 88);
 .titleNEWS{
   height:auto;
   padding-left: 2vw;
+color: white;
 
 }
 
@@ -62,54 +64,84 @@ border-right-color: rgb(69, 73, 88);
 .loggedInAs{
     padding-left: 2vw;
   color: grey;
-
 }
 
 .change{
   padding-left: 2vw;
     color: grey;
-text-align: center;
 }
 
 .Users{
   padding-left: 2vw;
     height:auto;
+color: white;
 
 }
 
 .topicsList {
-  padding-left: 2vw;
+  /* padding-left: 2vw; */
   /* padding-right: 2vw; */
   overflow: scroll;
   background-color:  rgb(69, 73, 88);
     list-style: none;
   text-decoration: none;
-
+  margin-top:10px;
+    margin-bottom:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
+
+/* .colorBox-football{
+  height: auto;
+  width: 15px;
+background-color:#778899;
+}
+.colorBox-coding{
+  height: auto;
+  width: 15px;
+background-color:#DCDCDC;;
+}
+.colorBox-cooking{
+  height: auto;
+  width: 15px;
+background-color:#A9A9A9;;
+} */
 
 .List{
   /* height:50vh; */
-  overflow: scroll;
   text-decoration: none;
-  background-color: rgb(69, 73, 88);
-    text-decoration: none;
+  margin-top:10px;
+    margin-bottom:10px;
 
 }
 
-/* .topics-cooking{
-  background-color: #A9A9A9;
-  text-decoration: none;
+.topics-cooking{
+  /* background-color: #A9A9A9; */
+  margin-top:10px;
+  margin-bottom:10px;
+  color: white;
+  display: flex;
+  justify-content:space-between;
 }
 
 .topics-football{
-    background-color:#778899;
-  text-decoration: none;
+    /* background-color:#778899; */
+  margin-top:10px;
+  margin-bottom:10px;
+  color: white;
+  display: flex;
+  justify-content:space-between;
 }
 
 .topics-coding{
-    background-color:#DCDCDC;
-  text-decoration: none;
-} */
+    /* background-color:#DCDCDC; */
+  margin-top:10px;
+  margin-bottom:10px;
+  color: white;
+  display: flex;
+  justify-content:space-between;
+}
 
 .allLinks{
   text-decoration: none;
@@ -169,7 +201,8 @@ text-align: center;
   margin:0;
   font-size: 9vw;
   color: #FAAC1C;
-  background-color:rgb(6, 9, 27);
+  /* background-color:rgb(6, 9, 27); */
+
   /* margin-right: 5px; */
     /* background-color: rgb(224, 198, 63); */
 }
