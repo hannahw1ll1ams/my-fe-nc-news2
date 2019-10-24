@@ -39,7 +39,7 @@ body {
 .router{
   grid-area:router;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   /* padding-left: 100px; */
 } 
 
