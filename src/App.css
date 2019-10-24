@@ -42,13 +42,13 @@ body {
   justify-content: center;
   /* padding-left: 100px; */
 } 
-
+/* !!!!!! can change this padding */
 @media screen and (max-width: 1000px) {
   .router {
     grid-area: router;
     display: flex;
     justify-content: center;
-    padding-left: 100px;
+    padding-left: 50px;
 }
 }
 

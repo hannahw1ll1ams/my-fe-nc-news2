@@ -417,8 +417,9 @@ border-radius: 5px;
   align-items: center;
   /* padding-left: 100px; */
 } 
+/* !!!!!! can change this below width */
 .mainBody{
-width:65vw;
+width:75vw;
 }
 .selectedArticle{
   max-width:100%;
@@ -426,32 +427,24 @@ width:65vw;
     position: relative;
 
 }
-/* .mainBody{
-  max-width:90%;
-  min-width: 90%;
-}
-.selectedArticle{
-  max-width:90%;
-  min-width: 90%;
-  position: relative;
-}
+
 .articleBody-cooking{
-  width:90%;
+  width:100%;
   padding:0px;
 
 }
 .articleBody-coding{
-  width:90%;
+  width:100%;
   padding:0px;
 
 }
 .articleBody-football{
-  width:90%;
+  width:100%;
   padding:0px;
 }
-.articleList{
+/* .articleList{
   width:90%;
-} */
+}  */
 }
 
 
