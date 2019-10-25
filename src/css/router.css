@@ -103,7 +103,7 @@ padding-bottom: 5px;
   border-left-style: solid; */
 }
 
-@media screen and (max-width: 1414px) {
+@media screen and (max-width: 1200px) {
   .rightSide { display: none; }   /* hide it elsewhere */
 }
 
@@ -209,7 +209,7 @@ padding-bottom: 5px;
   align-items: flex-end;
   /* width: 80%; */
   /* overflow: scroll; */
-  height:93vh;
+  max-height:93vh;
   background-color:rgb(6, 9, 27);
   /* background-color: rgb(247, 247, 248); */
 
