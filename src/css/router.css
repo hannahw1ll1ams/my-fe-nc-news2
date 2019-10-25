@@ -114,8 +114,30 @@ padding-bottom: 5px;
   font-size: 15px;
   /* align-content: center; */
   /* padding-right: 2vw; */
-  margin:10px;
+  margin-top:10px;
+  margin-left:5px;
+
   padding-right: 20px;
+}
+.orderedList{
+  padding:5;
+}
+
+.sortByVotesOrComments{
+  width:100%;
+  margin-left: 15px;
+  /* display: flex;
+  justify-content: center; */
+}
+.TopArticlesTitle{
+  width:100%;
+  margin-left: 12px;
+}
+
+.topOfRight{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .activeUsers {
@@ -414,17 +436,33 @@ textarea{
   margin-bottom: 30px;
 }
 .upButton{
-  color:white;
+  color:black;
+  /* background-color: Transparent; */
+    /* background-repeat:no-repeat; */
+    border: none;
+    cursor:pointer;
+    overflow: hidden; 
+    margin-right: 10px;
+    /* height:30px; */
 }
 .upButton:hover{
 color:#FAAC1C;
 }
 .downButton{
-  color:white;
+  color:black;
+  /* background-color: Transparent; */
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden; 
+        margin-left: 10px;
+
 }
 .downButton:hover{
 color:#FAAC1C;
 }
+
+
 
 .votesAndCommentsStats{
   display: flex;

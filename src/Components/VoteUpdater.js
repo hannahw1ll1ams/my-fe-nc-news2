@@ -37,13 +37,14 @@ class VoteUpdater extends Component {
 
     return (
       <div className='votingButtons'>
-        <div className='upButton'>
-          <MdArrowDropUp size={50} onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1} />
-        </div>
+        {/* {votesChange === 1 && <MdArrowDropUp size={50} className='active' onClick={() => { this.updateVotes(1) }} />} */}
+        <button className='upButton' onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1}>
+          <MdArrowDropUp size={40} />
+        </button>
         {votes + votesChange}
-        <div className='downButton'>
-          <MdArrowDropDown size={50} onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1} />
-        </div>
+        <button className='downButton' onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1}>
+          <MdArrowDropDown size={40} />
+        </button>
         {/* <button onClick={() => { this.updateVotes(1) }} disabled={votesChange === 1}>VOTE UP</button>
         VOTES : {votes + votesChange}
         <button onClick={() => { this.updateVotes(-1) }} disabled={votesChange === -1}>VOTE DOWN</button> */}

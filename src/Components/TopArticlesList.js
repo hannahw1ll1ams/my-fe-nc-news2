@@ -52,14 +52,16 @@ class TopArticlesList extends Component {
     return (
       <div className='rightSide'>
         <div className='topArticles'>
-          <h3>TOP {topic} ARTICLES</h3>
-          <form onChange={this.handleChange}>
-            <select>
-              <option value='votes'>By Votes</option>
-              <option value='comment_count'>By Comment Count</option>
-            </select>
-          </form>
-          <ol>
+          <div className='topOfRight'>
+            <h3 className='TopArticlesTitle'>TOP {topic} ARTICLES</h3>
+            <form className='sortByVotesOrComments' onChange={this.handleChange}>
+              <select>
+                <option value='votes'>By Votes</option>
+                <option value='comment_count'>By Comment Count</option>
+              </select>
+            </form>
+          </div>
+          <ol className='orderedList'>
             {topFive.map(item => {
               return <li key={item.article_id}>
                 <p>{item.title}</p>
