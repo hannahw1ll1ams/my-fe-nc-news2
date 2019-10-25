@@ -2,6 +2,8 @@
 .homepage {
   display:flex;
   flex-direction: column;
+      max-width:400px;
+  min-width: 500px; 
 }
 
 .userCreator{
@@ -9,66 +11,83 @@
   flex-direction: column;
   align-content: stretch;
   min-width: 200px;
-  background-color: rgb(38, 40, 54);
+  /* background-color: rgb(38, 40, 54); */
+    margin-top: 20px;
+
   margin-bottom: 20px;
+  /* color: white; */
+  color: #FAAC1C;
+
+}
+
+.userCreatorForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+    border-color: rgb(69, 73, 88);
+  border-style: solid;
+  margin-top: 10px;
+    /* border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px; */
+  background-color:#2C3142;
+
 }
 
 .username{
   width: 100%;
-  background-color:#2C3142;
+  background-color:white;
   border: none;
   overflow: auto;
   outline: none;
 }
 .avatarurl{
   width: 100%;
-    background-color:#2C3142;
+    background-color:white;
 border: none;
     overflow: auto;
     outline: none;
 }
 .name{
   width: 100%;
-    background-color:#2C3142;
+    background-color:white;
 border: none;
     overflow: auto;
     outline: none;
 }
 
-.addUserButton{
-  align-self: flex-end;
+.submitUserButton{
+  align-self: center;
       overflow: auto;
     outline: none;
 }
 
-.adduser{
+/* .adduser{
   max-width: 100px;
   margin-top: 40px; 
   max-height: 100px;
-}
+} */
 
 .userList {
   list-style: none;
   display:flex;
   flex-direction: column;
   justify-content: space-between;
-   margin:0px;
+  margin:0px;
   padding:0px;
+  max-width:400px;
+  min-width: 500px; 
 }
 
 .user{
-  max-width:400px;
-  min-width: 400px;
-  /* width: 100vw; */
-  max-height:150px;
-  min-height: 150px;
-  margin-top:15px;
-  margin-bottom:15px;
-  padding:20px;
+ width:100%;
+  height: 150px;
+  object-fit:none;
   background-color:#2C3142;
+  margin-top:10px;
+  margin-bottom:15px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .user:hover{
@@ -96,14 +115,14 @@ text-align: center;
 }
 
 .singleUserImg {
-  /* border: 1px solid #ddd;
-  padding: 5px; */
-  width: 120px;
-  height:120px;
+  /* width: 60px;
+  height:60px; */
+  width: 90px;
+  height:90px;
   border-radius: 50%;
 }
 
-.userImg:hover {
+.singleUserImg:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
 
@@ -120,3 +139,39 @@ text-align: center;
 /* .name{
     font-size: 9px;
 } */
+
+
+
+
+
+
+@media screen and (min-width: 591px)  and (max-width: 1000px) {
+  .homepage{
+    max-width:80%;
+    min-width:80%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  }
+  .userList{
+    max-width: 100%;
+        min-width: 100%;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .userCreator{
+    width:95%
+  }
+  .homepage{
+    max-width:100%;
+        min-width:100%;
+display:flex;
+flex-direction: column;
+align-items: center;
+  }
+  .userList{
+    max-width:100%;
+        min-width:100%;
+  }
+}

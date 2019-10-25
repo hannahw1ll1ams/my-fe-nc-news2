@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
+import LoadingPage from './LoadingPage';
 
 class ArticleCreator extends Component {
   state = {
@@ -70,7 +71,7 @@ class ArticleCreator extends Component {
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
     return (
       <div className='addingArticleForm'>
-        {isLoadingTopics ? <p>Loading Topics...</p> : topicsError ? <ErrorPage error={topicsError} /> :
+        {isLoadingTopics ? <LoadingPage /> : topicsError ? <ErrorPage error={topicsError} /> :
           <form onSubmit={this.handleSubmit} className='addingArticleInputs'>
             <div className='topicChoice'>
               {

@@ -1,9 +1,10 @@
 import React from 'react';
+import '../css/errors.css'
 
 const ErrorPage = ({ error }) => {
   return (
-    <p>
-      Status: {error.status}, {error.msg}
+    <p className='errors'>
+      Status: {error.status} <br /> {error.msg}
     </p>
   )
 }

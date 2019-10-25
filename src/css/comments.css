@@ -1,0 +1,19 @@
+.commentCard{
+  border-top-color: black;
+  border-top-style: solid;
+  margin:10px;
+}
+
+.currentVotes{
+  color: black;
+    font-weight: 800;
+
+}
+
+.showHideCommentsText{
+  font-weight: 800;
+}
+
+.showHideCommentsText:hover{
+  color:#FAAC1C;
+}

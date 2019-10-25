@@ -1,13 +1,6 @@
-.sideBar {
-  /* background-color:#2C3142; */
-  width:12vw;
-  height:100vh;
-  position:fixed;
-  text-align: left;
-  list-style: none;
-/* border-right-color: rgb(69, 73, 88);
-  border-right-style: solid; */
-}
+
+
+
 
 .logIn{
   background-color:#2C3142;
@@ -19,7 +12,7 @@
   border-bottom-right-radius: 15px;
 }
 
-.bottomList{
+.usersAndNewsList{
   background-color:#2C3142;
 border-right-color: rgb(69, 73, 88);
   border-right-style: solid;
@@ -27,17 +20,30 @@ border-right-color: rgb(69, 73, 88);
   border-top-style: solid;
   margin-top: 0px;
   border-top-right-radius: 15px;
+  /* height:100%; */
+}
+
+.articleTopicsList{
+  background-color:#2C3142;
+border-right-color: rgb(69, 73, 88);
+  border-right-style: solid;
+  margin-top: 0px;
   height:100%;
 }
 
 .titleNC {
   /* min-width: 300px; */
-  height:auto;
+  /* height:auto; */
+  /* min-width:200px; */
+
   padding-left: 2vw;
   margin:0;
   font-size: 9vw;
-  color: #FAAC1C;
+  /* color: #FAAC1C; */
+  color:aquamarine;
   background-color:rgb(6, 9, 27);
+    /* background-color: rgb(247, 247, 248); */
+
   /* margin-right: 5px; */
     /* background-color: rgb(224, 198, 63); */
 
@@ -46,59 +52,224 @@ border-right-color: rgb(69, 73, 88);
 .titleNEWS{
   height:auto;
   padding-left: 2vw;
+color: white;
+}
 
+.titles{
+  display:flex;
+  flex-direction: column;
 }
 
 .who {
   color: red;
   padding-left: 2vw;
+  text-decoration: none;
+
 }
 
 .logged {
   color: lime;
-  padding-left: 2vw;
+  /* padding-left: 2vw; */
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.loggedInAs{
+    padding-left: 2vw;
+  color: grey;
 }
 
 .change{
   padding-left: 2vw;
+    color: grey;
 }
 
 .Users{
   padding-left: 2vw;
     height:auto;
+color: white;
 
 }
 
 .topicsList {
-  padding-left: 2vw;
+  /* padding-left: 2vw; */
   /* padding-right: 2vw; */
   overflow: scroll;
   background-color:  rgb(69, 73, 88);
     list-style: none;
   text-decoration: none;
-
+  margin-top:10px;
+    margin-bottom:10px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:0px;
 }
+
+/* .colorBox-football{
+  height: auto;
+  width: 15px;
+background-color:#778899;
+}
+.colorBox-coding{
+  height: auto;
+  width: 15px;
+background-color:#DCDCDC;;
+}
+.colorBox-cooking{
+  height: auto;
+  width: 15px;
+background-color:#A9A9A9;;
+} */
 
 .List{
   /* height:50vh; */
-  overflow: scroll;
   text-decoration: none;
-  background-color: rgb(69, 73, 88);
-    text-decoration: none;
-
+  /* margin-top:10px; */
+    margin-bottom:10px;
+padding-top:1px;
 }
 
 .topics-cooking{
   background-color: #A9A9A9;
+  /* margin-top:10px;
+  margin-bottom:10px; */
+  color: white;
+  display: flex;
+  justify-content:space-between;
   text-decoration: none;
+    width:100%;
+    padding:20px 20px 20px;
+
 }
 
 .topics-football{
     background-color:#778899;
-  text-decoration: none;
+  /* margin-top:10px; */
+  /* margin-bottom:10px; */
+  color: white;
+  display: flex;
+  justify-content:space-between;
+  width:100%;
+    text-decoration: none;
+    padding:20px 20px 20px;
 }
 
 .topics-coding{
     background-color:#DCDCDC;
+  /* margin-top:10px;
+  margin-bottom:10px; */
+  color: white;
+  display: flex;
+  justify-content:space-between;
+    text-decoration: none;
+      width:100%;
+
+    padding:20px 20px 20px;
+
+}
+
+.allLinks{
   text-decoration: none;
+}
+
+
+@media screen and (min-width: 590px) {
+  .sideBar {
+  width:12vw;
+  min-width:150px;
+  height:100vh;
+  position:fixed;
+  text-align: left;
+  list-style: none;
+  /* border-right-color: rgb(69, 73, 88);
+  border-right-style: solid; */
+}
+}
+
+@media screen and (max-width: 589px) {
+  .sideBar{
+    position: relative;
+    /* width:100vw; */
+  /* height:20px; */
+  display: flex;
+  flex-direction: column;
+  }
+.logIn{
+  display: flex;
+  /* flex-direction: column; */
+  border: none;
+  border-radius: 0;
+  /* padding-left: 50; */
+}
+
+.List{
+  /* width:50%; */
+  height:100%;
+  margin-bottom: 0;
+}
+.topicsList{
+  display: flex;
+  justify-content: space-between;
+  /* padding-right: 5px; */
+    flex-direction: row;
+    overflow: initial;
+
+}
+.titleNC {
+  /* min-width: 300px; */
+  /* height:auto; */
+  min-width:auto;
+
+  padding-left: 50;
+  margin:0;
+  font-size: 9vw;
+  color: #FAAC1C;
+  /* background-color:rgb(6, 9, 27); */
+
+  /* margin-right: 5px; */
+    /* background-color: rgb(224, 198, 63); */
+}
+
+.topics-cooking{
+    padding:10px 20px 10px;
+display: flex;
+justify-content: center;
+}
+
+.topics-football{
+    padding:10px 20px 10px;
+display: flex;
+justify-content: center;
+}
+
+.topics-coding{
+    padding:10px 20px 10px;
+display: flex;
+justify-content: center;
+}
+.titles{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: none;
+  border-radius: 0;
+  align-items: center;
+  margin-right: 10px;
+}
+.usersAndNewsList{
+  display: flex;
+    flex-direction: row;
+border: none;
+  border-radius: 0;
+  background-color: rgb(6, 9, 27);
+  width:50%;
+  justify-content: space-between;
+}
+.articleTopicsList {
+    background-color: rgb(6, 9, 27);
+    border-right-style: none;
+    margin-top: 0px;
+    height: 100%;
+}
 }

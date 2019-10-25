@@ -3,11 +3,12 @@ import * as api from '../api'
 import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
 import Sorter from './Sorter';
-import ViewToggler from './ViewToggler';
+// import ViewToggler from './ViewToggler';
 import { Router, Link } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
+import LoadingPage from './LoadingPage'
 
 
 class ArticleList extends Component {
@@ -16,7 +17,10 @@ class ArticleList extends Component {
     isLoading: true,
     error: null,
     commentCountChange: null,
-    selectedArticleID: null
+    selectedArticleIdComments: null,
+    votesCountChange: null,
+    selectedArticleIdVotes: null,
+
   }
 
   componentDidUpdate(prevProps) {
@@ -50,18 +54,20 @@ class ArticleList extends Component {
       })
   }
 
-  updateCommentCountInArticleList = (numDifference, selectedArticleID) => {
+  updateCommentCountInArticleList = (numDifference, selectedArticleIdComments) => {
     this.setState(currentState => {
-      return { commentCountChange: Number(currentState.commentCountChange) + numDifference, selectedArticleID }
+      return { commentCountChange: Number(currentState.commentCountChange) + numDifference, selectedArticleIdComments }
+    })
+  }
+
+  updateVotesCountInArticleList = (numDifference, selectedArticleIdVotes) => {
+    this.setState(currentState => {
+      return { votesCountChange: Number(currentState.votesCountChange) + numDifference, selectedArticleIdVotes }
     })
   }
 
   postNewArticle = (title, newArticleTopic, body) => {
-    const { loggedInUser, topic } = this.props;
-    // console.log(loggedInUser, '<---in article list')
-
-    console.log(title, '<-title', newArticleTopic, '<-newArticleTopic', body, '<-body', topic, '<-topicOnUrl')
-    // const articleTopic = newArticleTopic.split(' ').join('_')
+    const { loggedInUser } = this.props;
     api.sendNewArticle(title, newArticleTopic, body, loggedInUser)
       .then(newArticle => {
         this.setState(currentState => {
@@ -98,39 +104,33 @@ class ArticleList extends Component {
 
   render() {
 
-    const { articles, isLoading, error, commentCountChange, selectedArticleID } = this.state;
-    // console.log(commentCountChange, selectedArticleID)
-    const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
-    if (isLoading) return <p>Loading...</p>
+    const { articles, isLoading, error, commentCountChange, selectedArticleIdComments, votesCountChange, selectedArticleIdVotes } = this.state;
+    const { topic, author, loggedInUser, chosenTopic } = this.props
+    // const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
+    if (isLoading) return <LoadingPage />
     if (error) return <ErrorPage error={error} />
     return (
-      // <div className='main'>
       <div className='mainBody'>
         <div className='leftArticles'>
           <div className='topOfPage'>
-            {/* {topic && <h2>Articles on {topic}</h2>} */}
             {topic && <h2>{chosenTopic.description}</h2>}
             {author && <h2>Articles by {author}</h2>}
-
             <div className='topBar'>
-              {articles.length > 0 && <Sorter fetchArticles={this.fetchArticles} />}
-              {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
+              {articles.length > 0 && <Sorter className='sorter' fetchArticles={this.fetchArticles} />}
+              {/* {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />} */}
             </div>
-            {/* <p className='numOfArticles'>{articles.length} Articles Found</p> */}
           </div>
           <div className='main'>
             <ul className='articleList'>
               {articles.map(article => {
-                return <Link key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleID={selectedArticleID} /></Link>
+                return <Link className='allLinks' key={article.article_id} to={`${article.article_id}`}><ArticleCard key={article.article_id} {...article} loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} commentCountChange={commentCountChange} selectedArticleIdComments={selectedArticleIdComments} selectedArticleIdVotes={selectedArticleIdVotes} votesCountChange={votesCountChange} /></Link>
               })}
             </ul>
             <Router className='selectedArticle'>
-              <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} />
+              <SelectedArticle path=":article_id" loggedInUser={loggedInUser} deleteElementByClick={this.deleteElementByClick} updateCommentCountInArticleList={this.updateCommentCountInArticleList} updateVotesCountInArticleList={this.updateVotesCountInArticleList} />
             </Router>
           </div>
         </div>
-
-        {/* </div> */}
         <TopArticlesList topic={topic} />
       </div>
     );

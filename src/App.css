@@ -19,12 +19,24 @@
   display: grid;
   grid-auto-columns: 2fr 10fr;
   grid-template-areas: "sideBar router";
-  /* background-color:#F8F6EC; */
-    background-color:rgb(6, 9, 27);
-        /* background-color:#B3C0CB */
-;
+  /* background-color:rgb(6, 9, 27); */
+  /* background-color:rgb(239, 240, 247); */
   min-height: 100vh;
 }
+body {
+    background-color: rgb(6, 9, 27);
+        /* background-color: rgb(247, 247, 248); */
+
+  }
+
+
+
+/* On screens that are 600px or less, set the background color to olive */
+
+
+
+
+
 
 .router{
   grid-area:router;
@@ -32,4 +44,22 @@
   justify-content: center;
   /* padding-left: 100px; */
 } 
+/* !!!!!! can change this padding */
+@media screen and (max-width: 1000px) {
+  .router {
+    grid-area: router;
+    display: flex;
+    justify-content: center;
+    padding-left: 50px;
+}
+}
 
+@media screen and (max-width: 590px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  .router {
+    padding-left: 0px;
+}
+}

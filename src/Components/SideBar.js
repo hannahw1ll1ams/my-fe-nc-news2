@@ -7,17 +7,20 @@ const SideBar = ({ loggedInUser, updateLoggedInUser, slugs, isLoadingTopics, top
   return (
     <div className="sideBar">
       <div className='logIn'>
-        {!loggedInUser ? <p><Link to='/'>Choose User</Link></p> : <p className="logged">Logged in as <br /> <Link to={`/users/${loggedInUser}`}>{loggedInUser}
+        {!loggedInUser ? <Link className='allLinks' to='/'><p className='change'>Choose User</p></Link> : <p className="loggedInAs" > <Link className="logged" to={`/users/${loggedInUser}`}>{loggedInUser}
           {/* <img src={loggedInUserImage} alt={loggedInUser} /> */}
         </Link></p>}
-        {loggedInUser && <Link to='/'><p className='change' onClick={() => updateLoggedInUser(null)}>Log Out</p></Link>}
+        {loggedInUser && <Link to='/' className='allLinks'><p className='change' onClick={() => updateLoggedInUser(null)}>Log Out</p></Link>}
       </div>
+      <div className='titles'>
+        <h1 className='titleNC'>NC</h1>
 
-      <h1 className='titleNC'>NC</h1>
-      <div className='bottomList'>
-
-        {loggedInUser && <h2 className='Users'><Link to={`/users/${loggedInUser}`}>USERS</Link></h2>}
-        {loggedInUser && <h2 className='titleNEWS'><Link to='/articles'>NEWS</Link></h2>}
+        <div className='usersAndNewsList'>
+          {loggedInUser && <Link className='allLinks' to={`/users/${loggedInUser}`}><h2 className='Users'>USERS</h2></Link>}
+          {loggedInUser && <Link className='allLinks' to='/articles'><h2 className='titleNEWS'>NEWS</h2></Link>}
+        </div>
+      </div>
+      <div className='articleTopicsList'>
         {loggedInUser && <TopicsList slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
       </div>
 

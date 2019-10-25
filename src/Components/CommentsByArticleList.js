@@ -5,7 +5,6 @@ import ErrorPage from './ErrorPage';
 import '../css/router.css'
 
 const CommentsByArticleList = ({ comments, loggedInUser, postNewComment, deleteElementByClick, commentsError, addAndDeleteError, updateCommentCount, isLoadingNewComment, updateIsLoadingNewComment }) => {
-  console.log(isLoadingNewComment)
   return (
     <div>
       {commentsError && <ErrorPage error={commentsError} />}
