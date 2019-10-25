@@ -12,7 +12,7 @@ const TopicsList = ({ slugs, isLoadingTopics, topicsError }) => {
     <div className='List'>
       <ul className='topicsList'>
         {slugs.map(slug => {
-          return <Link to={`/topics/${slug}`} className='allLinks'><li className={`topics-${slug}`} key={slug}>{slug}</li></Link>
+          return <Link to={`/topics/${slug}`} key={slug} className={`topics-${slug}`}><li>{slug}</li></Link>
         })}
       </ul>
     </div>

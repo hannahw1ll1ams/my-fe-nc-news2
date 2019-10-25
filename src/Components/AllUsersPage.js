@@ -108,7 +108,7 @@ const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersErro
             <h2 className='userName'> {singleChosenUser[0].username}</h2>
           </div>
           <img className='userImg' src={singleChosenUser[0].avatar_url} alt={singleChosenUser[0].name} />
-          <Link to={`/articles/user/${singleChosenUser[0].username}`}>
+          <Link className='allLinks' to={`/articles/user/${singleChosenUser[0].username}`}>
             <h3>For articles by {singleChosenUser[0].name}</h3></Link>
         </div>
       </div>

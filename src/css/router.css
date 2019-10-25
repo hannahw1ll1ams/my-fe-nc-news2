@@ -82,6 +82,14 @@ padding-bottom: 5px;
   min-width: 100px;
 }
 
+.deleteButtonBox{
+  width:100%;
+  background-color: aquamarine;
+  padding: 5px 0px 5px;
+  margin-bottom:40px;
+  margin-left: 0px;
+}
+
 .rightSide {
   max-width:10vw;
   min-width: 200px;
@@ -178,8 +186,8 @@ padding-bottom: 5px;
   /* width: 80%; */
   /* overflow: scroll; */
   max-height:95vh;
-  /* background-color:rgb(6, 9, 27); */
-  background-color: rgb(247, 247, 248);
+  background-color:rgb(6, 9, 27);
+  /* background-color: rgb(247, 247, 248); */
 
   position: sticky;
   top: 20px;;
@@ -308,6 +316,11 @@ textarea{
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom:10px;
+}
+
+.userButton:hover{
+  color:#FAAC1C;;
 }
 
 /* .removeButton{
@@ -371,9 +384,16 @@ textarea{
   border-radius: 5px;
   /* border-top-left-radius: 10px; */
 }
+.deleteText{
+    font-weight: 800;
+}
+
+.deleteButtonBox:hover{
+  color:red;
+}
 
 .topicAndTitle{
-  color: rgb(73, 147, 197);
+  color: rgb(24, 146, 228);
   font-size: 60px;
 }
 
@@ -383,7 +403,25 @@ textarea{
 }
 
 .votingButtons{
-  color: #FAAC1C;
+  /* color: #FAAC1C; */
+  color:black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+.upButton{
+  color:white;
+}
+.upButton:hover{
+color:#FAAC1C;
+}
+.downButton{
+  color:white;
+}
+.downButton:hover{
+color:#FAAC1C;
 }
 
 .votesAndCommentsStats{

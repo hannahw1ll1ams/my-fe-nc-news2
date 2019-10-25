@@ -12,7 +12,7 @@
   border-bottom-right-radius: 15px;
 }
 
-.bottomList{
+.usersAndNewsList{
   background-color:#2C3142;
 border-right-color: rgb(69, 73, 88);
   border-right-style: solid;
@@ -20,6 +20,14 @@ border-right-color: rgb(69, 73, 88);
   border-top-style: solid;
   margin-top: 0px;
   border-top-right-radius: 15px;
+  /* height:100%; */
+}
+
+.articleTopicsList{
+  background-color:#2C3142;
+border-right-color: rgb(69, 73, 88);
+  border-right-style: solid;
+  margin-top: 0px;
   height:100%;
 }
 
@@ -31,9 +39,10 @@ border-right-color: rgb(69, 73, 88);
   padding-left: 2vw;
   margin:0;
   font-size: 9vw;
-  color: #FAAC1C;
-  /* background-color:rgb(6, 9, 27); */
-    background-color: rgb(247, 247, 248);
+  /* color: #FAAC1C; */
+  color:aquamarine;
+  background-color:rgb(6, 9, 27);
+    /* background-color: rgb(247, 247, 248); */
 
   /* margin-right: 5px; */
     /* background-color: rgb(224, 198, 63); */
@@ -44,7 +53,11 @@ border-right-color: rgb(69, 73, 88);
   height:auto;
   padding-left: 2vw;
 color: white;
+}
 
+.titles{
+  display:flex;
+  flex-direction: column;
 }
 
 .who {
@@ -90,6 +103,7 @@ color: white;
     display:flex;
     flex-direction: column;
     align-items: flex-start;
+    padding:0px;
 }
 
 /* .colorBox-football{
@@ -111,36 +125,48 @@ background-color:#A9A9A9;;
 .List{
   /* height:50vh; */
   text-decoration: none;
-  margin-top:10px;
+  /* margin-top:10px; */
     margin-bottom:10px;
-
+padding-top:1px;
 }
 
 .topics-cooking{
-  /* background-color: #A9A9A9; */
-  margin-top:10px;
-  margin-bottom:10px;
+  background-color: #A9A9A9;
+  /* margin-top:10px;
+  margin-bottom:10px; */
   color: white;
   display: flex;
   justify-content:space-between;
+  text-decoration: none;
+    width:100%;
+    padding:20px 20px 20px;
+
 }
 
 .topics-football{
-    /* background-color:#778899; */
-  margin-top:10px;
-  margin-bottom:10px;
+    background-color:#778899;
+  /* margin-top:10px; */
+  /* margin-bottom:10px; */
   color: white;
   display: flex;
   justify-content:space-between;
+  width:100%;
+    text-decoration: none;
+    padding:20px 20px 20px;
 }
 
 .topics-coding{
-    /* background-color:#DCDCDC; */
-  margin-top:10px;
-  margin-bottom:10px;
+    background-color:#DCDCDC;
+  /* margin-top:10px;
+  margin-bottom:10px; */
   color: white;
   display: flex;
   justify-content:space-between;
+    text-decoration: none;
+      width:100%;
+
+    padding:20px 20px 20px;
+
 }
 
 .allLinks{
@@ -176,21 +202,19 @@ background-color:#A9A9A9;;
   border-radius: 0;
   /* padding-left: 50; */
 }
-.bottomList{
-  display: flex;
-  border: none;
-  border-radius: 0;
-  padding-left: 50;
-  justify-content: space-between;
-  align-items: center;
-}
+
 .List{
-  width:50%
+  /* width:50%; */
+  height:100%;
+  margin-bottom: 0;
 }
 .topicsList{
   display: flex;
   justify-content: space-between;
-  padding-right: 5px;
+  /* padding-right: 5px; */
+    flex-direction: row;
+    overflow: initial;
+
 }
 .titleNC {
   /* min-width: 300px; */
@@ -205,5 +229,47 @@ background-color:#A9A9A9;;
 
   /* margin-right: 5px; */
     /* background-color: rgb(224, 198, 63); */
+}
+
+.topics-cooking{
+    padding:10px 20px 10px;
+display: flex;
+justify-content: center;
+}
+
+.topics-football{
+    padding:10px 20px 10px;
+display: flex;
+justify-content: center;
+}
+
+.topics-coding{
+    padding:10px 20px 10px;
+display: flex;
+justify-content: center;
+}
+.titles{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: none;
+  border-radius: 0;
+  align-items: center;
+  margin-right: 10px;
+}
+.usersAndNewsList{
+  display: flex;
+    flex-direction: row;
+border: none;
+  border-radius: 0;
+  background-color: rgb(6, 9, 27);
+  width:50%;
+  justify-content: space-between;
+}
+.articleTopicsList {
+    background-color: rgb(6, 9, 27);
+    border-right-style: none;
+    margin-top: 0px;
+    height: 100%;
 }
 }

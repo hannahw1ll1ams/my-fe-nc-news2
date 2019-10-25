@@ -12,12 +12,15 @@ const SideBar = ({ loggedInUser, updateLoggedInUser, slugs, isLoadingTopics, top
         </Link></p>}
         {loggedInUser && <Link to='/' className='allLinks'><p className='change' onClick={() => updateLoggedInUser(null)}>Log Out</p></Link>}
       </div>
+      <div className='titles'>
+        <h1 className='titleNC'>NC</h1>
 
-      <h1 className='titleNC'>NC</h1>
-      <div className='bottomList'>
-
-        {loggedInUser && <Link className='allLinks' to={`/users/${loggedInUser}`}><h2 className='Users'>USERS</h2></Link>}
-        {loggedInUser && <Link className='allLinks' to='/articles'><h2 className='titleNEWS'>NEWS</h2></Link>}
+        <div className='usersAndNewsList'>
+          {loggedInUser && <Link className='allLinks' to={`/users/${loggedInUser}`}><h2 className='Users'>USERS</h2></Link>}
+          {loggedInUser && <Link className='allLinks' to='/articles'><h2 className='titleNEWS'>NEWS</h2></Link>}
+        </div>
+      </div>
+      <div className='articleTopicsList'>
         {loggedInUser && <TopicsList slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
       </div>
 

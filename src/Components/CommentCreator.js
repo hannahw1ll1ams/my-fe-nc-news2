@@ -26,7 +26,7 @@ class CommentCreator extends Component {
       <form onSubmit={this.handleSubmit} className='commentInputs'>
         <label>
           <textarea name="comment_body" onChange={this.handleChange} value={body} required placeholder='Comment...' />
-          <button className='commentSubmit'>Submit</button>
+          <button className='commentSubmit'>POST</button>
         </label>
       </form>
     );
