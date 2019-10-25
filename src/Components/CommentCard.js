@@ -11,8 +11,9 @@ const CommentCard = ({ author, body, created_at, votes, comment_id, loggedInUser
       <h2>{author}</h2>
       <p>{moment(created_at).fromNow()}</p>
       <p>{body}</p>
+      {author === loggedInUser ? <p className='currentVotes'>{votes}</p> : <VoteUpdater votes={votes} item="comments" id={comment_id} />}
       {author === loggedInUser && <DeleteButton item="comment" deleteElementByClick={deleteElementByClick} id={comment_id} updateCommentCount={updateCommentCount} />}
-      {author === loggedInUser ? <p>{votes}</p> : <VoteUpdater votes={votes} item="comments" id={comment_id} />}
+
     </li>
   );
 };

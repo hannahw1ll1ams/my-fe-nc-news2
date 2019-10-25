@@ -34,9 +34,9 @@ class ViewToggler extends Component {
 
         <div onClick={this.handleClick} className='userButton'>
           {messageToggle === true ?
-            <IoIosAddCircle />
+            <IoIosAddCircle size={32} />
             :
-            <IoMdRemoveCircleOutline />}
+            <IoMdRemoveCircleOutline size={32} />}
         </div>
 
 
