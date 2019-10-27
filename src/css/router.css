@@ -242,6 +242,7 @@ padding-bottom: 5px;
   min-width: 80%;
   /* margin-left: 0px; */
   box-sizing: border-box;
+
 }
 
 .articleBody-coding{
@@ -270,6 +271,12 @@ padding-bottom: 5px;
   /* min-width: 80%; */
   /* margin-left: 10px; */
   box-sizing: border-box;
+
+}
+
+.mainArticle{
+      margin-bottom: 50px;
+
 }
 
 .addingArticleForm{

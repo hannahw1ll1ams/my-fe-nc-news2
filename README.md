@@ -6,7 +6,8 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 ## Hosted Link:
 .....
 ## FE Github repo:
-.....
+https://github.com/hannahw1ll1ams/my-fe-nc-news2
+
 ## Api url: 
 https://hw-nc-news.herokuapp.com/api
 
