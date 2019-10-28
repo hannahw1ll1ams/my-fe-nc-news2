@@ -4,7 +4,8 @@ Northcoders News is a social news aggregation, web content rating, and discussio
 
 
 ## Hosted Link:
-.....
+https://nc-discussions.netlify.com
+
 ## FE Github repo:
 https://github.com/hannahw1ll1ams/my-fe-nc-news2
 
