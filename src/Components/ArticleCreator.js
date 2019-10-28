@@ -57,7 +57,7 @@ class ArticleCreator extends Component {
   }
 
   handleClick = () => {
-    console.log('click')
+    // console.log('click')
     const { isShowingAddTopic, i } = this.state
     const { updateIsShowing } = this.props
     this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }, () => {

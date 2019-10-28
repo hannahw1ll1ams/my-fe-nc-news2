@@ -30,7 +30,6 @@ class ArticleList extends Component {
     if (prevProps.slug !== this.props.slug) {
       this.fetchArticles()
     }
-    //is this second one needed?
   }
 
   componentDidMount() {
