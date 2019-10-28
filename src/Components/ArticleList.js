@@ -112,7 +112,7 @@ class ArticleList extends Component {
       <div className='mainBody'>
         <div className='leftArticles'>
           <div className='topOfPage'>
-            {topic && <h2>{chosenTopic.description}</h2>}
+            {topic && <h2 className='topicDescription'>{chosenTopic.description}</h2>}
             {author && <h2>Articles by {author}</h2>}
             <div className='topBar'>
               {articles.length > 0 && <Sorter className='sorter' fetchArticles={this.fetchArticles} />}

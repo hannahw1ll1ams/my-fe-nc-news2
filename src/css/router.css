@@ -123,6 +123,10 @@ padding-bottom: 5px;
   padding:5;
 }
 
+.topicDescription{
+  color:grey;
+}
+
 .sortByVotesOrComments{
   width:100%;
   margin-left: 15px;
