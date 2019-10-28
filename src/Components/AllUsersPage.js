@@ -92,12 +92,16 @@ const AllUsersPage = ({ username, loggedInUser, users, isLoadingUsers, usersErro
   const handleClick = () => {
     window.scrollTo({ top: 0 });
   }
+
   const filtered = users.filter(user => user.username !== username)
   const singleChosenUser = users.filter(user => user.username === username)
   // if (isLoadingChosenUser) return <p>Loading...</p>
   // if (error) return <ErrorPage error={error} />
+  if (singleChosenUser.length === 0) return <ErrorPage error={{ status: 404, msg: 'User Not Found' }} />
+
   if (isLoadingUsers) return <LoadingPage />
   if (usersError) return <ErrorPage error={usersError} />
+
   return (
     <div className='allUsersPage'>
       <div className='loggedInUser'>

@@ -28,14 +28,13 @@ class App extends Component {
     return (
       <div className="App">
         <SideBar slugs={topics.map(topic => topic.slug)} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
-
         <Router className='router'>
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} loggedInUser={loggedInUser} />
           <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
           <ArticlesByTopic path='/topics/:topic/*' topics={topics} loggedInUser={loggedInUser} updateTopics={this.updateTopics} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
           <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} />
           <UserByUsernamePage path='/users/:username' loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
-          <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
+          <ErrorPage default error={{ status: 404, msg: 'Pagggge Not Found' }} />
         </Router>
       </div>
     );
