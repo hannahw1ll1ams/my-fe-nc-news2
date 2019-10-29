@@ -577,6 +577,10 @@ width:75vw;
 .topicAndTitle {
     font-size: 40px;
 }
+.votingButtons {
+  margin-bottom: 0px;
+  margin-right: 5px;
+}
 }
 
 
