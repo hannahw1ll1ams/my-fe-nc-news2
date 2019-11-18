@@ -33,7 +33,7 @@ class ViewToggler extends Component {
             :
             <IoMdRemoveCircleOutline size={32} />}
         </div>
-        {(isShowingForm) && (item === 'ARTICLE') && <><div class="break"></div>
+        {(isShowingForm) && (item === 'ARTICLE') && <><div className="break"></div>
           <ArticleCreator postNewArticle={postNewArticle} updateTopics={updateTopics} slugs={slugs} selectedTopic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} updateIsShowing={this.updateIsShowing} /></>}
         {(isShowingForm) && (item === 'comment') && <CommentCreator updateCommentCount={updateCommentCount} postNewComment={postNewComment} updateIsLoadingNewComment={updateIsLoadingNewComment} />}
         {(isShowingForm) && (item === 'user') && <UserCreator postNewUser={postNewUser} />}

@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     const { isLoadingTopics, isLoadingUsers, topicsError, usersError, loggedInUser, users, topics } = this.state;
-    let slugs = topics.map(topic => topic.slug)
+    let slugs = topics.map(topic => topic.slug);
 
     return (
       <div className="App">
@@ -79,6 +79,7 @@ class App extends Component {
       this.setState(currentState => {
         return { topics: [...currentState.topics, newTopic] }
       })
+      return newTopic
     })
       .catch(error => {
         const { data, status } = error.response
