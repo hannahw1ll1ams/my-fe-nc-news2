@@ -37,7 +37,7 @@
 }
 
 .topBar {
-  display:flex;
+  /* display:flex; */
   justify-content: space-between;
   flex-wrap:wrap;
   padding-top: 10px; 
@@ -48,6 +48,17 @@ padding-left: 5px;
 padding-bottom: 5px;
 border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+}
+
+.userButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:10px;
+}
+
+.userButton:hover{
+  color:#FAAC1C;;
 }
 
 .sortButton{
@@ -292,8 +303,8 @@ border-bottom-right-radius: 5px;
 }
 
 .titletext{
-  width:100%;
-  background-color:#2C3142;
+  width:99%;
+  background-color:white;
   border: none;
   overflow: auto;
   outline: none;
@@ -328,10 +339,17 @@ textarea{
   /* border: none; */
   overflow: auto;
   outline: none;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.bodytext{
+  width:99%;
 }
 
 .topicChoice{
   align-self: flex-start;
+    box-sizing: border-box;  
 }
 
 /* .addTopic{
@@ -348,16 +366,7 @@ textarea{
   align-self: flex-end;
 }
 
-.userButton{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom:10px;
-}
 
-.userButton:hover{
-  color:#FAAC1C;;
-}
 
 /* .removeButton{
   display: flex;
