@@ -19,22 +19,23 @@ class App extends Component {
     isLoadingUsers: true,
     topicsError: null,
     usersError: null
-    // loggedInUserImage: null
   }
+
 
   render() {
     const { isLoadingTopics, isLoadingUsers, topicsError, usersError, loggedInUser, users, topics } = this.state;
+    let slugs = topics.map(topic => topic.slug)
 
     return (
       <div className="App">
-        <SideBar slugs={topics.map(topic => topic.slug)} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+        <SideBar slugs={slugs} loggedInUser={loggedInUser} updateLoggedInUser={this.updateLoggedInUser} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
         <Router className='router'>
           <Homepage path='/' updateLoggedInUser={this.updateLoggedInUser} users={users} postNewUser={this.postNewUser} isLoadingUsers={isLoadingUsers} usersError={usersError} loggedInUser={loggedInUser} />
-          <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
+          <AllArticles path='/articles/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
           <ArticlesByTopic path='/topics/:topic/*' topics={topics} loggedInUser={loggedInUser} updateTopics={this.updateTopics} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />
-          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={topics.map(topic => topic.slug)} />
+          <ArticlesByUserPage path='/articles/user/:username/*' loggedInUser={loggedInUser} updateTopics={this.updateTopics} slugs={slugs} />
           <UserByUsernamePage path='/users/:username' loggedInUser={loggedInUser} users={users} isLoadingUsers={isLoadingUsers} usersError={usersError} />
-          <ErrorPage default error={{ status: 404, msg: 'Pagggge Not Found' }} />
+          <ErrorPage default error={{ status: 404, msg: 'Page Not Found' }} />
         </Router>
       </div>
     );
