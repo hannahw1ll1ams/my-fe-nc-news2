@@ -20,7 +20,6 @@ class ArticleList extends Component {
     selectedArticleIdComments: null,
     votesCountChange: null,
     selectedArticleIdVotes: null,
-
   }
 
   componentDidUpdate(prevProps) {

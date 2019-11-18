@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/LoadingPage.css'
-// import { MDBIcon } from "mdbreact";
 import ReactLoading from 'react-loading'
 
 const LoadingPage = () => {

@@ -10,7 +10,6 @@ class ArticleCreator extends Component {
     articleBody: '',
     newTopic: '',
     newTopicDescription: '',
-    // newColour: '',
     isShowingAddTopic: false,
     i: true
   }
@@ -26,22 +25,15 @@ class ArticleCreator extends Component {
     const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
     const { title, articleBody, newTopic, newTopicDescription, isShowingAddTopic, topic } = this.state;
     if (isShowingAddTopic) {
-      // console.log('isShowingAddTopic', selectedTopic)
-      // console.log(title, newTopic, articleBody)
-
       updateTopics(newTopic, newTopicDescription)
       postNewArticle(title, newTopic, articleBody)
       updateIsShowing(false)
     }
     else if (selectedTopic) {
-      // console.log('else if', selectedTopic)
-
       postNewArticle(title, selectedTopic, articleBody)
       updateIsShowing(false)
     }
     else {
-      // console.log('else', selectedTopic)
-
       postNewArticle(title, topic, articleBody)
       updateIsShowing(false)
     }
@@ -57,7 +49,6 @@ class ArticleCreator extends Component {
   }
 
   handleClick = () => {
-    // console.log('click')
     const { isShowingAddTopic, i } = this.state
     const { updateIsShowing } = this.props
     this.setState({ isShowingAddTopic: !isShowingAddTopic, i: !i }, () => {
