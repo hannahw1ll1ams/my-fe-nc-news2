@@ -3,7 +3,7 @@ import * as api from '../api'
 import ArticleCard from './ArticleCard';
 import TopArticlesList from './TopArticlesList'
 import Sorter from './Sorter';
-// import ViewToggler from './ViewToggler';
+import ViewToggler from './ViewToggler';
 import { Router, Link } from '@reach/router'
 import SelectedArticle from './SelectedArticle'
 import ErrorPage from './ErrorPage';
@@ -103,8 +103,8 @@ class ArticleList extends Component {
   render() {
 
     const { articles, isLoading, error, commentCountChange, selectedArticleIdComments, votesCountChange, selectedArticleIdVotes } = this.state;
-    const { topic, author, loggedInUser, chosenTopic } = this.props
-    // const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
+    // const { topic, author, loggedInUser, chosenTopic } = this.props
+    const { topic, author, loggedInUser, chosenTopic, updateTopics, slugs, isLoadingTopics, topicsError } = this.props
     if (isLoading) return <LoadingPage />
     if (error) return <ErrorPage error={error} />
     return (
@@ -115,7 +115,7 @@ class ArticleList extends Component {
             {author && <h2>Articles by {author}</h2>}
             <div className='topBar'>
               {articles.length > 0 && <Sorter className='sorter' fetchArticles={this.fetchArticles} />}
-              {/* {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />} */}
+              {loggedInUser && <ViewToggler item='ARTICLE' postNewArticle={this.postNewArticle} updateTopics={updateTopics} slugs={slugs} topic={topic} isLoadingTopics={isLoadingTopics} topicsError={topicsError} />}
             </div>
           </div>
           <div className='main'>
