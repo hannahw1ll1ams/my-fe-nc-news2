@@ -3,7 +3,7 @@ import * as api from '../api'
 import { Link } from '@reach/router'
 import VoteUpdater from './VoteUpdater';
 import CommentsByArticleList from './CommentsByArticleList';
-import DeleteButton from './DeleteButton';
+// import DeleteButton from './DeleteButton';
 import ErrorPage from './ErrorPage';
 import '../css/router.css'
 import moment from 'moment'
@@ -128,7 +128,8 @@ class SelectedArticle extends Component {
 
   render() {
     const { article, isLoading, isShowingComments, comments, messageToggle, articleError, commentsError, addAndDeleteError, commentCountChange, isLoadingNewComment } = this.state;
-    const { loggedInUser, updateVotesCountInArticleList, deleteElementByClick } = this.props;
+    const { loggedInUser, updateVotesCountInArticleList } = this.props;
+    // const { loggedInUser, deleteElementByClick, updateVotesCountInArticleList } = this.props;
     if (isLoading) return <LoadingPage />
     if (articleError) return <ErrorPage error={articleError} />
     const { title, author, topic, body, votes, article_id, comment_count, created_at } = article
@@ -136,7 +137,7 @@ class SelectedArticle extends Component {
       <>
         <div className={`articleBody-${topic}`}>
 
-          {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />}
+          {/* {author === loggedInUser && <DeleteButton item="article" id={article_id} deleteElementByClick={deleteElementByClick} />} */}
           <div className='mainArticle'>
             {loggedInUser === author ? <p className='postedBy'>Posted by <Link to={`/users/${author}`}>you</Link> {moment(created_at).fromNow()}</p> :
               <p className='postedBy'>Posted by <Link to={`/users/${author}`} className='allLinks'>{author}</Link> {moment(created_at).fromNow()}</p>}
