@@ -55,6 +55,8 @@ border-bottom-right-radius: 5px;
   align-items: center;
   justify-content: center;
   margin-top:10px;
+  margin-bottom:10px;
+
 }
 
 .userButton:hover{
@@ -364,6 +366,7 @@ textarea{
 
 .commentSubmit{
   align-self: flex-end;
+  margin-top:10px;
 }
 
 
