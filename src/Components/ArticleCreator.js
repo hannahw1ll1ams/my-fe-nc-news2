@@ -11,7 +11,8 @@ class ArticleCreator extends Component {
     newTopic: '',
     newTopicDescription: '',
     isShowingAddTopic: false,
-    i: true
+    i: true,
+    newTopicError: null
   }
 
   handleChange = (event) => {
@@ -20,16 +21,25 @@ class ArticleCreator extends Component {
     )
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault()
-    const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
-    const { title, articleBody, newTopic, newTopicDescription, isShowingAddTopic, topic } = this.state;
-    if (isShowingAddTopic) {
-      updateTopics(newTopic, newTopicDescription)
-      postNewArticle(title, newTopic, articleBody)
-      updateIsShowing(false)
-    }
-    else if (selectedTopic) {
+    const { postNewArticle, selectedTopic, updateIsShowing } = this.props;
+    const { title, articleBody, topic } = this.state;
+    // const { postNewArticle, updateTopics, selectedTopic, updateIsShowing } = this.props;
+    // const { title, articleBody, newTopic, newTopicDescription, isShowingAddTopic, topic } = this.state;
+    // if (isShowingAddTopic) {
+    //   try {
+    //     const createTopic = await updateTopics(newTopic, newTopicDescription)
+    //     return Promise.all([createTopic]).then(() => {
+    //       postNewArticle(title, newTopic, articleBody)
+    //       console.log('succcess')
+    //     }
+    //     )
+    //   } catch (err) {
+    //     console.log(err, "<---- errorrr")
+    //   }
+    // }
+    if (selectedTopic) {
       postNewArticle(title, selectedTopic, articleBody)
       updateIsShowing(false)
     }
@@ -58,7 +68,7 @@ class ArticleCreator extends Component {
   }
 
   render() {
-    const { title, articleBody, isShowingAddTopic, i, newTopic, newTopicDescription } = this.state;
+    const { title, articleBody } = this.state;
     const { slugs, selectedTopic, isLoadingTopics, topicsError } = this.props;
     return (
       <div className='addingArticleForm'>
@@ -66,33 +76,20 @@ class ArticleCreator extends Component {
           <form onSubmit={this.handleSubmit} className='addingArticleInputs'>
             <div className='topicChoice'>
               {
-                selectedTopic ? <p>{selectedTopic}</p> :
-                  isShowingAddTopic ?
-                    <>
-                      <div>
-                        <input name='newTopic' placeholder='New Topic' onChange={this.handleChange} required value={newTopic} />
-                        <input name='newTopicDescription' placeholder='Description of Topic' onChange={this.handleChange} required value={newTopicDescription} />
-                        <button onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
-                      </div>
-
-                    </>
-                    :
-                    <>
-                      {<select name="topic" required onChange={this.handleChange}>
-                        <option value="" >Please Select</option>
-                        {slugs.map(slug => {
-                          return <option value={slug} key={slug}>{slug}</option>
-                        })}
-                      </select>}
-                      <button className='addTopic' onClick={this.handleClick}>{i === true ? <p>Add to a new topic?</p> : <p>Hide Form</p>}</button>
-                    </>
+                selectedTopic ? <h2>{selectedTopic}</h2> :
+                  <>
+                    {< select name="topic" required onChange={this.handleChange}>
+                      <option value="" >Please Select</option>
+                      {slugs.map(slug => {
+                        return <option value={slug} key={slug}>{slug}</option>
+                      })}
+                    </select>}
+                  </>
               }
             </div>
-
             <br />
             <input className='titletext' name='title' placeholder='Title...' onChange={this.handleChange} required value={title} />
             <br />
-
             <textarea className='bodytext' name='articleBody' placeholder='Body...' onChange={this.handleChange} required value={articleBody} />
             <button className='postingArticleButton'>POST ARTICLE</button>
           </form>}
